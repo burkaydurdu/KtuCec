@@ -1,5 +1,19 @@
 <template name="navBar">
-   <nav>
-
-   </nav>
+    <nav class="navbar navbar-inverse special-color-site">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">
+                    KtuCec
+                </a>
+            </div>
+            <div class="navbar-right">
+                {{#unless currentUser}}
+                    <a class="navbar-brand" href="/login">Sign-in</a>
+                    <a class="navbar-brand" href="/register">Sign-up</a>
+                {{else}}
+                    <a class="navbar-brand" id="logout" href="/">Logout</a>
+                {{/unless}}
+            </div>
+        </div>
+    </nav>
 </template>
