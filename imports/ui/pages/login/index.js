@@ -8,14 +8,14 @@ Template.login.events({
        password = event.target.password.value;
        Meteor.loginWithPassword(email_username, password, function (err, res) {
            if(!err) {
-               FlowRouter.go('/')
+               if(Roles.userIsInRole(Meteor.userId(),['user'])) {
+                   FlowRouter.go('/user/dashboard');
+               } else {
+                   FlowRouter.go('/admin/dashboard');
+               }
            } else {
                //error
            }
        });
    }
 });
-
-Template.login.rendered = function () {
-  $('body').css('background-image', 'url(image/bg.jpg)');
-};
