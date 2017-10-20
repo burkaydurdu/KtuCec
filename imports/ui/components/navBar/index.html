@@ -1,9 +1,20 @@
 <template name="navBar">
-    <nav class="navbar special-color-site">
-        <ul class="navbar">
-            <li class="nav-item">
-                <a class="navbar-link" href="#">Active</a>
-            </li>
-        </ul>
+    <nav class="special-color-site">
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo">KtuCec</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                {{#unless currentUser}}
+                    <li><a href="/login">Login</a></li>
+                    <li><a href="/register">Register</a></li>
+                {{else}}
+                    {{#if isInRole 'admin'}}
+                        <li><a href="/admin/activity/create">Create Activity</a></li>
+                    {{else}}
+                        <li><a href="/user/activity/create">Create Activity</a></li>
+                    {{/if}}
+                    <li><a href="" id="logout">Logout</a></li>
+                {{/unless}}
+            </ul>
+        </div>
     </nav>
 </template>
