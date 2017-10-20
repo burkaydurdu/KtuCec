@@ -8,14 +8,15 @@ Template.login.events({
        password = event.target.password.value;
        Meteor.loginWithPassword(email_username, password, function (err, res) {
            if(!err) {
-               FlowRouter.go('/')
+               Materialize.toast('Wellcome ' + Meteor.user().profile.name, 2500, 'green darken-2 white=text');
+               if(Roles.userIsInRole(Meteor.userId(),['user'])) {
+                   FlowRouter.go('/user/dashboard');
+               } else {
+                   FlowRouter.go('/admin/dashboard');
+               }
            } else {
-               //error
+               Materialize.toast('Check username or password', 2500, 'red darken-2 white=text');
            }
        });
    }
 });
-
-Template.login.rendered = function () {
-  $('body').css('background-image', 'url(image/bg.jpg)');
-};

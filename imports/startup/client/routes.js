@@ -4,11 +4,18 @@ defaultRouter = FlowRouter.group({
     prefix: '',
     name: 'default.page',
     triggersEnter: [function (context, redirect) {
+        Meteor.autorun(function () {
         if(Meteor.userId()) {
-            // log
+            if(Roles.userIsInRole(Meteor.userId(), ['user'])) {
+                FlowRouter.go('/user/dashboard');
+            } else if(Roles.userIsInRole(Meteor.userId(), ['admin'])) {
+                FlowRouter.go('/admin/dashboard');
+            }
         }
+        });
     }]
 });
+
 defaultRouter.route('/', {
     name: 'dashboard.page',
     action: function () {

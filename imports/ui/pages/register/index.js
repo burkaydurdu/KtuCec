@@ -28,7 +28,3 @@ Template.register.events({
 
    }
 });
-
-Template.register.rendered = function () {
-    $('body').css('background-image', 'url(image/bg.jpg)');
-};

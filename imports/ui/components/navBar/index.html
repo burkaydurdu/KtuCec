@@ -1,19 +1,20 @@
 <template name="navBar">
-    <nav class="navbar navbar-inverse special-color-site">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="/">
-                    KtuCec
-                </a>
-            </div>
-            <div class="navbar-right">
+    <nav class="special-color-site">
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo">KtuCec</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
                 {{#unless currentUser}}
-                    <a class="navbar-brand" href="/login">Sign-in</a>
-                    <a class="navbar-brand" href="/register">Sign-up</a>
+                    <li><a href="/login">Login</a></li>
+                    <li><a href="/register">Register</a></li>
                 {{else}}
-                    <a class="navbar-brand" id="logout" href="/">Logout</a>
+                    {{#if isInRole 'admin'}}
+                        <li><a href="/admin/activity/create">Create Activity</a></li>
+                    {{else}}
+                        <li><a href="/user/activity/create">Create Activity</a></li>
+                    {{/if}}
+                    <li><a href="" id="logout">Logout</a></li>
                 {{/unless}}
-            </div>
+            </ul>
         </div>
     </nav>
 </template>
