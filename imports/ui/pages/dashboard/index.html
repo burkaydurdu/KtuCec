@@ -1,3 +1,32 @@
 <template name="dashboard">
-
+    <div class="row">
+        <div class="col s12 m12 l12">
+            <div class="row">
+                {{#each getActivitys}}
+                    <div class="col s12 m6 l4">
+                        <div class="card">
+                            <div class="card-image">
+                                {{#each getImage imageId}}
+                                    <img class="materialboxed" data-caption="picture" src="{{this.url}}">
+                                {{/each}}
+                                <span class="card-title">{{name}}</span>
+                            </div>
+                            <div class="card-content">
+                                <p><strong>Owner: </strong>{{getOwner owner}}</p>
+                                <p><strong>Date: </strong>{{getDate date}}</p>
+                                <p><strong>Time: </strong>{{getTime date}}</p>
+                                <p><strong>Place: </strong>{{place}}</p>
+                                <blockquote>{{description}}</blockquote>
+                            </div>
+                            <div class="card-action">
+                                {{#if currentUser}}
+                                    <a href="" id="activityJoin">Join</a>
+                                {{/if}}
+                            </div>
+                        </div>
+                    </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
 </template>

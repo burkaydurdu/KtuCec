@@ -1,7 +1,15 @@
 <template name="navBar">
     <nav class="special-color-site">
         <div class="nav-wrapper">
-            <a href="#" class="brand-logo">KtuCec</a>
+            {{#if isInRole 'admin'}}
+                <a href="/admin/" class="brand-logo">KtuCec</a>
+            {{else}}
+                {{#if isInRole 'user'}}
+                    <a href="/user/" class="brand-logo">KtuCec</a>
+                {{else}}
+                    <a href="/" class="brand-logo">KtuCec</a>
+                {{/if}}
+            {{/if}}
             <ul id="nav-mobile" class="right hide-on-med-and-down">
                 {{#unless currentUser}}
                     <li><a href="/login">Login</a></li>
@@ -11,6 +19,11 @@
                         <li><a href="/admin/activity/create">Create Activity</a></li>
                     {{else}}
                         <li><a href="/user/activity/create">Create Activity</a></li>
+                    {{/if}}
+                    {{#if isInRole 'admin'}}
+                        <li><a href="/admin/dashboard">Dashboard</a></li>
+                    {{else}}
+                        <li><a href="/user/dashboard">Dashboard</a></li>
                     {{/if}}
                     <li><a href="" id="logout">Logout</a></li>
                 {{/unless}}

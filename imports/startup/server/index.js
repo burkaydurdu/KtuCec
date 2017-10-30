@@ -1,3 +1,4 @@
-import '/imports/api/users/methods.js'
+import '/imports/api/users/methods'
+import '/imports/api/activity/methods'
 
 import './publications.js'

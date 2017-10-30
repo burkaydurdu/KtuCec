@@ -1,4 +1,5 @@
 import '/imports/api/users/users.js'
+import '/imports/api/activity/activity'
 
 Images = new FS.Collection("images", {
     stores: [new FS.Store.FileSystem("images", {path: "~/uploads"})]

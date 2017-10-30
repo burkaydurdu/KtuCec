@@ -1,5 +1,8 @@
 activitys = new Mongo.Collection('activitys');
 activitysSchema = new SimpleSchema({
+    image: {
+        type: String
+    },
     name: {
         type: String
     },
@@ -9,11 +12,15 @@ activitysSchema = new SimpleSchema({
     place: {
         type: String
     },
-    image: {
-        type: String
-    },
     description: {
         type: String,
+        optional: true
+    },
+    owner: {
+        type: String
+    },
+    join: {
+        type: [String],
         optional: true
     },
     confirmation: {

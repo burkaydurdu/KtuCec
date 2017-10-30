@@ -23,6 +23,12 @@ Template.activityCreate.helpers({
     },
     watchDescription() {
         return Template.instance().watchDescription.get();
+    },
+    watchTime() {
+        return Session.get('watchTime');
+    },
+    watchDate() {
+        return Session.get('watchDate');
     }
 });
 
@@ -47,27 +53,69 @@ Template.activityCreate.events({
     },
     'keyup #description': (event, template) => {
         template.watchDescription.set(event.currentTarget.value);
+    },
+    'submit form#activityCreateForm': (event, template) => {
+        event.preventDefault();
+
+        const imageId = template.uploadImageId.get();
+        const name = event.target.name.value;
+        const place = event.target.place.value;
+        const description = event.target.description.value;
+        date = moment(new Date(event.target.date.value));
+        time = moment(event.target.time.value, ["hh:mm a"]);
+        date.set('hour', time.get('hour'));
+        date.set('minute', time.get('minute'));
+
+        activityObject = {
+            imageId : imageId,
+            name : name,
+            date : moment(date).format(),
+            place : place,
+            description : description
+        };
+
+
+        Meteor.call('activity.create', activityObject, (err, res) => {
+            if(!err) {
+                Materialize.toast("created document",2500,"green darken-2 white-text");
+
+            } else {
+                Materialize.toast("cant create document",2500,"red darken-2 white-text");
+            }
+        });
     }
 });
 
 Template.activityCreate.rendered = function () {
     $('.datepicker').pickadate({
-        selectMonths: true, // Creates a dropdown to control month
-        selectYears: 17, // Creates a dropdown of 15 years to control year,
+        selectMonths: true,
+        selectYears: 17,
         today: 'Today',
         clear: 'Clear',
         close: 'Ok',
-        closeOnSelect: false // Close upon selecting a date,
+        closeOnSelect: true,
+        onSet: function( arg ){
+            if ( 'select' in arg ){
+                Session.set('watchDate', $('.datepicker').val());
+            }
+        }
     });
     $('.timepicker').pickatime({
-        default: 'now', // Set default time: 'now', '1:30AM', '16:30'
-        fromnow: 0,       // set default time to * milliseconds from now (using with default = 'now')
-        twelvehour: false, // Use AM/PM or 24-hour format
-        donetext: 'OK', // text for done-button
-        cleartext: 'Clear', // text for clear-button
-        canceltext: 'Cancel', // Text for cancel-button
-        autoclose: false, // automatic close timepicker
-        ampmclickable: true, // make AM PM clickable
-        aftershow: function(){} //Function for after opening timepicker
+        default: 'now',
+        fromnow: 0,
+        twelvehour: false,
+        donetext: 'OK',
+        cleartext: 'Clear',
+        canceltext: 'Cancel',
+        autoclose: true,
+        ampmclickable: true,
+        afterDone: function () {
+            Session.set('watchTime', $('.timepicker').val())
+        }
     });
+};
+
+Template.activityCreate.destroyed = function () {
+    Session.delete('watchDate');
+    Session.delete('watchTime');
 };

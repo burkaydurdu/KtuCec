@@ -10,6 +10,16 @@ adminRouter = FlowRouter.group({
     }]
 });
 
+adminRouter.route('/', {
+    name: 'dashboard.page',
+    action: function () {
+        BlazeLayout.render('default', {page: 'dashboard'})
+    },
+    subscriptions: function(){
+        this.register('dashboard.pub', Meteor.subscribe('dashboard.pub'));
+    }
+});
+
 adminRouter.route('/dashboard', {
     name: 'adminDashboard.page',
     action: function () {
