@@ -14,11 +14,22 @@ Meteor.methods({
                    }
                });
             Roles.addUsersToRoles(user_id, ['user']);
+            Accounts.sendVerificationEmail(user_id);
         } catch (e) {
             throw new Meteor.Error(100, "can not create");
         }
     },
-
+    'profile.picture.add': function (pictureId) {
+      try {
+          Meteor.users.update(Meteor.userId(), {
+              $addToSet: {
+                  'profile.profilePictureId' : pictureId
+              }
+          });
+      }  catch (e) {
+          throw new Meteor.Error(101, "can not add");
+      }
+    },
     'role.create' : function (role) {
         Roles.addUsersToRoles(Meteor.users, [role]);
     }

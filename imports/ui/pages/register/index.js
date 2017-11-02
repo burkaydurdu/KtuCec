@@ -20,9 +20,10 @@ Template.register.events({
             if (data.password === data.passwordConfirm) {
                 Meteor.call('user.create', data, function (err, res) {
                     if (!err) {
+                        Materialize.toast("Kayit islemi basarili. Lutfen mail adresine gelen mesaji onaylayin. Daha sonra giris yapabilirsiniz.", 2500, "green white-text");
                         FlowRouter.go('/login');
                     } else {
-                        //user is not found
+                        // TODO buraya mail username hatalari yada diger hatalari belirleyip mesaj cikarilicaktir.
                     }
                 })
             } else {

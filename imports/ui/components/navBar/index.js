@@ -9,3 +9,15 @@ Template.navBar.events({
         }
     }
 });
+
+Template.navBar.onRendered(function () {
+    this.autorun( () => {
+        this.subscribe('userData', () => {
+            Tracker.afterFlush(() => {
+                this.$(".dropdown-button").dropdown({
+                    constrainWidth: false
+                });
+            });
+        });
+    });
+});

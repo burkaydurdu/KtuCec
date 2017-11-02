@@ -1,5 +1,4 @@
 Meteor.methods({
-
     'activity.create' : (activityObject) => {
         try {
             activitys.insert({
@@ -13,6 +12,28 @@ Meteor.methods({
             });
         } catch (e) {
             throw new Meteor.Error(300, "cant create document");
+        }
+    },
+    'activity.join': (id) => {
+        try {
+            activitys.update({_id: id}, {
+                $addToSet: {
+                    join: Meteor.userId()
+                }
+            });
+        } catch (e) {
+            throw new Meteor.Error(301, "cant join activity");
+        }
+    },
+    'activity.confirm': (id) => {
+        try {
+            activitys.update({_id: id}, {
+                $set: {
+                    confirmation: true
+                }
+            });
+        } catch (e) {
+            throw new Meteor.Error(301, "error");
         }
     }
 });

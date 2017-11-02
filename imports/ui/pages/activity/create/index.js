@@ -69,7 +69,7 @@ Template.activityCreate.events({
         activityObject = {
             imageId : imageId,
             name : name,
-            date : moment(date).format(),
+            date : moment(date).toDate(),
             place : place,
             description : description
         };

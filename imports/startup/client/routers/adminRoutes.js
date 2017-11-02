@@ -10,16 +10,6 @@ adminRouter = FlowRouter.group({
     }]
 });
 
-adminRouter.route('/', {
-    name: 'dashboard.page',
-    action: function () {
-        BlazeLayout.render('default', {page: 'dashboard'})
-    },
-    subscriptions: function(){
-        this.register('dashboard.pub', Meteor.subscribe('dashboard.pub'));
-    }
-});
-
 adminRouter.route('/dashboard', {
     name: 'adminDashboard.page',
     action: function () {
@@ -27,12 +17,13 @@ adminRouter.route('/dashboard', {
     }
 });
 
-adminRouter.route('/activity/create', {
-    name: 'activitCreate.page',
+adminRouter.route('/activity', {
+    name: 'adminActivity.page',
     action: function () {
-        BlazeLayout.render("default", {page: 'activityCreate'});
+        BlazeLayout.render("default", {page: 'activity'});
     },
     subscriptions: function(){
-        this.register('activity.create.pub', Meteor.subscribe('activity.create.pub'));
+        this.register('admin.activity.pub', Meteor.subscribe('admin.activity.pub'));
     }
 });
+

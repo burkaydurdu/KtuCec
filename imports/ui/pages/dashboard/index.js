@@ -3,7 +3,17 @@ import './index.css'
 
 Template.dashboard.helpers({
     getActivitys: () => {
-        activity = activitys.find({confirmation: true});
+        activity = activitys.find({
+            $and: [
+                {
+                    confirmation: true
+                }, {
+                    date: {
+                        $gte: new Date()
+                    }
+                }
+            ]
+        });
         return activity === null ? false : activity.fetch();
     },
     getImage: (id) => {
@@ -19,11 +29,44 @@ Template.dashboard.helpers({
     },
     getTime: (date) => {
         return moment(date).format("h:mm a");
+    },
+    getArrayLength: (array) => {
+        return array !== undefined ? array.length : 0;
+    },
+    isJoin: (id) => {
+        number = activitys.find({
+            $and: [
+                { _id: id },
+                {
+                    join: {
+                        $in : [Meteor.userId()]
+                    }
+                }
+            ]
+        }).count();
+        return number !== 0;
     }
 });
 
+Template.dashboard.events({
+   'click #activityJoin': (event) => {
+       const id = event.currentTarget.dataset.id;
+       Meteor.call('activity.join', id, (err) => {
+          if(!err) {
+              Materialize.toast('Join success', 2500, 'green white-text');
+          } else {
+              Materialize.toast('Error', 2500, 'red white-text');
+          }
+       });
+   }
+});
+
 Template.dashboard.onRendered( function () {
-    Tracker.autorun(() => {
-        $('.materialboxed').materialbox();
+    this.autorun( () => {
+        this.subscribe('dashboard.pub', () => {
+            Tracker.afterFlush( () => {
+                this.$('.materialboxed').materialbox();
+            });
+        })
     });
 });

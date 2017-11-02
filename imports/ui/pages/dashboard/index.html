@@ -3,24 +3,34 @@
         <div class="col s12 m12 l12">
             <div class="row">
                 {{#each getActivitys}}
-                    <div class="col s12 m6 l4">
+                    <div class="col s12 m4 l3">
                         <div class="card">
                             <div class="card-image">
                                 {{#each getImage imageId}}
                                     <img class="materialboxed" data-caption="picture" src="{{this.url}}">
                                 {{/each}}
-                                <span class="card-title">{{name}}</span>
                             </div>
                             <div class="card-content">
-                                <p><strong>Owner: </strong>{{getOwner owner}}</p>
+                                <span class="card-title activator grey-text text-darken-4">{{name}}<i class="material-icons right">more_vert</i></span>
+                                <ul class="collection">
+                                    <li class="collection-item"><strong><i class="material-icons left">person</i>Owner: </strong>{{getOwner owner}}</li>
+                                    <li class="collection-item"><strong><i class="material-icons left">group</i>Participants: </strong>{{getArrayLength join}}</li>
+                                </ul>
+                            </div>
+                            <div class="card-reveal">
+                                <span class="card-title grey-text text-darken-4">Info<i class="material-icons right">close</i></span>
                                 <p><strong>Date: </strong>{{getDate date}}</p>
                                 <p><strong>Time: </strong>{{getTime date}}</p>
                                 <p><strong>Place: </strong>{{place}}</p>
-                                <blockquote>{{description}}</blockquote>
+                                <p>{{description}}</p>
                             </div>
                             <div class="card-action">
                                 {{#if currentUser}}
-                                    <a href="" id="activityJoin">Join</a>
+                                    {{#unless isJoin _id}}
+                                        <a data-id={{_id}} href="" id="activityJoin" class="teal-text"><i class="material-icons">directions_run</i>Join</a>
+                                    {{else}}
+                                        <a><i class="material-icons">verified_user</i></a>
+                                    {{/unless}}
                                 {{/if}}
                             </div>
                         </div>

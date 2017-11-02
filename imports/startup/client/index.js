@@ -15,9 +15,11 @@ import '/imports/ui/pages/activity/create/'
 
 import '/imports/ui/pages/notFound/'
 
-//Router
-import './routes.js'
-import './userRoutes'
-import './adminRoutes'
+//Routers
+import './routers/routes'
+import './routers/outRoutes'
+import './routers/userRoutes'
+import './routers/adminRoutes'
+import './routers/commonRoutes'
 //Global
 import './utils.js'

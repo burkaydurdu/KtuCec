@@ -1,25 +1,13 @@
 <template name="navBar">
     <nav class="special-color-site">
         <div class="nav-wrapper">
-            {{#if isInRole 'admin'}}
-                <a href="/admin/" class="brand-logo">KtuCec</a>
-            {{else}}
-                {{#if isInRole 'user'}}
-                    <a href="/user/" class="brand-logo">KtuCec</a>
-                {{else}}
-                    <a href="/" class="brand-logo">KtuCec</a>
-                {{/if}}
-            {{/if}}
+            <a href="/" class="brand-logo">KtuCec</a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
                 {{#unless currentUser}}
                     <li><a href="/login">Login</a></li>
                     <li><a href="/register">Register</a></li>
                 {{else}}
-                    {{#if isInRole 'admin'}}
-                        <li><a href="/admin/activity/create">Create Activity</a></li>
-                    {{else}}
-                        <li><a href="/user/activity/create">Create Activity</a></li>
-                    {{/if}}
+                    <li><a class="dropdown-button" href="#!" data-activates="activityDropdown">Activity<i class="material-icons right">arrow_drop_down</i></a></li>
                     {{#if isInRole 'admin'}}
                         <li><a href="/admin/dashboard">Dashboard</a></li>
                     {{else}}
@@ -30,4 +18,10 @@
             </ul>
         </div>
     </nav>
+    <ul id='activityDropdown' class='dropdown-content'>
+        <li><a href="/activity/create"><i class="material-icons left">create</i>Create Activity</a></li>
+        {{#if isInRole 'admin'}}
+            <li><a href="/admin/activity"><i class="material-icons left">list</i>Show Activity</a></li>
+        {{/if}}
+    </ul>
 </template>
