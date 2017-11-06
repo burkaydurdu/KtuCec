@@ -1,8 +1,8 @@
-Meteor.publish("userData", function () {
+Meteor.publish("user.data.pub", function () {
     if (this.userId) {
         return Meteor.users.find({_id: this.userId});
     } else {
-        this.ready();
+        return this.ready();
     }
 });
 
@@ -32,4 +32,11 @@ Meteor.publish('admin.activity.pub', () => {
         Images.find({}),
         activitys.find({})
     ]
+});
+
+Meteor.publish('dashboard.user.pub', () => {
+   return [
+       activitys.find({}),
+       Images.find({})
+   ]
 });

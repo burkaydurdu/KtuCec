@@ -11,8 +11,11 @@ userRouter = FlowRouter.group({
 });
 
 userRouter.route('/dashboard', {
-   name: 'userDashboard.page',
-   action: function () {
-       BlazeLayout.render("default", {page: 'dashboardUser'});
-   }
+    name: 'userDashboard.page',
+    action: function () {
+        BlazeLayout.render("default", {page: 'dashboardUser'});
+    },
+    subscriptions: function(){
+        this.register('dashboard.user.pub', Meteor.subscribe('dashboard.user.pub'));
+    }
 });

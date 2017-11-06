@@ -22,10 +22,18 @@ img.logo {
     width: 80px;
     height: 80px;
 }
-.special-color-site {
+.cec-special-color-site {
     background: rgba(0, 79, 128, 0.4);
 }
-
+.cec-activity-box {
+    margin-top: 20px;
+    padding: 20px;
+    box-shadow: 2px 2px 1em black, -2px -2px 1em black;
+    border-radius: 5px;
+}
+.cec-margin-top{
+    margin-top: 20px;
+}
 @media screen and (max-width:480px) {
     body {
         background-image: none;

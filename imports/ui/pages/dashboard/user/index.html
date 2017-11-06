@@ -1,10 +1,57 @@
 <template name="dashboardUser">
-    <div class="row">
+    <div class="row cec-margin-top">
         <div class="col s12 m10 l10 offset-m1 offset-l1">
-
+            <div class="row">
+                <div class="col s12 m4 l4">
+                    <div class="row">
+                        <img class="materialboxed" width="300" height="300" src="">
+                    </div>
+                    <div class="row">
+                        {{#with user}}
+                            <h4><i class="material-icons left indigo-text">mood</i>{{toUpperCase username}}</h4>
+                            <h5><i class="material-icons left teal-text">account_circle</i>{{profile.name}} {{profile.surname}}</h5>
+                            {{#each emails}}
+                                <h5><i class="material-icons left blue-text">mail</i>{{address}}</h5>
+                            {{/each}}
+                        {{/with}}
+                    </div>
+                </div>
+                <div class="col s12 m8 l8">
+                    <div class="col s12">
+                        <ul class="tabs transparent">
+                            <li class="tab col s3"><a class="black-text" href="#createdActivity">Created Activity <strong>{{createdActivityCount}}</strong></a></li>
+                            <li class="tab col s3"><a class="black-text" href="#joinedActivity">Joined Activity</a></li>
+                        </ul>
+                    </div>
+                    <div id="createdActivity" class="col s12">
+                        {{#each myActivity}}
+                            <div class="col s12 m12 l6">
+                                <div class="card horizontal">
+                                    <div class="card-image">
+                                        {{#each getImage imageId}}
+                                            <img src="{{this.url}}">
+                                        {{/each}}
+                                    </div>
+                                    <div class="card-stacked">
+                                        <div class="card-content">
+                                            <h5>{{name}}</h5>
+                                            <p>Participants: <strong>{{arrayLength join}}</strong></p>
+                                            <p>Confirm:
+                                                {{#if confirmation}}
+                                                    <i class="material-icons right green-text">verified_user</i>
+                                                {{else}}
+                                                    <i class="material-icons red-text">error</i>
+                                                {{/if}}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {{/each}}
+                    </div>
+                    <div id="joinedActivity" class="col s12"></div>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="row">
-        
     </div>
 </template>

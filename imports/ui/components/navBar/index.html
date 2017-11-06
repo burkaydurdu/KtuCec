@@ -1,5 +1,5 @@
 <template name="navBar">
-    <nav class="special-color-site">
+    <nav class="cec-special-color-site">
         <div class="nav-wrapper">
             <a href="/" class="brand-logo">KtuCec</a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
@@ -7,7 +7,18 @@
                     <li><a href="/login">Login</a></li>
                     <li><a href="/register">Register</a></li>
                 {{else}}
-                    <li><a class="dropdown-button" href="#!" data-activates="activityDropdown">Activity<i class="material-icons right">arrow_drop_down</i></a></li>
+                    <li><a class="dropdown-button" href="" data-beloworigin="true" data-activates="activityDropdown">Activity<i class="material-icons right">arrow_drop_down</i></a></li>
+                    <ul id='activityDropdown' class='dropdown-content'>
+                        <li><a href="/activity/create"><i class="material-icons left">create</i>Create Activity</a></li>
+                        {{#if isInRole 'admin'}}
+                            <li><a href="/admin/activity"><i class="material-icons left">list</i>Show Activity</a></li>
+                        {{/if}}
+                    </ul>
+                    <script>
+                        $('.dropdown-button').dropdown({
+                            constrainWidth: false
+                        });
+                    </script>
                     {{#if isInRole 'admin'}}
                         <li><a href="/admin/dashboard">Dashboard</a></li>
                     {{else}}
@@ -18,10 +29,4 @@
             </ul>
         </div>
     </nav>
-    <ul id='activityDropdown' class='dropdown-content'>
-        <li><a href="/activity/create"><i class="material-icons left">create</i>Create Activity</a></li>
-        {{#if isInRole 'admin'}}
-            <li><a href="/admin/activity"><i class="material-icons left">list</i>Show Activity</a></li>
-        {{/if}}
-    </ul>
 </template>

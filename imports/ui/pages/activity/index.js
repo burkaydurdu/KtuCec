@@ -1,5 +1,9 @@
 import './index.html'
 
+
+Template.activity.onCreated( () => {
+});
+
 Template.activity.helpers({
     getConfirmActivity: () => {
         activity = activitys.find({
@@ -13,7 +17,11 @@ Template.activity.helpers({
                 }
             ]
         }, {sort: {date: -1} });
-        return activity === null ? false : activity.fetch();
+        return activity.count() === 0 ? false :
+            {
+                dataList: activity.fetch(),
+                dataCount: activity.count()
+            };
     },
     getNotConfirmActivity: () => {
         activity = activitys.find({
@@ -27,7 +35,11 @@ Template.activity.helpers({
                 }
             ]
         }, {sort: {date: -1} });
-        return activity === null ? false : activity.fetch();
+        return activity.count() === 0 ? false :
+            {
+                dataList: activity.fetch(),
+                dataCount: activity.count()
+            };
     },
     getLastActivity: () => {
         activity = activitys.find({
@@ -35,7 +47,11 @@ Template.activity.helpers({
                 $lt: new Date()
             }
         }, {sort: {date: -1} });
-        return activity === null ? false : activity.fetch();
+        return activity.count() === 0 ? false :
+            {
+                dataList: activity.fetch(),
+                dataCount: activity.count()
+            };
     },
     getImage: (id) => {
         image = Images.find({_id: id});
@@ -50,9 +66,6 @@ Template.activity.helpers({
     },
     getTime: (date) => {
         return moment(date).format("h:mm a");
-    },
-    getArrayLength: (array) => {
-        return array !== undefined ? array.length : 0;
     }
 });
 
@@ -68,7 +81,6 @@ Template.activity.events({
         });
     }
 });
-
 
 Template.activity.onRendered( function () {
     this.autorun( () => {
