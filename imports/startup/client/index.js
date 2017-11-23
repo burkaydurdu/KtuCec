@@ -10,6 +10,7 @@ import '/imports/ui/pages/dashboard/user/'
 import '/imports/ui/pages/dashboard/admin/'
 
 import '/imports/ui/pages/activity/'
+import '/imports/ui/pages/activity/show/'
 import '/imports/ui/pages/activity/edit/'
 import '/imports/ui/pages/activity/create/'
 

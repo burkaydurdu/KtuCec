@@ -60,12 +60,6 @@ Template.activity.helpers({
     getOwner: (id) => {
         user = Meteor.users.findOne({_id: id});
         return user === null ? false : user.profile.name + " " + user.profile.surname;
-    },
-    getDate: (date) => {
-        return moment(date).format("Do MMM YY");
-    },
-    getTime: (date) => {
-        return moment(date).format("h:mm a");
     }
 });
 

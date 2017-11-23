@@ -1,6 +1,6 @@
 import './index.html'
 
-Template.activityCreate.onCreated(function () {
+Template.activityCreate.onCreated(function() {
     this.currentUpload = new ReactiveVar(false);
     this.uploadImageId = new ReactiveVar(false);
     this.watchName = new ReactiveVar("");
@@ -12,7 +12,7 @@ Template.activityCreate.helpers({
     currentUpload() {
         return Template.instance().currentUpload.get();
     },
-    uploadImage(){
+    uploadImage() {
         return Template.instance().uploadImageId.get();
     },
     watchName() {
@@ -33,14 +33,14 @@ Template.activityCreate.helpers({
 });
 
 Template.activityCreate.events({
-    'change #uploadImage' : (event, template) => {
+    'change #uploadImage': (event, template) => {
         FS.Utility.eachFile(event, function(file) {
-            Images.insert(file, function (err, fileObj) {
-                if(!err){
+            Images.insert(file, function(err, fileObj) {
+                if (!err) {
                     template.uploadImageId.set(fileObj._id);
-                    Materialize.toast("Successful",2500,"green darken-2 white-text");
-                } else{
-                    Materialize.toast("Error",2500,"red darken-2 white-text");
+                    Materialize.toast("Resim eklendi", 2500, "green darken-2 white-text");
+                } else {
+                    Materialize.toast("Resim eklemede bir hata olustu!", 2500, "red darken-2 white-text");
                 }
             });
         });
@@ -67,26 +67,30 @@ Template.activityCreate.events({
         date.set('minute', time.get('minute'));
 
         activityObject = {
-            imageId : imageId,
-            name : name,
-            date : moment(date).toDate(),
-            place : place,
-            description : description
+            createdAt: moment().toDate(),
+            imageId: imageId,
+            name: name,
+            date: moment(date).toDate(),
+            place: place,
+            description: description
         };
 
+        if (activityObject.name != null && activityObject.place != null && activityObject.description != null && activityObject.imageId && activityObject.date != null) {
+            Meteor.call('activity.create', activityObject, (err, res) => {
+                if (!err) {
+                    Materialize.toast("Etkinlik olusturuldu", 2500, "green darken-2 white-text");
 
-        Meteor.call('activity.create', activityObject, (err, res) => {
-            if(!err) {
-                Materialize.toast("created document",2500,"green darken-2 white-text");
-
-            } else {
-                Materialize.toast("cant create document",2500,"red darken-2 white-text");
-            }
-        });
+                } else {
+                    Materialize.toast("Etkinlik olusturulamadi!", 2500, "red darken-2 white-text");
+                }
+            });
+        } else {
+            Materialize.toast("Gerekli alanlari doldurun", 2500, "red darken-2 white-text");
+        }
     }
 });
 
-Template.activityCreate.rendered = function () {
+Template.activityCreate.rendered = function() {
     $('.datepicker').pickadate({
         selectMonths: true,
         selectYears: 17,
@@ -94,8 +98,8 @@ Template.activityCreate.rendered = function () {
         clear: 'Clear',
         close: 'Ok',
         closeOnSelect: true,
-        onSet: function( arg ){
-            if ( 'select' in arg ){
+        onSet: function(arg) {
+            if ('select' in arg) {
                 Session.set('watchDate', $('.datepicker').val());
             }
         }
@@ -109,13 +113,13 @@ Template.activityCreate.rendered = function () {
         canceltext: 'Cancel',
         autoclose: true,
         ampmclickable: true,
-        afterDone: function () {
+        afterDone: function() {
             Session.set('watchTime', $('.timepicker').val())
         }
     });
 };
 
-Template.activityCreate.destroyed = function () {
+Template.activityCreate.destroyed = function() {
     Session.delete('watchDate');
     Session.delete('watchTime');
 };

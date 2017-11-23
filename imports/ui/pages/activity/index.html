@@ -65,8 +65,8 @@
                                 </div>
                                 <div class="card-reveal">
                                     <span class="card-title grey-text text-darken-4">Info<i class="material-icons right">close</i></span>
-                                    <p><strong>Date: </strong>{{getDate date}}</p>
-                                    <p><strong>Time: </strong>{{getTime date}}</p>
+                                    <p><strong>Date: </strong>{{formatSingleDate date}}</p>
+                                    <p><strong>Time: </strong>{{formatTime date}}</p>
                                     <p><strong>Place: </strong>{{place}}</p>
                                     <p>{{description}}</p>
                                 </div>
@@ -76,11 +76,11 @@
                 </div>
                 <div class="row center">
                     <ul class="pagination">
-                        <li class="waves-effect"><a href=""><i class="material-icons">chevron_left</i></a></li>
+                        <li class="waves-effect"><a href={{downPage}}><i class="material-icons">chevron_left</i></a></li>
                         {{#each paginationCol dataCount}}
                             <li class="waves-effect"><a href="">{{this}}</a></li>
                         {{/each}}
-                        <li class="waves-effect"><a href=""><i class="material-icons">chevron_right</i></a></li>
+                        <li class="waves-effect"><a href={{upPage dataCount 20}} ><i class="material-icons">chevron_right</i></a></li>
                     </ul>
                 </div>
             </div>

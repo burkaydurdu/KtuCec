@@ -16,6 +16,16 @@ userRouter.route('/dashboard', {
         BlazeLayout.render("default", {page: 'dashboardUser'});
     },
     subscriptions: function(){
-        this.register('dashboard.user.pub', Meteor.subscribe('dashboard.user.pub'));
+        this.register('user.dashboard.pub', Meteor.subscribe('user.dashboard.pub'));
     }
 });
+
+userRouter.route('/activity/:page', {
+    name: 'userActivity.page',
+    action: function () {
+        BlazeLayout.render("default", {page: 'activityShow'});
+    },
+    subscriptions: function() {
+        this.register('user.activity.pub', Meteor.subscribe('user.activity.pub'));
+    }
+})

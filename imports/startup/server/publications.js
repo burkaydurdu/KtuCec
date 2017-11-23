@@ -34,7 +34,14 @@ Meteor.publish('admin.activity.pub', () => {
     ]
 });
 
-Meteor.publish('dashboard.user.pub', () => {
+Meteor.publish('user.activity.pub', () => {
+    return [ 
+        activitys.find(), /* Buraya activit ozellestir. kendisinin yada katildigi etkinlikler diye*/
+        Images.find({})
+    ];
+});
+
+Meteor.publish('user.dashboard.pub', () => {
    return [
        activitys.find({}),
        Images.find({})

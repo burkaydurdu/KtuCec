@@ -1,5 +1,5 @@
 body {
-    background-image: url("image/bg.jpg");
+    background-image: url("image/background.png");
     background-attachment: fixed;
     background-size: cover;
 }
@@ -33,6 +33,9 @@ img.logo {
 }
 .cec-margin-top{
     margin-top: 20px;
+}
+.cec-frame {
+  border: 2px solid black
 }
 @media screen and (max-width:480px) {
     body {
