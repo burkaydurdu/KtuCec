@@ -6,8 +6,12 @@
           {{#with user}}
           <div class="row">
             {{#unless profilePictureId}}
-            <img class="materialboxed cec-frame" width="300" height="225" src="/image/default_profile.png"> {{else}} {{#each getImage profilePictureId}}
-            <img class="materialboxed" width="300" height="225" data-caption="picture" src="{{this.url}}"> {{/each}} {{/unless}}
+              <img class="materialboxed cec-frame" width="300" height="225" src="/image/default_profile.png">
+            {{else}}
+              {{#each getImage profilePictureId}}
+                <img class="materialboxed" width="300" height="225" data-caption="picture" src="{{this.url}}">
+              {{/each}}
+            {{/unless}}
           </div>
           <div class="row">
             <h4 class="text-lighten-2 grey-text">
@@ -47,14 +51,14 @@
                 <div class="card horizontal transparent">
                   <div class="card-content">
                     <h5>
-                      <a data-id={{_id}} href="">{{name}}</a>
+                      <a href="/activity/{{_id}}">{{name}}</a>
                     </h5>
                     <p class="text-lighten-2 grey-text">
-                      <strong>Created:
-                      </strong>{{formatDate createdAt}}</p>
+                      <strong>Created:</strong>
+                      {{formatDate createdAt}}
+                    </p>
                     <p class="text-lighten-2 grey-text">
-                      <strong>Confirm:
-                      </strong>
+                      <strong>Confirm:</strong>
                       {{#if confirmation}}
                       <i class="material-icons green-text">verified_user</i>
                       {{else}}
@@ -66,7 +70,7 @@
               </div>
               {{/each}}
             </div>
-            {{#unless equals createdActivityCount 0}}            
+            {{#unless equals createdActivityCount 0}}
             <div class="row right">
               <a id="allCreated" class="blue-text" href="">Tumu</a>
             </div>
@@ -79,7 +83,7 @@
                 <div class="card horizontal transparent">
                   <div class="card-content">
                     <h5>
-                      <a data-id={{_id}} href="">{{name}}</a>
+                      <a href="/activity/{{_id}}">{{name}}</a>
                     </h5>
                     <p class="text-lighten-2 grey-text">
                       <strong>Created:

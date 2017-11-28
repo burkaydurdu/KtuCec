@@ -3,15 +3,19 @@
         <div class="nav-wrapper">
             <a href="/" class="brand-logo">KtuCec</a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="/aboutus">Hakkimizda</a></li>
                 {{#unless currentUser}}
                     <li><a href="/login">Login</a></li>
                     <li><a href="/register">Register</a></li>
                 {{else}}
+                    {{#if isInRole 'admin'}}
+                    <li><a href="/admin/users/list/1">Users</a></li>
+                    {{/if}}
                     <li><a class="dropdown-button" href="" data-beloworigin="true" data-activates="activityDropdown">Activity<i class="material-icons right">arrow_drop_down</i></a></li>
                     <ul id='activityDropdown' class='dropdown-content'>
-                        <li><a href="/activity/create"><i class="material-icons left">create</i>Create Activity</a></li>
+                        <li><a href="/m/activity/create"><i class="material-icons left">create</i>Create Activity</a></li>
                         {{#if isInRole 'admin'}}
-                            <li><a href="/admin/activity"><i class="material-icons left">list</i>Show Activity</a></li>
+                            <li><a href="/admin/activity/1"><i class="material-icons left">list</i>Show Activity</a></li>
                         {{/if}}
                     </ul>
                     <script>

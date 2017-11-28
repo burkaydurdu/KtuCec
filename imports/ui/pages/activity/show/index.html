@@ -12,7 +12,7 @@
                                 {{/each}}
                             </div>
                             <div class="card-content">
-                                <span class="card-title activator grey-text text-darken-4">{{name}}<i class="material-icons right">more_vert</i></span>
+                                <span class="card-title activator grey-text text-darken-4"><a href="/activity/{{_id}}">{{name}}</a><i class="material-icons right">more_vert</i></span>
                                 <p><strong><i class="material-icons left">person</i>Owner: </strong>{{getOwner owner}}</p>
                             </div>
                             <div class="card-reveal">
@@ -30,7 +30,11 @@
                 <ul class="pagination">
                     <li class="waves-effect"><a href=""><i class="material-icons">chevron_left</i></a></li>
                     {{#each paginationCol dataCount}}
-                        <li class="waves-effect"><a href="">{{this}}</a></li>
+                      {{#if pageActive this}}
+                        <li class="active"><a href={{this}}>{{this}}</a></li>
+                      {{else}}
+                        <li class="waves-effect"><a href={{this}}>{{this}}</a></li>
+                      {{/if}}
                     {{/each}}
                     <li class="waves-effect"><a href=""><i class="material-icons">chevron_right</i></a></li>
                 </ul>

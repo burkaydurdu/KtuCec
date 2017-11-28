@@ -1,0 +1,62 @@
+<template name="singleActivity">
+  <div class="row">
+    {{#with data}}
+      <div class="col s12 m12 l10 offset-l1">
+          <div class="row">
+              <div class="col s12 l4 m4">
+                {{#each getImage imageId}}
+                  <img class="materialboxed" width="360" height="640" data-caption="picture" src="{{this.url}}">
+                {{/each}}
+              </div>
+              <div class="col s12 m8 l8">
+                <div class="row">
+                  <div class="card transparent">
+                    <h1>{{name}}
+                      {{#if confirmation}}
+                        <i class="medium material-icons">check_circle</i>
+                      {{else}}
+                        <i class="medium material-icons">error</i>
+                      {{/if}}
+                    </h1>
+                    <ul class="text-lighten-2 grey-text">
+                      <li><strong>Olusturulma: </strong>{{formatDate createdAt}}</li>
+                      <li><strong>Tarih: </strong>{{formatSingleDate date}}</li>
+                      <li><strong>Saat: </strong>{{formatTime date}}</li>
+                      <li><strong>Olusturan: </strong>
+                        {{#with getUser owner}}
+                        <div class="chip teal darken-4">
+                          {{#if profilePictureId}}
+                          {{#each getImage profilePictureId}}
+                            <img src={{this.url}} alt="Contact Person">
+                          {{/each}}
+                          {{else}}
+                          <img src='/image/default_profile.png' alt="Contact Person">
+                          {{/if}}
+                          {{name}} {{surname}}
+                        </div>
+                        {{/with}}
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="card transparent">
+                    <h3>Katilan kisiler</h3>
+                    {{#each join}}
+                      {{#with getUser this}}
+                      <div class="chip">
+                        {{#each getImage imageId}}
+                          <img src={{this.url}} alt="Contact Person">
+                        {{/each}}
+                        {{name}} {{surname}}
+                      </div>
+                      {{/with}}
+                    {{/each}}
+                  </div>
+                </div>
+              </div>
+          </div>
+      </div>
+    {{/with}}
+  </div>
+</template>

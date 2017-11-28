@@ -1,131 +1,110 @@
 <template name="activity">
-    {{#with getNotConfirmActivity}}
+  <div class="row cec-margin-top">
+    <div class="col s12 m3 l3">
+      <div class="cec-menu-border">
         <div class="row">
-            <div class="col s12 m10 l10 offset-m1 offset-l1 cec-activity-box">
-                <h5><i class="material-icons left">list</i>Not Confirm Activity</h5>
-                <div class="row">
-                    {{#each dataList}}
-                        <div class="col s12 m4 l3">
-                            <div class="card">
-                                <div class="card-image">
-                                    {{#each getImage imageId}}
-                                        <img class="materialboxed" data-caption="picture" src="{{this.url}}">
-                                    {{/each}}
-                                </div>
-                                <div class="card-content">
-                                    <span class="card-title activator grey-text text-darken-4">{{name}}<i class="material-icons right">more_vert</i></span>
-                                    <p><strong><i class="material-icons left">person</i>Owner: </strong>{{getOwner owner}}</p>
-                                </div>
-                                <div class="card-reveal">
-                                    <span class="card-title grey-text text-darken-4">Info<i class="material-icons right">close</i></span>
-                                    <p><strong>Date: </strong>{{getDate date}}</p>
-                                    <p><strong>Time: </strong>{{getTime date}}</p>
-                                    <p><strong>Place: </strong>{{place}}</p>
-                                    <p>{{description}}</p>
-                                </div>
-                                <div class="card-action">
-                                    {{#unless confirmation}}
-                                        <a data-id={{_id}} href="">Confirm</a>
-                                    {{/unless}}
-                                </div>
-                            </div>
-                        </div>
-                    {{/each}}
-                </div>
-                <div class="row center">
-                    <ul class="pagination">
-                        <li class="waves-effect"><a href=""><i class="material-icons">chevron_left</i></a></li>
-                        {{#each paginationCol dataCount}}
-                            <li class="waves-effect"><a href="">{{this}}</a></li>
-                        {{/each}}
-                        <li class="waves-effect"><a href=""><i class="material-icons">chevron_right</i></a></li>
-                    </ul>
-                </div>
-            </div>
+          <a class='dropdown-button btn light-blue darken-4' href='#' data-activates='categoryActivity'>
+            <i class="material-icons right">arrow_drop_down_circle</i>
+            Arama
+          </a>
+          <ul id='categoryActivity' class='dropdown-content'>
+            <li>
+              <a data-id="confirm" href="">
+                <i class="material-icons">access_time</i>
+                Gelecek Etkinlikler
+              </a>
+            </li>
+            <li>
+              <a data-id="notConfirm" href="">
+                <i class="material-icons">live_help</i>
+                Onaylanmamis Etkinlikler</a>
+            </li>
+            <li>
+              <a data-id="last" href="">
+                <i class="material-icons">pan_tool</i>
+                Gecmis Etkinlikler
+              </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+              <a href="">
+                <i class="material-icons">group_work</i>
+                Tumu
+              </a>
+            </li>
+          </ul>
         </div>
-    {{/with}}
-
-    {{#with getConfirmActivity}}
+      </div>
+    </div>
+    <div class="col s12 m9 l9">
+      {{#with data}}
         <div class="row">
-            <div class="col s12 m10 l10 offset-m1 offset-l1 cec-activity-box">
-                <h5><i class="material-icons left">list</i> Confirm Activity List</h5>
-                <div class="row">
-                    {{#each dataList}}
-                        <div class="col s12 m4 l3">
-                            <div class="card">
-                                <div class="card-image">
-                                    {{#each getImage imageId}}
-                                        <img class="materialboxed" data-caption="picture" src="{{this.url}}">
-                                    {{/each}}
-                                </div>
-                                <div class="card-content">
-                                    <span class="card-title activator grey-text text-darken-4">{{name}}<i class="material-icons right">more_vert</i></span>
-                                    <p><strong><i class="material-icons left">person</i>Owner: </strong>{{getOwner owner}}</p>
-                                    <p><strong><i class="material-icons left">group</i>Participants: </strong>{{arrayLength join}}</p>
-                                </div>
-                                <div class="card-reveal">
-                                    <span class="card-title grey-text text-darken-4">Info<i class="material-icons right">close</i></span>
-                                    <p><strong>Date: </strong>{{formatSingleDate date}}</p>
-                                    <p><strong>Time: </strong>{{formatTime date}}</p>
-                                    <p><strong>Place: </strong>{{place}}</p>
-                                    <p>{{description}}</p>
-                                </div>
-                            </div>
-                        </div>
-                    {{/each}}
+          <div class="col s12 m10 l10 offset-m1 offset-l1 cec-activity-box">
+            <h5>
+              <i class="material-icons left">list</i>{{dataName}}
+            </h5>
+            <div class="row">
+              {{#each dataList}}
+                <div class="col s12 m4 l3">
+                  <div class="card">
+                    <div class="card-image">
+                      {{#each getImage imageId}}
+                        <img class="materialboxed" data-caption="picture" src="{{this.url}}">
+                      {{/each}}
+                    </div>
+                    <div class="card-content">
+                      <span class="card-title activator grey-text text-darken-4">{{name}}
+                        <i class="material-icons right">more_vert</i>
+                      </span>
+                      <p>
+                        <strong>Owner:
+                        </strong>{{getOwner owner}}</p>
+                    </div>
+                    <div class="card-reveal">
+                      <span class="card-title grey-text text-darken-4">Info<i class="material-icons right">close</i>
+                      </span>
+                      <p>
+                        <strong>Date:
+                        </strong>{{formatSingleDate date}}</p>
+                      <p>
+                        <strong>Time:
+                        </strong>{{formatTime date}}</p>
+                      <p>
+                        <strong>Place:
+                        </strong>{{place}}</p>
+                      <p>{{description}}</p>
+                    </div>
+                    <div class="card-action">
+                      {{#unless confirmation}}
+                        <a data-id="{{_id}}" href="">Confirm</a>
+                      {{/unless}}
+                    </div>
+                  </div>
                 </div>
-                <div class="row center">
-                    <ul class="pagination">
-                        <li class="waves-effect"><a href={{downPage}}><i class="material-icons">chevron_left</i></a></li>
-                        {{#each paginationCol dataCount}}
-                            <li class="waves-effect"><a href="">{{this}}</a></li>
-                        {{/each}}
-                        <li class="waves-effect"><a href={{upPage dataCount 20}} ><i class="material-icons">chevron_right</i></a></li>
-                    </ul>
-                </div>
+              {{/each}}
             </div>
-        </div>
-    {{/with}}
-
-    {{#with getLastActivity}}
-        <div class="row">
-            <div class="col s12 m10 l10 offset-m1 offset-l1 cec-activity-box">
-                <h5><i class="material-icons left">list</i>Last Activity List</h5>
-                <div class="row">
-                    {{#each dataList}}
-                        <div class="col s12 m4 l3">
-                            <div class="card">
-                                <div class="card-image">
-                                    {{#each getImage imageId}}
-                                        <img class="materialboxed" data-caption="picture" src="{{this.url}}">
-                                    {{/each}}
-                                </div>
-                                <div class="card-content">
-                                    <span class="card-title activator grey-text text-darken-4">{{name}}<i class="material-icons right">more_vert</i></span>
-                                    <p><strong>Owner: </strong>{{getOwner owner}}</p>
-                                    <p><strong>Participants: </strong>{{arrayLength join}}</p>
-                                </div>
-                                <div class="card-reveal">
-                                    <span class="card-title grey-text text-darken-4">Info<i class="material-icons right">close</i></span>
-                                    <p><strong>Date: </strong>{{getDate date}}</p>
-                                    <p><strong>Time: </strong>{{getTime date}}</p>
-                                    <p><strong>Place: </strong>{{place}}</p>
-                                    <p>{{description}}</p>
-                                </div>
-                            </div>
-                        </div>
-                    {{/each}}
-                </div>
-                <div class="row center">
-                    <ul class="pagination">
-                        <li class="waves-effect"><a href=""><i class="material-icons">chevron_left</i></a></li>
-                        {{#each paginationCol dataCount}}
-                            <li class="waves-effect"><a href="">{{this}}</a></li>
-                        {{/each}}
-                        <li class="waves-effect"><a href=""><i class="material-icons">chevron_right</i></a></li>
-                    </ul>
-                </div>
+            <div class="row center">
+              <ul class="pagination">
+                <li class="waves-effect">
+                  <a href={{downPage}}><i class="material-icons">chevron_left</i></a>
+                </li>
+                {{#each paginationCol dataCount}}
+                  {{#if pageActive this}}
+                    <li class="active"><a href={{this}}>{{this}}</a></li>
+                  {{else}}
+                    <li class="waves-effect"><a href={{this}}>{{this}}</a></li>
+                  {{/if}}
+                {{/each}}
+                <li class="waves-effect">
+                  <a href="{{upPage dataCount 20}}">
+                    <i class="material-icons">chevron_right</i>
+                  </a>
+                </li>
+              </ul>
             </div>
+          </div>
         </div>
-    {{/with}}
+      {{/with}}
+    </div>
+  </div>
 </template>

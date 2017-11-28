@@ -4,25 +4,27 @@ import './index.css'
 Template.dashboard.helpers({
     getActivitys: () => {
         activity = activitys.find({
-            $and: [
-                {
-                    confirmation: true
-                }, {
-                    date: {
-                        $gte: new Date()
-                    }
+            $and: [{
+                confirmation: true
+            }, {
+                date: {
+                    $gte: new Date()
                 }
-            ]
+            }]
         });
         return activity === null ? false : activity.fetch();
     },
     getImage: (id) => {
-        image = Images.find({_id: id});
+        image = Images.find({
+            _id: id
+        });
         return image === null ? false : image;
     },
     getOwner: (id) => {
-        user = Meteor.users.findOne({_id: id});
-        return user === null ? false : user.profile.name + " " + user.profile.surname;
+        user = Meteor.users.findOne({
+            _id: id
+        });
+        return user === undefined ? false : user.profile.name + " " + user.profile.surname;
     },
     getDate: (date) => {
         return moment(date).format("Do MMM YY");
@@ -35,11 +37,12 @@ Template.dashboard.helpers({
     },
     isJoin: (id) => {
         number = activitys.find({
-            $and: [
-                { _id: id },
+            $and: [{
+                    _id: id
+                },
                 {
                     join: {
-                        $in : [Meteor.userId()]
+                        $in: [Meteor.userId()]
                     }
                 }
             ]
@@ -49,22 +52,22 @@ Template.dashboard.helpers({
 });
 
 Template.dashboard.events({
-   'click #activityJoin': (event) => {
-       const id = event.currentTarget.dataset.id;
-       Meteor.call('activity.join', id, (err) => {
-          if(!err) {
-              Materialize.toast('Join success', 2500, 'green white-text');
-          } else {
-              Materialize.toast('Error', 2500, 'red white-text');
-          }
-       });
-   }
+    'click #activityJoin': (event) => {
+        const id = event.currentTarget.dataset.id;
+        Meteor.call('activity.join', id, (err) => {
+            if (!err) {
+                Materialize.toast('Join success', 2500, 'green white-text');
+            } else {
+                Materialize.toast('Error', 2500, 'red white-text');
+            }
+        });
+    }
 });
 
-Template.dashboard.onRendered( function () {
-    this.autorun( () => {
+Template.dashboard.onRendered(function() {
+    this.autorun(() => {
         this.subscribe('dashboard.pub', () => {
-            Tracker.afterFlush( () => {
+            Tracker.afterFlush(() => {
                 this.$('.materialboxed').materialbox();
             });
         })
