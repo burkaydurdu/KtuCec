@@ -48,6 +48,14 @@ img.logo {
   font-family: monospace;
   font-size: 16pt;
 }
+.cec-image-frame {
+  width: 200px;
+  height: 200px;
+  border: 2px solid black;
+}
+.cec-logo {
+  margin: 5px;
+}
 @media screen and (max-width:480px) {
     body {
         background-image: none;

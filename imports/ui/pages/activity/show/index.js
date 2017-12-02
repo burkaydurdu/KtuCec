@@ -1,7 +1,6 @@
 import './index.html'
 
 Template.activityShow.helpers({
-
     dataName: () => {
         if (Session.equals('showActivitData', "created")) {
             return "Olusturulan Etkinlikler";
@@ -54,6 +53,25 @@ Template.activityShow.helpers({
             _id: id
         });
         return user === undefined ? false : user.profile.name + " " + user.profile.surname;
+    },
+    getUser: () => {
+        return Meteor.userId();
+    }
+});
+
+Template.activityShow.events({
+    'click .card-action a': (event) => {
+        const selector = event.currentTarget.innerText;
+        if (selector == 'SIL') {
+            const id = event.currentTarget.dataset.id;
+            Meteor.call('activity.remove', id, (err, res) => {
+                if (!err) {
+                    Materialize.toast('Etkinlik Silindi', 2500, 'green white-text');
+                } else {
+                    Materialize.toast('Etkinlik Silinemedi!', 2500, 'red white-text');
+                }
+            });
+        }
     }
 });
 

@@ -9,7 +9,28 @@ Meteor.publish("user.data.pub", function() {
 });
 
 Meteor.publish('activity.create.pub', () => {
-    return Images.find();
+    return [
+        Images.find(),
+        Meteor.roles.find({})
+    ];
+
+});
+Meteor.publish('activity.edit.pub', (id) => {
+    return [
+        Images.find(),
+        activitys.find({
+            _id: id
+        })
+    ]
+});
+
+Meteor.publish('activity.single.pub', (id) => {
+    return [
+        activitys.find({
+            _id: id
+        }),
+        Images.find({})
+    ]
 });
 
 Meteor.publish('dashboard.pub', () => {
@@ -67,15 +88,6 @@ Meteor.publish('user.dashboard.pub', () => {
     ]
 });
 
-Meteor.publish('activity.single.pub', (id) => {
-    return [
-        activitys.find({
-            _id: id
-        }),
-        Images.find({})
-    ]
-});
-
 Meteor.publish('users.list.pub', () => {
     return [
         Meteor.users.find({}, {
@@ -87,6 +99,9 @@ Meteor.publish('users.list.pub', () => {
         }),
         Meteor.roles.find({})
     ]
+});
+Meteor.publish('user.setting.pub', (id) => {
+    return Images.find();
 });
 
 Meteor.publish('aboutus.pub', () => {

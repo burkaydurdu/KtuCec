@@ -9,7 +9,7 @@ mutualRouter = FlowRouter.group({
 });
 
 mutualRouter.route('/activity/create', {
-    name: 'activitCreate.page',
+    name: 'activityCreate.page',
     action: function() {
         BlazeLayout.render("default", {
             page: 'activityCreate'
@@ -17,5 +17,17 @@ mutualRouter.route('/activity/create', {
     },
     subscriptions: function() {
         this.register('activity.create.pub', Meteor.subscribe('activity.create.pub'));
+    }
+});
+
+mutualRouter.route('/activity/edit/:id', {
+    name: 'activityEdit.page',
+    action: function() {
+        BlazeLayout.render("default", {
+            page: 'activityEdit'
+        });
+    },
+    subscriptions: function(params) {
+        this.register('activity.edit.pub', Meteor.subscribe('activity.edit.pub', params.id));
     }
 });

@@ -1,0 +1,30 @@
+<template name="userSettingsAccount">
+  <div class="row">
+    <div class="col s12 m12 l12">
+      <div class="col s12 m8 l8">
+        <form id="userSettingsAccountForm">
+          <div class="row">
+            <div class="input-field col s12 m12 l12">
+              <i class="material-icons prefix white-text">vpn_lock</i>
+              <label for="old_password" data-error="wrong" data-success="right">Eski Sifre</label>
+              <input id="old_password" type="password" class="validate white-text" required="" aria-required="true">
+            </div>
+            <div class="input-field col s12 m12 l12">
+              <i class="material-icons prefix white-text">vpn_key</i>
+              <label for="new_password" data-error="wrong" data-success="right">Yeni Sifre</label>
+              <input id="new_password" type="password" class="validate white-text" required="" aria-required="true">
+            </div>
+            <div class="input-field col s12 m12 l12">
+              <i class="material-icons prefix white-text">vpn_key</i>
+              <label for="new_password_conf" data-error="wrong" data-success="right">Yeni Sifre (Tekrar)</label>
+              <input id="new_password_conf" type="password" class="validate white-text" required="" aria-required="true">
+            </div>
+            <div class="row right">
+              <button type="submit" class="btn green">Sifreyi Guncelle</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</template>

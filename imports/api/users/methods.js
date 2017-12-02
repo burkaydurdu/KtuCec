@@ -28,11 +28,11 @@ Meteor.methods({
             throw new Meteor.Error(e.error, e.reason);
         }
     },
-    'user.verified.email': function(email_or_name) {
+    'user.verified': function(email_or_name) {
         try {
             user = Accounts.findUserByEmail(email_or_name);
-            user = user !== undefined ? user : Accounts.findUserByUsername(email_or_name);
-            return user !== undefined ? {
+            user = user != undefined ? user : Accounts.findUserByUsername(email_or_name);
+            return user != undefined ? {
                 user: true,
                 verified: user.emails[0].verified
             } : {
@@ -44,13 +44,37 @@ Meteor.methods({
     },
     'profile.picture.add': function(pictureId) {
         try {
+            imageId = Meteor.users.findOne({
+                _id: Meteor.userId()
+            }).profile.profilePictureId;
+
+            if (imageId != undefined) {
+                Images.remove({
+                    _id: imageId
+                });
+            }
+
             Meteor.users.update(Meteor.userId(), {
-                $addToSet: {
+                $set: {
                     'profile.profilePictureId': pictureId
                 }
             });
         } catch (e) {
             throw new Meteor.Error(101, "can not add");
+        }
+    },
+    'profile.update': function(data) {
+        try {
+            Meteor.users.update(Meteor.userId(), {
+                $set: {
+                    'profile.name': data.name,
+                    'profile.surname': data.surname
+                }
+            }, {
+                multi: true
+            });
+        } catch (e) {
+            throw new Meteor.Error(e.error, e.reason);
         }
     }
 });

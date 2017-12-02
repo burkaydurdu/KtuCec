@@ -12,37 +12,37 @@
                                         <input type="file" id="uploadImage">
                                     </div>
                                     <div class="file-path-wrapper">
-                                        <input class="file-path validate" type="text" placeholder="Upload one or more files">
+                                        <input class="file-path validate" type="text" placeholder="Etkinlik Afisi Yukle">
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="input-field">
-                                    <input type="text" class="validate" id="name">
-                                    <label for="name">Name</label>
+                                <div class="input-field white-text">
+                                  <label for="name" data-error="wrong" data-success="right">Etkinlik Ismi</label>
+                                  <input type="text" class="validate" id="name" required="" aria-required="true">
                                 </div>
                                 <div class="row">
-                                    <div class="input-field col s12 m6 l6">
-                                        <input type="text" class="datepicker" id="date">
-                                        <label for="date">Date</label>
+                                    <div class="input-field col s12 m6 l6 white-text">
+                                      <label for="date" data-error="wrong" data-success="right">Tarih</label>
+                                      <input type="text" class="datepicker" id="date" required="" aria-required="true">
                                     </div>
-                                    <div class="input-field col s12 m6 l6">
-                                        <input type="text" class="timepicker" id="time">
-                                        <label for="time">Time</label>
+                                    <div class="input-field col s12 m6 l6 white-text">
+                                      <label for="time" data-error="wrong" data-success="right">Saat</label>
+                                      <input type="text" class="timepicker" id="time" required="" aria-required="true">
                                     </div>
                                 </div>
-                                <div class="input-field">
-                                    <input type="text" class="validate" id="place">
-                                    <label for="place">Place</label>
-                                </div>
-                                <div class="row">
-                                    <div class="input-field">
-                                        <textarea class="materialize-textarea" id="description"></textarea>
-                                        <label for="description">Description</label>
-                                    </div>
+                                <div class="input-field white-text">
+                                  <label for="place" data-error="wrong" data-success="right">Yer</label>
+                                  <input type="text" class="validate" id="place" required="" aria-required="true">
                                 </div>
                                 <div class="row">
-                                    <button type="submit" class="btn cec-btn-block btn-radius-5">Create</button>
+                                    <div class="input-field white-text">
+                                      <label for="description" data-error="wrong" data-success="right">Aciklama</label>
+                                      <textarea class="materialize-textarea" id="description" required="" aria-required="true"></textarea>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <button type="submit" class="btn cec-btn-block btn-radius-5">Olustur</button>
                                 </div>
                             </div>
                         </form>

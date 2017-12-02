@@ -123,6 +123,6 @@ Template.activity.onRendered(function() {
                     belowOrigin: true
                 });
             });
-        })
+        });
     });
 });

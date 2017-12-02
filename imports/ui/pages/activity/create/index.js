@@ -74,18 +74,21 @@ Template.activityCreate.events({
             place: place,
             description: description
         };
-
-        if (activityObject.name != null && activityObject.place != null && activityObject.description != null && activityObject.imageId && activityObject.date != null) {
+        if (imageId != " ") {
             Meteor.call('activity.create', activityObject, (err, res) => {
                 if (!err) {
                     Materialize.toast("Etkinlik olusturuldu", 2500, "green darken-2 white-text");
-
+                    if (Roles.userIsInRole(Meteor.userId(), ['admin'])) {
+                        FlowRouter.go('/admin/activity/1');
+                    } else {
+                        FlowRouter.go('/user/dashboard/');
+                    }
                 } else {
                     Materialize.toast("Etkinlik olusturulamadi!", 2500, "red darken-2 white-text");
                 }
             });
         } else {
-            Materialize.toast("Gerekli alanlari doldurun", 2500, "red darken-2 white-text");
+            Materialize.toast("Etkinlik resmi yukleyin!", 2500, "red darken-2 white-text");
         }
     }
 });

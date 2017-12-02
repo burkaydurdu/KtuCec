@@ -11,12 +11,12 @@
                     <div class="col s12 m12 l12">
                         <form id="loginForm">
                             <div class="input-field">
-                                <label for="email_username">Kullanici adi veya Email</label>
-                                <input type="text" class="validate" id="email_username">
+                                <label for="email_username" data-error="wrong" data-success="right">Kullanici adi veya Email</label>
+                                <input type="text" class="validate" id="email_username" required="" aria-required="true">
                             </div>
                             <div class="input-field">
-                                <label for="password">Sifre</label>
-                                <input type="password" class="validate" id="password">
+                                <label for="password" data-error="wrong" data-success="right">Sifre</label>
+                                <input type="password" class="validate" id="password" required="" aria-required="true">
                             </div>
                             <div class="row">
                                 <div class="col-sm-12 col-md-12 col-lg-12">

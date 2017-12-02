@@ -1,10 +1,10 @@
 import './index.html'
 
 Template.dashboardUser.helpers({
-    user : () => {
+    user: () => {
         return Meteor.user();
     },
-    createdActivityCount : () => {
+    createdActivityCount: () => {
         return activitys.find({
             owner: Meteor.userId()
         }).count();
@@ -35,9 +35,11 @@ Template.dashboardUser.helpers({
         return activity.count() === 0 ? false : activity.fetch();
     },
     getImage: (id) => {
-        image = Images.find({_id: id});
+        image = Images.find({
+            _id: id
+        });
         return image === null ? false : image;
-    },
+    }
 });
 
 Template.dashboardUser.events({
@@ -46,15 +48,15 @@ Template.dashboardUser.events({
         FlowRouter.go("/user/activity/1");
     },
     "click #allJoined": (event) => {
-        Session.set('showActivitData', 'joined');   
-        FlowRouter.go("/user/activity/1");        
+        Session.set('showActivitData', 'joined');
+        FlowRouter.go("/user/activity/1");
     }
 });
 
-Template.dashboardUser.onRendered( function() {
-    this.autorun( () => {
+Template.dashboardUser.onRendered(function() {
+    this.autorun(() => {
         this.subscribe('user.dashboard.pub', () => {
-            Tracker.afterFlush( () => {
+            Tracker.afterFlush(() => {
                 this.$('.materialboxed').materialbox();
                 this.$('ul.tabs').tabs();
             });

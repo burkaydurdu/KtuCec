@@ -2,6 +2,11 @@
     <div class="row">
         <div class="col s12 m10 l10 offset-m1 offset-l1 cec-activity-box">
             <h5 class="white-text"><i class="material-icons left">list</i>{{dataName}}</h5>
+            {{#if equals dataCount 0}}
+            <div class="row">
+              <h2 class="center white-text">Etkinlik Listesi Bos</h2>
+            </div>
+            {{else}}
             <div class="row">
                 {{#each data}}
                     <div class="col s12 m4 l3">
@@ -22,6 +27,16 @@
                                 <p><strong>Place: </strong>{{place}}</p>
                                 <p>{{description}}</p>
                             </div>
+                            {{#if equals owner getUser}}
+                              <div class="card-action">
+                                {{#unless confirmation}}
+                                  <a href="/m/activity/edit/{{_id}}" class="">Duzenle</a>
+                                  <a href="" data-id={{_id}} class="red-text">Sil</a>
+                                {{else}}
+                                  <a href="">Onaylandi</a>
+                                {{/unless}}
+                              </div>
+                            {{/if}}
                         </div>
                     </div>
                 {{/each}}
@@ -39,6 +54,7 @@
                     <li class="waves-effect"><a href=""><i class="material-icons">chevron_right</i></a></li>
                 </ul>
             </div>
+            {{/if}}
         </div>
     </div>
 </template>

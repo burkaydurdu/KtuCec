@@ -5,11 +5,11 @@
         <div class="col s12 m4 l4">
           {{#with user}}
           <div class="row">
-            {{#unless profilePictureId}}
-              <img class="materialboxed cec-frame" width="300" height="225" src="/image/default_profile.png">
+            {{#unless profile.profilePictureId}}
+              <img class="materialboxed cec-image-frame" src="/image/default_profile.png">
             {{else}}
-              {{#each getImage profilePictureId}}
-                <img class="materialboxed" width="300" height="225" data-caption="picture" src="{{this.url}}">
+              {{#each getImage profile.profilePictureId}}
+                <img class="materialboxed cec-image-frame" data-caption="picture" src="{{this.url}}">
               {{/each}}
             {{/unless}}
           </div>
@@ -103,4 +103,12 @@
       </div>
     </div>
   </div>
+  <div class="fixed-action-btn horizontal">
+     <a class="btn-floating btn-large light-blue darken-4">
+       <i class="large material-icons">menu</i>
+     </a>
+     <ul>
+       <li><a href="/user/settings" class="btn-floating red"><i class="material-icons">settings</i></a></li>
+     </ul>
+   </div>
 </template>

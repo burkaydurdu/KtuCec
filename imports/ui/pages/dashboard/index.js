@@ -41,9 +41,13 @@ Template.dashboard.helpers({
                     _id: id
                 },
                 {
-                    join: {
-                        $in: [Meteor.userId()]
-                    }
+                    $or: [{
+                        join: {
+                            $in: [Meteor.userId()]
+                        }
+                    }, {
+                        owner: Meteor.userId()
+                    }]
                 }
             ]
         }).count();

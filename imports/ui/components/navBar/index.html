@@ -1,21 +1,24 @@
 <template name="navBar">
     <nav class="cec-special-color-site">
         <div class="nav-wrapper">
-            <a href="/" class="brand-logo">KtuCec</a>
+            <a href="/" class="brand-logo cec-logo">KtuCec</a>
+            <a href="/" class="brand-logo cec-logo center">
+              <img width="55" height="55" src="/logo/ktucec2.png" alt="">
+            </a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="/aboutus">Hakkimizda</a></li>
+                <li><a href="/aboutus"><i class="material-icons right">texture</i>Hakkimizda</a></li>
                 {{#unless currentUser}}
-                    <li><a href="/login">Login</a></li>
-                    <li><a href="/register">Register</a></li>
+                    <li><a href="/login"><i class="material-icons right">input</i>Giris Yap</a></li>
+                    <li><a href="/register"><i class="material-icons right">save</i>Kayit Ol</a></li>
                 {{else}}
                     {{#if isInRole 'admin'}}
-                    <li><a href="/admin/users/list/1">Users</a></li>
+                    <li><a href="/admin/users/list/1"><i class="material-icons right">people</i>Users</a></li>
                     {{/if}}
                     <li><a class="dropdown-button" href="" data-beloworigin="true" data-activates="activityDropdown">Activity<i class="material-icons right">arrow_drop_down</i></a></li>
                     <ul id='activityDropdown' class='dropdown-content'>
-                        <li><a href="/m/activity/create"><i class="material-icons left">create</i>Create Activity</a></li>
+                        <li><a href="/m/activity/create"><i class="material-icons left">create</i>Etkinlik Olustur</a></li>
                         {{#if isInRole 'admin'}}
-                            <li><a href="/admin/activity/1"><i class="material-icons left">list</i>Show Activity</a></li>
+                            <li><a href="/admin/activity/1"><i class="material-icons left">list</i>Etkinlikleri Goruntule</a></li>
                         {{/if}}
                     </ul>
                     <script>
@@ -24,11 +27,11 @@
                         });
                     </script>
                     {{#if isInRole 'admin'}}
-                        <li><a href="/admin/dashboard">Dashboard</a></li>
+                        <li><a href="/admin/dashboard"><i class="material-icons right">dashboard</i>Ben</a></li>
                     {{else}}
-                        <li><a href="/user/dashboard">Dashboard</a></li>
+                        <li><a href="/user/dashboard"><i class="material-icons right">dashboard</i>Ben</a></li>
                     {{/if}}
-                    <li><a href="" id="logout">Logout</a></li>
+                    <li><a href="" id="logout"> <i class="material-icons right">exit_to_app</i>Cikis Yap</a></li>
                 {{/unless}}
             </ul>
         </div>
