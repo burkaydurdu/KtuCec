@@ -23,6 +23,9 @@ import '/imports/ui/pages/aboutus/'
 
 import '/imports/ui/pages/notFound/'
 
+//lib
+import '/imports/ui/lib/countdown/'
+
 //Routers
 import './routers/routes.js'
 import './routers/outside.js'

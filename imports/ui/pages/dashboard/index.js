@@ -2,6 +2,30 @@ import './index.html'
 import './index.css'
 
 Template.dashboard.helpers({
+    firstActivity: () => {
+        activity = activitys.findOne({
+            $and: [{
+                confirmation: true
+            }, {
+                date: {
+                    $gt: new Date()
+                }
+            }]
+        }, {
+            sort: {
+                date: 1
+            }
+        });
+        if (activity != undefined) {
+            var date1 = moment(new Date());
+            var date2 = moment(activity.date);
+            var dif = date2.diff(date1, 'second');
+            Session.set('time', dif);
+            return activity;
+        } else {
+            return activity;
+        }
+    },
     getActivitys: () => {
         activity = activitys.find({
             $and: [{

@@ -54,3 +54,18 @@ Template.registerHelper('upPage', (max, count) => {
 Template.registerHelper('pageActive', (page) => {
     return FlowRouter.getParam('page') == page;
 });
+
+Template.registerHelper('getCountDownTime', (time) => {
+    day = parseInt(time / 86400);
+    time %= 86400;
+    hour = parseInt(time / 3600);
+    time %= 3600;
+    minutes = parseInt(time / 60);
+    second = parseInt(time % 60);
+    return {
+        day: day,
+        hour: hour,
+        minutes: minutes,
+        second: second
+    }
+});
