@@ -104,6 +104,22 @@ Meteor.publish('user.setting.pub', (id) => {
     return Images.find();
 });
 
+Meteor.publish('managers.pub', () => {
+    return [
+        Meteor.users.find({
+            roles: {
+                $in: ['manager']
+            }
+        }, {
+            fields: {
+                profile: 1,
+                roles: 1
+            }
+        }),
+        Images.find({})
+    ]
+});
+
 Meteor.publish('aboutus.pub', () => {
     return settings.find({
         type: 'aboutus'

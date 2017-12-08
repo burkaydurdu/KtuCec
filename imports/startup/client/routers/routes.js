@@ -30,7 +30,7 @@ defaultRouter.route('/aboutUs', {
     subscriptions: function() {
         this.register('aboutus.pub', Meteor.subscribe('aboutus.pub'));
     }
-})
+});
 
 defaultRouter.route('/activity/:id', {
     name: 'activity.single.page',
@@ -41,6 +41,18 @@ defaultRouter.route('/activity/:id', {
     },
     subscriptions: function(params) {
         this.register('activity.single.pub', Meteor.subscribe('activity.single.pub', params.id));
+    }
+});
+
+defaultRouter.route('/managers', {
+    name: 'managers.page',
+    action: function() {
+        BlazeLayout.render('default', {
+            page: 'managers'
+        });
+    },
+    subscriptions: function() {
+        this.register('managers.pub', Meteor.subscribe('managers.pub'));
     }
 });
 

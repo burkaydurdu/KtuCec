@@ -19,9 +19,12 @@ import '/imports/ui/pages/users/'
 import '/imports/ui/pages/users/settings/'
 import '/imports/ui/pages/users/settings/profile/'
 import '/imports/ui/pages/users/settings/account/'
-import '/imports/ui/pages/aboutus/'
+import '/imports/ui/pages/users/forgot.password/'
 
+import '/imports/ui/pages/aboutus/'
 import '/imports/ui/pages/notFound/'
+import '/imports/ui/pages/managers/'
+
 
 //lib
 import '/imports/ui/lib/countdown/'
@@ -34,3 +37,9 @@ import './routers/admin.js'
 import './routers/mutual.js'
 //Global
 import './utils.js'
+
+
+reCAPTCHA.config({
+    publickey: '6LdkKTwUAAAAAGD5BXq2p3MJvYM5h4jYO1ehsBUq',
+    hl: 'tr' // optional display language
+});

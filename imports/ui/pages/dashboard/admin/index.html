@@ -4,12 +4,11 @@
       <div class="col s12 m6 l6">
         <div class="card blue-grey darken-1">
           <div class="card-content white-text">
-            <span class="card-title">Uyeler</span>
-            {{#with usersData}}
-              <p><strong>Toplam Uye: </strong><span class="cec-number-text red-text">{{totalMember}}</span></p>
-              <p><strong>Toplam Admin: </strong><span class="cec-number-text orange-text">{{totalAdmin}}</span></p>
-              <p><strong>Toplam Kullanici: </strong><span class="cec-number-text green-text">{{totalUser}}</span></p>
-              <p><strong>Toplam Son 7 gun kayit: </strong><span class="cec-number-text blue-text">{{totalLastSeven}}</span></p>
+            <span class="card-title">Uyeler</span> {{#with usersData}}
+            <p><strong>Toplam Uye: </strong><span class="cec-number-text red-text">{{totalMember}}</span></p>
+            <p><strong>Toplam Admin: </strong><span class="cec-number-text orange-text">{{totalAdmin}}</span></p>
+            <p><strong>Toplam Kullanici: </strong><span class="cec-number-text green-text">{{totalUser}}</span></p>
+            <p><strong>Toplam Son 7 gun kayit: </strong><span class="cec-number-text blue-text">{{totalLastSeven}}</span></p>
             {{/with}}
           </div>
           <div class="card-action">
@@ -20,12 +19,11 @@
       <div class="col s12 m6 l6">
         <div class="card blue-grey darken-1">
           <div class="card-content white-text">
-            <span class="card-title">Etkinlikler</span>
-            {{#with activitysData}}
-              <p><strong>Toplam Etkinlik: </strong><span class="cec-number-text red-text">{{totalActivity}}</span></p>
-              <p><strong>Onaylanmayan Etkinlikler: </strong><span class="cec-number-text orange-text">{{notConfirmActivity}}</span></p>
-              <p><strong>Gelecek Etkinlikler: </strong><span class="cec-number-text green-text">{{featureActivity}}</span></p>
-              <p><strong>Tamamlanmis Etkinlikler: </strong><span class="cec-number-text blue-text">{{completeActivity}}</span></p>
+            <span class="card-title">Etkinlikler</span> {{#with activitysData}}
+            <p><strong>Toplam Etkinlik: </strong><span class="cec-number-text red-text">{{totalActivity}}</span></p>
+            <p><strong>Onaylanmayan Etkinlikler: </strong><span class="cec-number-text orange-text">{{notConfirmActivity}}</span></p>
+            <p><strong>Gelecek Etkinlikler: </strong><span class="cec-number-text green-text">{{featureActivity}}</span></p>
+            <p><strong>Tamamlanmis Etkinlikler: </strong><span class="cec-number-text blue-text">{{completeActivity}}</span></p>
             {{/with}}
           </div>
           <div class="card-action">
@@ -36,18 +34,20 @@
       <div class="row">
         <fieldset class="white-text">
           <legend>Ayarlar</legend>
-          <div class="col s12 m12 l12">
-            <form id="aboutUsForm">
-              <div class="row">
-                <div class="input-field">
-                  <textarea id="aboutUs" class="materialize-textarea">{{aboutUs}}</textarea>
-                  <label for="aboutUs">Hakkimizda</label>
+          <div class="row">
+            <div class="col s12 m6 l6">
+              <form id="aboutUsForm">
+                <div class="row">
+                  <div class="input-field">
+                    <label for="aboutUs">Hakkimizda</label>
+                    <textarea id="aboutUs" class="materialize-textarea cec-overflow-scrool">{{aboutUs}}</textarea>
+                  </div>
                 </div>
-              </div>
-              <div class="row right">
-                <button type="submit" class="btn">Kaydet</button>
-              </div>
-            </form>
+                <div class="row right">
+                  <button type="submit" class="btn">Kaydet</button>
+                </div>
+              </form>
+            </div>
           </div>
         </fieldset>
       </div>

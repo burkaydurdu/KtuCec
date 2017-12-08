@@ -31,3 +31,12 @@ outRouter.route('/register', {
         })
     }
 });
+
+outRouter.route('/forgot', {
+    name: 'forgot.password.page',
+    action: function() {
+        BlazeLayout.render('default', {
+            page: 'forgotPassword'
+        });
+    }
+});

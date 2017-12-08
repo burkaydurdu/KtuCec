@@ -1,4 +1,4 @@
-import '/imports/api/users/users.js'
+import '/imports/api/users/users'
 import '/imports/api/activity/activity'
 import '/imports/api/setting/setting'
 

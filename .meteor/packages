@@ -35,3 +35,5 @@ cfs:standard-packages
 cfs:filesystem
 cfs:ui
 reactive-dict
+altapp:recaptcha
+ejson

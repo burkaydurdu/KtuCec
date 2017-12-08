@@ -7,7 +7,7 @@
     background-color: #009688;
   }
   to {
-    background-color: #0288d1;
+    background-color: #009600;
   }
 }
 
@@ -18,7 +18,7 @@
     background-color: #009688;
   }
   to {
-    background-color: #0288d1;
+    background-color: #009600;
   }
 }
 
@@ -27,7 +27,7 @@
     background-color: #81c784;
   }
   to {
-    background-color: #cddc39;
+    background-color: #81c700;
   }
 }
 
@@ -36,7 +36,7 @@
     background-color: #81c784;
   }
   to {
-    background-color: #cddc39;
+    background-color: #81c700;
   }
 }
 
@@ -45,16 +45,16 @@
     background-color: #90caf9;
   }
   to {
-    background-color: #01579b;
+    background-color: #90caaa;
   }
 }
 
 @keyframes mymove-3 {
   from {
-    background-color: #ff8f00;
+    background-color: #90caf9;
   }
   to {
-    background-color: #01579b;
+    background-color: #90caaa;
   }
 }
 
@@ -63,7 +63,7 @@
     background-color: #81c784;
   }
   to {
-    background-color: #bdbdbd;
+    background-color: #81c700;
   }
 }
 
@@ -72,7 +72,7 @@
     background-color: #81c784;
   }
   to {
-    background-color: #bdbdbd;
+    background-color: #81c700;
   }
 }
 

@@ -69,6 +69,12 @@ Template.dashboardAdmin.helpers({
             type: 'aboutus'
         });
         return setting != undefined ? setting.content.about : false;
+    },
+    'managerName': () => {
+        setting = settings.findOne({
+            type: 'managername'
+        });
+        return setting != undefined ? setting.content.manager : false;
     }
 });
 

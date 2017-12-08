@@ -76,5 +76,17 @@ Meteor.methods({
         } catch (e) {
             throw new Meteor.Error(e.error, e.reason);
         }
+    },
+    'google.captcha.forgot': function(schoolNumber, captchaData) {
+        var verifyCaptchaResponse = reCAPTCHA.verifyCaptcha(this.connection.clientAddress, captchaData);
+        if (!verifyCaptchaResponse.success) {
+            throw new Meteor.Error(422, 'reCAPTCHA Failed: ' + verifyCaptchaResponse.error);
+        } else {
+            Accounts.forgotPassword(schoolNumber + "@ogr.ktu.edu.tr", (err) => {
+                if (!err) {
+                    return true;
+                }
+            });
+        }
     }
 });
