@@ -29,7 +29,12 @@ Meteor.publish('activity.single.pub', (id) => {
         activitys.find({
             _id: id
         }),
-        Images.find({})
+        Images.find({}),
+        Meteor.users.find({}, {
+            fields: {
+                profile: 1
+            }
+        })
     ]
 });
 

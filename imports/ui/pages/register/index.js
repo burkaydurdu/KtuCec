@@ -1,5 +1,4 @@
 import './index.html'
-import './index.css'
 
 Template.register.events({
     'submit form#registerForm': function(event) {

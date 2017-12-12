@@ -10,6 +10,9 @@ body {
     padding: 10px;
     color: black;
 }
+.cec-card-image {
+  height: 480px;
+}
 .cec-btn-block {
     width: 98%;
     margin: 5px;
@@ -59,7 +62,9 @@ img.logo {
 .cec-overflow-scrool {
   max-height: 100px;
 }
+.cec-overflow-text {
 
+}
 @media screen and (max-width:480px) {
     body {
         background-image: none;

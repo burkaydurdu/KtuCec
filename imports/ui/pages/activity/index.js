@@ -8,7 +8,7 @@ Template.activity.helpers({
     dataName: () => {
         category = Template.instance().category.get();
         if (category == "confirm") {
-            return "Onaylanmis Etkinlikler";
+            return "Gelecek/Onaylanmis Etkinlikler";
         } else if (category == "notConfirm") {
             return "Onaylanmamis Etkinlikler";
         } else if (category == "last") {
@@ -78,13 +78,13 @@ Template.activity.helpers({
         image = Images.find({
             _id: id
         });
-        return image === null ? false : image;
+        return image === undefined ? false : image;
     },
     getOwner: (id) => {
         user = Meteor.users.findOne({
             _id: id
         });
-        return user === null ? false : user.profile.name + " " + user.profile.surname;
+        return user === undefined ? false : user.profile.name + " " + user.profile.surname;
     }
 });
 

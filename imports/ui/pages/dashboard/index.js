@@ -1,5 +1,4 @@
 import './index.html'
-import './index.css'
 
 Template.dashboard.helpers({
     firstActivity: () => {

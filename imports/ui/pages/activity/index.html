@@ -1,62 +1,65 @@
 <template name="activity">
   <div class="row cec-margin-top">
-    <div class="col s12 m3 l3">
-      <div class="cec-menu-border">
-        <div class="row">
-          <a class='dropdown-button btn light-blue darken-4' href='#' data-activates='categoryActivity'>
-            <i class="material-icons right">arrow_drop_down_circle</i>
-            Arama
-          </a>
-          <ul id='categoryActivity' class='dropdown-content'>
-            <li>
-              <a data-id="confirm" href="">
-                <i class="material-icons">access_time</i>
-                Gelecek Etkinlikler
-              </a>
-            </li>
-            <li>
-              <a data-id="notConfirm" href="">
-                <i class="material-icons">live_help</i>
-                Onaylanmamis Etkinlikler</a>
-            </li>
-            <li>
-              <a data-id="last" href="">
-                <i class="material-icons">pan_tool</i>
-                Gecmis Etkinlikler
-              </a>
-            </li>
-            <li class="divider"></li>
-            <li>
-              <a href="">
-                <i class="material-icons">group_work</i>
-                Tumu
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="col s12 m9 l9">
+    <div class="col s12 m10 l10 offset-m1 offset-l1">
       {{#with data}}
         <div class="row">
           <div class="col s12 m10 l10 offset-m1 offset-l1 cec-activity-box">
-            <h5>
-              <i class="material-icons left">list</i>{{dataName}}
-            </h5>
+            <div class="row cec-margin-top">
+              <div class="col s6 m6 l6">
+                <h5 class="white-text">
+                  <i class="material-icons left">list</i>{{dataName}}
+                </h5>
+              </div>
+              <div class="col s6 m6 l6">
+                <div class="row">
+                  <a class='dropdown-button btn cec-btn-block light-blue darken-4' href='#' data-activates='categoryActivity'>
+                    <i class="material-icons right">arrow_drop_down_circle</i>
+                    Arama
+                  </a>
+                  <ul id='categoryActivity' class='dropdown-content'>
+                    <li>
+                      <a data-id="confirm" href="">
+                        <i class="material-icons">access_time</i>
+                        Gelecek Etkinlikler
+                      </a>
+                    </li>
+                    <li>
+                      <a data-id="notConfirm" href="">
+                        <i class="material-icons">live_help</i>
+                        Onaylanmamis Etkinlikler</a>
+                    </li>
+                    <li>
+                      <a data-id="last" href="">
+                        <i class="material-icons">pan_tool</i>
+                        Gecmis Etkinlikler
+                      </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                      <a href="">
+                        <i class="material-icons">group_work</i>
+                        Tumu
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
             <div class="row">
               {{#each dataList}}
-                <div class="col s12 m4 l3">
+                <div class="col s12 m6 l4">
                   <div class="card">
                     <div class="card-image">
                       {{#each getImage imageId}}
-                        <img class="materialboxed" data-caption="picture" src="{{this.url}}">
+                        <img class="materialboxed cec-card-image" data-caption="picture" src="{{this.url}}">
                       {{/each}}
+                      <span class="card-title">{{name}}</span>
                     </div>
                     <div class="card-content">
-                      <span class="card-title activator grey-text text-darken-4">{{name}}
+                      <span class="card-title activator grey-text text-darken-4">
                         <i class="material-icons right">more_vert</i>
                       </span>
-                      <p>
+                      <p class="cec-overflow-text">
                         <strong>Owner:
                         </strong>{{getOwner owner}}</p>
                     </div>
@@ -76,7 +79,9 @@
                     </div>
                     <div class="card-action">
                       {{#unless confirmation}}
-                        <a data-id="{{_id}}" href="">Confirm</a>
+                        <a data-id="{{_id}}" href="">Onayla</a>
+                      {{else}}
+                        <span class="green-text">Onaylandi</span>
                       {{/unless}}
                     </div>
                   </div>
@@ -86,13 +91,19 @@
             <div class="row center">
               <ul class="pagination">
                 <li class="waves-effect">
-                  <a href={{downPage}}><i class="material-icons">chevron_left</i></a>
+                  <a href="{{downPage}}">
+                    <i class="material-icons">chevron_left</i>
+                  </a>
                 </li>
                 {{#each paginationCol dataCount}}
                   {{#if pageActive this}}
-                    <li class="active"><a href={{this}}>{{this}}</a></li>
+                    <li class="active">
+                      <a href="{{this}}">{{this}}</a>
+                    </li>
                   {{else}}
-                    <li class="waves-effect"><a href={{this}}>{{this}}</a></li>
+                    <li class="waves-effect">
+                      <a href="{{this}}">{{this}}</a>
+                    </li>
                   {{/if}}
                 {{/each}}
                 <li class="waves-effect">

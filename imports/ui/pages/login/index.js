@@ -1,5 +1,4 @@
 import './index.html'
-import './index.css'
 
 Template.login.events({
     'submit form#loginForm': function(event) {

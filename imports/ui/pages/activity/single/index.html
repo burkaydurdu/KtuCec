@@ -2,69 +2,73 @@
   <div class="row cec-margin-top">
     {{#with data}}
       <div class="col s12 m12 l10 offset-l1">
-          <div class="row">
-              <div class="col s12 l4 m4">
-                <div class="row">
-                  {{#each getImage imageId}}
-                    <img class="materialboxed" width="315" height="560" data-caption="picture" src="{{this.url}}">
-                  {{/each}}
-                </div>
-                <div class="row">
-                  <span class="grey-text">{{description}}</span>
-                </div>
-              </div>
-              <div class="col s12 m8 l8">
-                <div class="row">
-                  <div class="card transparent">
-                    <h3 class="grey-text">{{toUpperCase name}}
-                      {{#if confirmation}}
-                        <i class="medium material-icons">check_circle</i>
-                      {{else}}
-                        <i class="medium material-icons">error</i>
-                      {{/if}}
-                    </h3>
-                    <ul class="text-lighten-2 grey-text">
-                      <li><strong>Olusturulma: </strong>{{formatDate createdAt}}</li>
-                      <li><strong>Tarih: </strong>{{formatSingleDate date}}</li>
-                      <li><strong>Saat: </strong>{{formatTime date}}</li>
-                      <li><strong>Olusturan: </strong>
-                        {{#with getUser owner}}
-                        <div class="chip">
-                          {{#if profilePictureId}}
-                          {{#each getImage profilePictureId}}
-                            <img src={{this.url}} alt="Contact Person">
-                          {{/each}}
-                          {{else}}
-                          <img src='/image/default_profile.png' alt="Contact Person">
-                          {{/if}}
-                          {{name}} {{surname}}
-                        </div>
-                        {{/with}}
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="card transparent">
-                    <h3 class="grey-text">Katilan kisiler <i class="medium material-icons">account_circle</i></h3>
-                    {{#each join}}
-                      {{#with getUser this}}
+        <div class="row">
+          <div class="col s12 l4 m4">
+            <div class="row">
+              {{#each getImage imageId}}
+                <img class="materialboxed" width="315" height="560" data-caption="picture" src="{{this.url}}">
+              {{/each}}
+            </div>
+            <div class="row">
+              <span class="grey-text">{{description}}</span>
+            </div>
+          </div>
+          <div class="col s12 m8 l8">
+            <div class="row">
+              <div class="card transparent">
+                <h3 class="grey-text">{{toUpperCase name}}</h3>
+                <ul class="text-lighten-2 grey-text">
+                  <li>
+                    <strong>Olusturulma:
+                    </strong>{{formatDate createdAt}}</li>
+                  <li>
+                    <strong>Tarih:
+                    </strong>{{formatSingleDate date}}</li>
+                  <li>
+                    <strong>Saat:
+                    </strong>{{formatTime date}}</li>
+                  <li>
+                    <strong>Olusturan:
+                    </strong>
+                    {{#with getUser owner}}
                       <div class="chip">
                         {{#if profilePictureId}}
-                        {{#each getImage profilePictureId}}
-                          <img src={{this.url}} alt="Contact Person">
-                        {{/each}}
+                          {{#each getImage profilePictureId}}
+                            <img src="{{this.url}}" alt="Contact Person">
+                          {{/each}}
                         {{else}}
-                        <img src='/image/default_profile.png' alt="Contact Person">
+                          <img src='/image/default_profile.png' alt="Contact Person">
                         {{/if}}
-                        {{name}} {{surname}}
+                        {{name}}
+                        {{surname}}
                       </div>
-                      {{/with}}
-                    {{/each}}
-                  </div>
-                </div>
+                    {{/with}}
+                  </li>
+                </ul>
               </div>
+            </div>
+            <div class="row">
+              <div class="card transparent">
+                <h3 class="grey-text">Katilan kisiler</h3>
+                {{#each join}}
+                  {{#with getUser this}}
+                    <div class="chip">
+                      {{#if profilePictureId}}
+                        {{#each getImage profilePictureId}}
+                          <img src="{{this.url}}" alt="Contact Person">
+                        {{/each}}
+                      {{else}}
+                        <img src='/image/default_profile.png' alt="Contact Person">
+                      {{/if}}
+                      {{name}}
+                      {{surname}}
+                    </div>
+                  {{/with}}
+                {{/each}}
+              </div>
+            </div>
           </div>
+        </div>
       </div>
     {{/with}}
   </div>
