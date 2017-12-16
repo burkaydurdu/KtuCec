@@ -1,10 +1,11 @@
 import './index.html'
 
 Template.navBar.events({
-    'click #logout' : function (event) {
+    'click #logout' : () => {
         if(Meteor.user()) {
-            Meteor.logout();
-            FlowRouter.go('/');
+            Meteor.logout( function () {
+                FlowRouter.go('/');
+            });
         }
     }
 });

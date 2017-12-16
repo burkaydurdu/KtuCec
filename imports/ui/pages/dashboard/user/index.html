@@ -1,3 +1,131 @@
 <template name="dashboardUser">
-
+  <div class="row cec-margin-top">
+    <div class="col s12 m10 l10 offset-m1 offset-l1">
+      <div class="row">
+        <div class="col s12 m4 l4">
+          {{#with user}}
+            <div class="row">
+              {{#unless profile.profilePictureId}}
+                <img class="materialboxed cec-image-frame" src="/image/default_profile.png">
+              {{else}}
+                {{#each getImage profile.profilePictureId}}
+                  <img class="materialboxed cec-image-frame" data-caption="picture" src="{{this.url}}">
+                {{/each}}
+              {{/unless}}
+            </div>
+            <div class="row">
+              <h4 class="text-lighten-2 grey-text">
+                <i class="material-icons left indigo-text">mood</i>{{toUpperCase username}}
+              </h4>
+              <h5 class="text-lighten-2 grey-text">
+                <i class="material-icons left teal-text">account_circle</i>
+                {{profile.name}}
+                {{profile.surname}}
+                {{#each roles}}
+                  {{#if equals this 'manager'}}
+                    <abbr title="yonetici">
+                      <i class="material-icons yellow-text">star</i>
+                    </abbr>
+                  {{/if}}
+                  {{#if equals this 'admin'}}
+                    <abbr title="admin">
+                      <i class="material-icons red-text">star</i>
+                    </abbr>
+                  {{/if}}
+                {{/each}}
+              </h5>
+              {{#each emails}}
+                <h5 class="text-lighten-2 grey-text">
+                  <i class="material-icons left blue-text">mail</i>{{address}}
+                </h5>
+              {{/each}}
+            </div>
+          {{/with}}
+        </div>
+        <div class="col s12 m8 l8">
+          <div class="col s12">
+            <ul class="tabs transparent">
+              <li class="tab col s3">
+                <a class="blue-text" href="#createdActivity">Created Activity
+                  <strong>{{createdActivityCount}}</strong>
+                </a>
+              </li>
+              <li class="tab col s3">
+                <a class="blue-text" href="#joinedActivity">Joined Activity
+                  <strong>{{joinedActivityCount}}</strong>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div id="createdActivity" class="col s12">
+            <div class="row">
+              {{#each myActivity}}
+                <div class="col s12 m12 l6">
+                  <div class="card horizontal transparent">
+                    <div class="card-content">
+                      <h5>
+                        <a href="/activity/{{_id}}">{{name}}</a>
+                      </h5>
+                      <p class="text-lighten-2 grey-text">
+                        <strong>Created:</strong>
+                        {{formatDate createdAt}}
+                      </p>
+                      <p class="text-lighten-2 grey-text">
+                        <strong>Confirm:</strong>
+                        {{#if confirmation}}
+                          <i class="material-icons green-text">verified_user</i>
+                        {{else}}
+                          <i class="material-icons red-text">error</i>
+                        {{/if}}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              {{/each}}
+            </div>
+            {{#unless equals createdActivityCount 0}}
+              <div class="row right">
+                <a id="allCreated" class="blue-text" href="">Tumu</a>
+              </div>
+            {{/unless}}
+          </div>
+          <div id="joinedActivity" class="col s12">
+            <div class="row">
+              {{#each myJoined}}
+                <div class="col s12 m12 l6">
+                  <div class="card horizontal transparent">
+                    <div class="card-content">
+                      <h5>
+                        <a href="/activity/{{_id}}">{{name}}</a>
+                      </h5>
+                      <p class="text-lighten-2 grey-text">
+                        <strong>Created:
+                        </strong>{{formatDate createdAt}}</p>
+                    </div>
+                  </div>
+                </div>
+              {{/each}}
+            </div>
+            {{#unless equals joinedActivityCount 0}}
+              <div class="row right">
+                <a id="allJoined" class="blue-text" href="">Tumu</a>
+              </div>
+            {{/unless}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="fixed-action-btn horizontal">
+    <a class="btn-floating btn-large light-blue darken-4">
+      <i class="large material-icons">menu</i>
+    </a>
+    <ul>
+      <li>
+        <a href="/user/settings" class="btn-floating red">
+          <i class="material-icons">settings</i>
+        </a>
+      </li>
+    </ul>
+  </div>
 </template>

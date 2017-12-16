@@ -1,0 +1,16 @@
+<template name="forgotPassword">
+  <div class="row">
+    <div class="col s12 m4 l4 offset-m4 offset-l4 cec-margin-top z-depth-3">
+      <form id="forgotPasswordForm">
+        <div class="input-field white-text">
+          <input id="schoolNumber" type="number" class="validate">
+          <label for="schoolNumber">Okul Numarasi</label>
+        </div>
+        {{> reCAPTCHA}}
+        <div class="row">
+          <button type="submit" class="btn cec-btn-block">Gonder</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</template>

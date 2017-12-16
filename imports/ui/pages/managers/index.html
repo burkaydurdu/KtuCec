@@ -1,0 +1,26 @@
+<template name="managers">
+  <div class="row">
+    <div class="col s12 m10 l10 offset-m1 offset-l1">
+      {{#each managersData}}
+        <div class="col s4 m3 l2">
+          <div class="card transparent">
+            <div class="card-image">
+              {{#if profile.profilePictureId}}
+                {{#each getImage profile.profilePictureId}}
+                  <img class="cec-image-frame" src="{{this.url}}">
+                {{/each}}
+              {{else}}
+                <img class="cec-image-frame" src="/image/default_profile.png">
+              {{/if}}
+              <span class="card-title">
+                <a href="/profile/{{_id}}" class="white-text">
+                  {{profile.name}}
+                  {{profile.surname}}</a>
+              </span>
+            </div>
+          </div>
+        </div>
+      {{/each}}
+    </div>
+  </div>
+</template>

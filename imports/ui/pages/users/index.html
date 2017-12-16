@@ -1,0 +1,100 @@
+<template name="users">
+  <div class="row cec-margin-top">
+    <div class="col s12 m10 l10 offset-m1 offset-l1">
+      <div class="col s12 m8 l8">
+        <table class="bordered white-text">
+          <thead>
+            <tr>
+              <th>Isim</th>
+              <th>Soyisim</th>
+              <th>Okul Numarasi</th>
+              <th>kayit Tarihi</th>
+              <th>Roller</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each data}}
+              <tr>
+                {{#with profile}}
+                  <td>{{name}}</td>
+                  <td>{{surname}}</td>
+                  <td>{{schoolNumber}}</td>
+                {{/with}}
+                <td>{{formatDate createdAt}}</td>
+                <td>
+                  {{#each roles}}
+                    [{{this}}]
+                  {{/each}}
+                </td>
+              </tr>
+            {{/each}}
+          </tbody>
+        </table>
+        <div class="row center">
+          <ul class="pagination">
+            <li class="waves-effect">
+              <a href="{{downPage}}">
+                <i class="material-icons">chevron_left</i>
+              </a>
+            </li>
+            {{#each paginationCol dataCount}}
+              {{#if pageActive this}}
+                <li class="active">
+                  <a href="{{this}}">{{this}}</a>
+                </li>
+              {{else}}
+                <li class="waves-effect">
+                  <a href="{{this}}">{{this}}</a>
+                </li>
+              {{/if}}
+            {{/each}}
+            <li class="waves-effect">
+              <a href="{{upPage dataCount 20}}">
+                <i class="material-icons">chevron_right</i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col s12 m4 l4">
+        <div class="cec-menu-border">
+          <div class="row">
+            <div class="input-field col s12 m12 l12">
+              <input id="schoolNumber" type="number" class="validate white-text" data-length="6">
+              <label for="schoolNumber">Ogrenci No</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s12 m12 l12">
+              <div class="input-field">
+                <input id="addRole" type="text" class="validate white-text">
+                <label for="addRole">Role Ekle/Sil</label>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s12 m12 l12">
+              <a class='dropdown-button btn cec-btn-block' href='' data-activates='roleList'>Role Liste</a>
+              <ul id='roleList' class='dropdown-content'>
+                {{#each role}}
+                  <li>
+                    <a data-id="{{name}}" href="">
+                      <i class="material-icons left">contacts</i>{{name}}</a>
+                  </li>
+                {{/each}}
+              </ul>
+            </div>
+            <div class="row">
+              <div class="col s12 m12 l6">
+                <a id="appendRole" class="btn cec-btn-block green" href="">Ekle</a>
+              </div>
+              <div class="col s12 m12 l6">
+                <a id="removeRole" class="btn cec-btn-block red lighten-1" href="">Sil</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

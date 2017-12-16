@@ -1,0 +1,104 @@
+/* Create the animation blocks */
+
+/* Chrome, Safari, Opera */
+
+@-webkit-keyframes mymove-1 {
+  from {
+    background-color: #e0f2f1;
+  }
+  to {
+    background-color: #009688;
+  }
+}
+
+/* Standard syntax */
+
+@keyframes mymove-1 {
+  from {
+    background-color: #e0f2f1;
+  }
+  to {
+    background-color: #009688;
+  }
+}
+
+@-webkit-keyframes mymove-2 {
+  from {
+    background-color: #e0f7fa;
+  }
+  to {
+    background-color: #00bcd4;
+  }
+}
+
+@keyframes mymove-2 {
+  from {
+    background-color: #e0f7fa;
+  }
+  to {
+    background-color: #00bcd4;
+  }
+}
+
+@-webkit-keyframes mymove-3 {
+  from {
+    background-color: #ffebee;
+  }
+  to {
+    background-color: #f44336;
+  }
+}
+
+@keyframes mymove-3 {
+  from {
+    background-color: #ffebee;
+  }
+  to {
+    background-color: #f44336;
+  }
+}
+
+@-webkit-keyframes mymove-4 {
+  from {
+    background-color: #f9fbe7;
+  }
+  to {
+    background-color: #cddc39;
+  }
+}
+
+@keyframes mymove-4 {
+  from {
+    background-color: #f9fbe7;
+  }
+  to {
+    background-color: #cddc39;
+  }
+}
+
+.cec-circle-countdown-box {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  padding: 10px;
+  text-align: center;
+}
+.cec-mymove-1 {
+  animation: mymove-1 4s infinite;
+  -webkit-animation: mymove-1 4s infinite;
+}
+.cec-mymove-2 {
+  animation: mymove-2 3s infinite;
+  -webkit-animation: mymove-2 3s infinite;
+
+}
+.cec-mymove-3 {
+  animation: mymove-3 2s infinite;
+  -webkit-animation: mymove-3 2s infinite;
+
+}
+.cec-mymove-4 {
+  animation: mymove-4 1s infinite;
+  -webkit-animation: mymove-4 1s infinite;
+
+}
