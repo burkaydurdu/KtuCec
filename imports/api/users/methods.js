@@ -28,6 +28,16 @@ Meteor.methods({
             throw new Meteor.Error(e.error, e.reason);
         }
     },
+    'user.remove.role': function(data) {
+        try {
+            const userId = Meteor.users.findOne({
+                'profile.schoolNumber': data.schoolNumber
+            })._id;
+            Roles.removeUsersFromRoles(userId, data.role);
+        } catch (e) {
+            throw new Meteor.Error(e.error, e.reason);
+        }
+    },
     'user.verified': function(email_or_name) {
         try {
             user = Accounts.findUserByEmail(email_or_name);

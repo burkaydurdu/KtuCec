@@ -1,14 +1,6 @@
 BlazeLayout.setRoot('body');
 
-defaultRouter = FlowRouter.group({
-    prefix: '',
-    name: 'default.page',
-    triggersEnter: [function(context, redirect) {
-
-    }]
-});
-
-defaultRouter.route('/', {
+FlowRouter.route('/', {
     name: 'dashboard.page',
     action: function() {
         BlazeLayout.render('default', {
@@ -20,7 +12,7 @@ defaultRouter.route('/', {
     }
 });
 
-defaultRouter.route('/aboutUs', {
+FlowRouter.route('/aboutUs', {
     name: 'aboutUs.page',
     action: function() {
         BlazeLayout.render('default', {
@@ -32,7 +24,7 @@ defaultRouter.route('/aboutUs', {
     }
 });
 
-defaultRouter.route('/activity/:id', {
+FlowRouter.route('/activity/:id', {
     name: 'activity.single.page',
     action: function() {
         BlazeLayout.render('default', {
@@ -44,7 +36,7 @@ defaultRouter.route('/activity/:id', {
     }
 });
 
-defaultRouter.route('/managers', {
+FlowRouter.route('/managers', {
     name: 'managers.page',
     action: function() {
         BlazeLayout.render('default', {
@@ -53,6 +45,18 @@ defaultRouter.route('/managers', {
     },
     subscriptions: function() {
         this.register('managers.pub', Meteor.subscribe('managers.pub'));
+    }
+});
+
+FlowRouter.route('/profile/:id', {
+    name: 'person.page',
+    action: function() {
+        BlazeLayout.render('default', {
+            page: 'userProfile'
+        });
+    },
+    subscriptions: function(params) {
+        this.register('user.profile.pub', Meteor.subscribe('user.profile.pub', params.id));
     }
 });
 

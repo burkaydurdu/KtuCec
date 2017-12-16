@@ -1,4 +1,4 @@
-<template name="dashboardUser">
+<template name="userProfile">
   <div class="row cec-margin-top">
     <div class="col s12 m10 l10 offset-m1 offset-l1">
       <div class="row">
@@ -45,13 +45,13 @@
         <div class="col s12 m8 l8">
           <div class="col s12">
             <ul class="tabs transparent">
-              <li class="tab col s3">
-                <a class="blue-text" href="#createdActivity">Created Activity
+              <li class="tab col s6">
+                <a class="blue-text" href="#createdActivity">Olusturdugu Etkinlikler
                   <strong>{{createdActivityCount}}</strong>
                 </a>
               </li>
-              <li class="tab col s3">
-                <a class="blue-text" href="#joinedActivity">Joined Activity
+              <li class="tab col s6">
+                <a class="blue-text" href="#joinedActivity">Katildigi Etkinlikler
                   <strong>{{joinedActivityCount}}</strong>
                 </a>
               </li>
@@ -59,73 +59,74 @@
           </div>
           <div id="createdActivity" class="col s12">
             <div class="row">
-              {{#each myActivity}}
-                <div class="col s12 m12 l6">
-                  <div class="card horizontal transparent">
-                    <div class="card-content">
-                      <h5>
-                        <a href="/activity/{{_id}}">{{name}}</a>
-                      </h5>
-                      <p class="text-lighten-2 grey-text">
-                        <strong>Created:</strong>
-                        {{formatDate createdAt}}
-                      </p>
-                      <p class="text-lighten-2 grey-text">
-                        <strong>Confirm:</strong>
-                        {{#if confirmation}}
-                          <i class="material-icons green-text">verified_user</i>
-                        {{else}}
-                          <i class="material-icons red-text">error</i>
-                        {{/if}}
-                      </p>
+              {{#unless allCreatedActivity}}
+                {{#each myActivity}}
+                  <div class="col s12 m12 l6">
+                    <div class="card horizontal transparent">
+                      <div class="card-content">
+                        <h5>
+                          <a href="/activity/{{_id}}">{{name}}</a>
+                        </h5>
+                        <p class="text-lighten-2 grey-text">
+                          <strong>Olusturma:</strong>
+                          {{formatDate createdAt}}
+                        </p>
+                      </div>
                     </div>
                   </div>
+                {{/each}}
+              {{else}}
+                <div class="collection">
+                  {{#each allMyActivity}}
+                    <a href="/activity/{{_id}}" class="collection-item transparent">{{name}}</a>
+                  {{/each}}
                 </div>
-              {{/each}}
+              {{/unless}}
             </div>
             {{#unless equals createdActivityCount 0}}
               <div class="row right">
-                <a id="allCreated" class="blue-text" href="">Tumu</a>
+                <a id="allCreated" class="blue-text" href="">
+                  <i class="material-icons">blur_on</i>
+                </a>
               </div>
             {{/unless}}
           </div>
           <div id="joinedActivity" class="col s12">
             <div class="row">
-              {{#each myJoined}}
-                <div class="col s12 m12 l6">
-                  <div class="card horizontal transparent">
-                    <div class="card-content">
-                      <h5>
-                        <a href="/activity/{{_id}}">{{name}}</a>
-                      </h5>
-                      <p class="text-lighten-2 grey-text">
-                        <strong>Created:
-                        </strong>{{formatDate createdAt}}</p>
+              {{#unless alljoinedActivity}}
+                {{#each myJoined}}
+                  <div class="col s12 m12 l6">
+                    <div class="card horizontal transparent">
+                      <div class="card-content">
+                        <h5>
+                          <a href="/activity/{{_id}}">{{name}}</a>
+                        </h5>
+                        <p class="text-lighten-2 grey-text">
+                          <strong>Olusturma:</strong>
+                          {{formatDate createdAt}}
+                        </p>
+                      </div>
                     </div>
                   </div>
+                {{/each}}
+              {{else}}
+                <div class="collection">
+                  {{#each allMyJoined}}
+                    <a href="/activity/{{_id}}" class="collection-item transparent">{{name}}</a>
+                  {{/each}}
                 </div>
-              {{/each}}
+              {{/unless}}
             </div>
             {{#unless equals joinedActivityCount 0}}
               <div class="row right">
-                <a id="allJoined" class="blue-text" href="">Tumu</a>
+                <a id="allJoined" class="blue-text" href="">
+                  <i class="material-icons">blur_on</i>
+                </a>
               </div>
             {{/unless}}
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="fixed-action-btn horizontal">
-    <a class="btn-floating btn-large light-blue darken-4">
-      <i class="large material-icons">menu</i>
-    </a>
-    <ul>
-      <li>
-        <a href="/user/settings" class="btn-floating red">
-          <i class="material-icons">settings</i>
-        </a>
-      </li>
-    </ul>
   </div>
 </template>

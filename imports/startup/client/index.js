@@ -16,6 +16,7 @@ import '/imports/ui/pages/activity/single/'
 import '/imports/ui/pages/activity/create/'
 
 import '/imports/ui/pages/users/'
+import '/imports/ui/pages/users/profile/'
 import '/imports/ui/pages/users/settings/'
 import '/imports/ui/pages/users/settings/profile/'
 import '/imports/ui/pages/users/settings/account/'

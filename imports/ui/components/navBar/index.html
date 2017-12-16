@@ -35,6 +35,18 @@
           <li>
             <a class="dropdown-button" href="" data-beloworigin="true" data-activates="activityDropdown">Activity<i class="material-icons right">arrow_drop_down</i>
             </a>
+            <ul id='activityDropdown' class='dropdown-content'>
+              <li>
+                <a href="/m/activity/create">
+                  <i class="material-icons left">create</i>Etkinlik Olustur</a>
+              </li>
+              {{#if isInRole 'admin'}}
+                <li>
+                  <a href="/admin/activity/1">
+                    <i class="material-icons left">list</i>Etkinlikleri Goruntule</a>
+                </li>
+              {{/if}}
+            </ul>
           </li>
           <script>
             $('.dropdown-button').dropdown({constrainWidth: false});
@@ -120,16 +132,4 @@
       </ul>
     </div>
   </nav>
-  <ul id='activityDropdown' class='dropdown-content'>
-    <li>
-      <a href="/m/activity/create">
-        <i class="material-icons left">create</i>Etkinlik Olustur</a>
-    </li>
-    {{#if isInRole 'admin'}}
-      <li>
-        <a href="/admin/activity/1">
-          <i class="material-icons left">list</i>Etkinlikleri Goruntule</a>
-      </li>
-    {{/if}}
-  </ul>
 </template>

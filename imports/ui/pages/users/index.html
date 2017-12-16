@@ -14,32 +14,38 @@
           </thead>
           <tbody>
             {{#each data}}
-            <tr>
-              {{#with profile}}
-                <td>{{name}}</td>
-                <td>{{surname}}</td>
-                <td>{{schoolNumber}}</td>
-              {{/with}}
-              <td>{{formatDate createdAt}}</td>
-              <td>
-                {{#each roles}}
-                  [{{this}}]
-                {{/each}}
-              </td>
-            </tr>
+              <tr>
+                {{#with profile}}
+                  <td>{{name}}</td>
+                  <td>{{surname}}</td>
+                  <td>{{schoolNumber}}</td>
+                {{/with}}
+                <td>{{formatDate createdAt}}</td>
+                <td>
+                  {{#each roles}}
+                    [{{this}}]
+                  {{/each}}
+                </td>
+              </tr>
             {{/each}}
           </tbody>
         </table>
         <div class="row center">
           <ul class="pagination">
             <li class="waves-effect">
-              <a href={{downPage}}><i class="material-icons">chevron_left</i></a>
+              <a href="{{downPage}}">
+                <i class="material-icons">chevron_left</i>
+              </a>
             </li>
             {{#each paginationCol dataCount}}
               {{#if pageActive this}}
-                <li class="active"><a href={{this}}>{{this}}</a></li>
+                <li class="active">
+                  <a href="{{this}}">{{this}}</a>
+                </li>
               {{else}}
-                <li class="waves-effect"><a href={{this}}>{{this}}</a></li>
+                <li class="waves-effect">
+                  <a href="{{this}}">{{this}}</a>
+                </li>
               {{/if}}
             {{/each}}
             <li class="waves-effect">
@@ -54,7 +60,7 @@
         <div class="cec-menu-border">
           <div class="row">
             <div class="input-field col s12 m12 l12">
-              <input id=schoolNumber type="number" class="validate white-text" data-length="6">
+              <input id="schoolNumber" type="number" class="validate white-text" data-length="6">
               <label for="schoolNumber">Ogrenci No</label>
             </div>
           </div>
@@ -62,21 +68,29 @@
             <div class="col s12 m12 l12">
               <div class="input-field">
                 <input id="addRole" type="text" class="validate white-text">
-                <label for="addRole">Role Ekle</label>
+                <label for="addRole">Role Ekle/Sil</label>
               </div>
             </div>
           </div>
           <div class="row">
-            <div class="col s12 m12 l6">
+            <div class="col s12 m12 l12">
               <a class='dropdown-button btn cec-btn-block' href='' data-activates='roleList'>Role Liste</a>
               <ul id='roleList' class='dropdown-content'>
                 {{#each role}}
-                  <li><a data-id={{name}} href=""><i class="material-icons left">contacts</i>{{name}}</a></li>
+                  <li>
+                    <a data-id="{{name}}" href="">
+                      <i class="material-icons left">contacts</i>{{name}}</a>
+                  </li>
                 {{/each}}
               </ul>
             </div>
-            <div class="col s12 m12 l6">
-              <a id="appendRole" class="btn cec-btn-block green" href="">Ekle</a>
+            <div class="row">
+              <div class="col s12 m12 l6">
+                <a id="appendRole" class="btn cec-btn-block green" href="">Ekle</a>
+              </div>
+              <div class="col s12 m12 l6">
+                <a id="removeRole" class="btn cec-btn-block red lighten-1" href="">Sil</a>
+              </div>
             </div>
           </div>
         </div>

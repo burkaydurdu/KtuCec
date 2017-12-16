@@ -4,10 +4,10 @@
 
 @-webkit-keyframes mymove-1 {
   from {
-    background-color: #009688;
+    background-color: #e0f2f1;
   }
   to {
-    background-color: #009600;
+    background-color: #009688;
   }
 }
 
@@ -15,64 +15,64 @@
 
 @keyframes mymove-1 {
   from {
-    background-color: #009688;
+    background-color: #e0f2f1;
   }
   to {
-    background-color: #009600;
+    background-color: #009688;
   }
 }
 
 @-webkit-keyframes mymove-2 {
   from {
-    background-color: #81c784;
+    background-color: #e0f7fa;
   }
   to {
-    background-color: #81c700;
+    background-color: #00bcd4;
   }
 }
 
 @keyframes mymove-2 {
   from {
-    background-color: #81c784;
+    background-color: #e0f7fa;
   }
   to {
-    background-color: #81c700;
+    background-color: #00bcd4;
   }
 }
 
 @-webkit-keyframes mymove-3 {
   from {
-    background-color: #90caf9;
+    background-color: #ffebee;
   }
   to {
-    background-color: #90caaa;
+    background-color: #f44336;
   }
 }
 
 @keyframes mymove-3 {
   from {
-    background-color: #90caf9;
+    background-color: #ffebee;
   }
   to {
-    background-color: #90caaa;
+    background-color: #f44336;
   }
 }
 
 @-webkit-keyframes mymove-4 {
   from {
-    background-color: #81c784;
+    background-color: #f9fbe7;
   }
   to {
-    background-color: #81c700;
+    background-color: #cddc39;
   }
 }
 
 @keyframes mymove-4 {
   from {
-    background-color: #81c784;
+    background-color: #f9fbe7;
   }
   to {
-    background-color: #81c700;
+    background-color: #cddc39;
   }
 }
 

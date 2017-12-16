@@ -83,9 +83,9 @@ Template.dashboard.events({
         const id = event.currentTarget.dataset.id;
         Meteor.call('activity.join', id, (err) => {
             if (!err) {
-                Materialize.toast('Join success', 2500, 'green white-text');
+                Materialize.toast('Basariyla Katildin', 2500, 'green white-text');
             } else {
-                Materialize.toast('Error', 2500, 'red white-text');
+                Materialize.toast('Hata Olustu', 2500, 'red white-text');
             }
         });
     }

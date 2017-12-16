@@ -79,6 +79,24 @@ Meteor.publish('admin.activity.pub', () => {
     ]
 });
 
+Meteor.publish('user.profile.pub', (id) => {
+    return [Meteor.users.find({
+            _id: id
+        }),
+        Images.find({}),
+        activitys.find({
+            $or: [{
+                owner: id
+            }, {
+                join: {
+                    $in: [id]
+                }
+            }],
+            confirmation: true
+        })
+    ]
+});
+
 Meteor.publish('user.activity.pub', () => {
     return [
         activitys.find(), /* Buraya activit ozellestir. kendisinin yada katildigi etkinlikler diye*/

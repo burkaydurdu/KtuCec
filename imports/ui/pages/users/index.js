@@ -31,13 +31,36 @@ Template.users.events({
             schoolNumber: schoolNumber,
             role: role
         }
-        Meteor.call('user.append.role', data, (err, res) => {
-            if (!err) {
-                Materialize.toast('Basariyla atandi', 2500, 'green white-text');
-            } else {
-                Materialize.toast('Sorun olustu!', 2500, 'red white-text');
-            }
-        });
+        if (data.schoolNumber != "" && data.role != "") {
+            Meteor.call('user.append.role', data, (err, res) => {
+                if (!err) {
+                    Materialize.toast('Basariyla atandi', 2500, 'green white-text');
+                } else {
+                    Materialize.toast('Sorun olustu!', 2500, 'red white-text');
+                }
+            });
+        } else {
+            Materialize.toast('Gerekli yerleri doldurun!', 2500, 'red white-text');
+        }
+    },
+    'click #removeRole': (event) => {
+        const schoolNumber = $('#schoolNumber').val();
+        const role = $('#addRole').val().toLowerCase();
+        data = {
+            schoolNumber: schoolNumber,
+            role: role
+        }
+        if (data.schoolNumber != "" && data.role != "") {
+            Meteor.call('user.remove.role', data, (err, res) => {
+                if (!err) {
+                    Materialize.toast('Basariyla silindi', 2500, 'green white-text');
+                } else {
+                    Materialize.toast('Sorun olustu!', 2500, 'red white-text');
+                }
+            });
+        } else {
+            Materialize.toast('Gerekli yerleri doldurun!', 2500, 'red white-text');
+        }
     }
 });
 

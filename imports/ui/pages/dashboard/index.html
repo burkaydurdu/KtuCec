@@ -10,10 +10,24 @@
                   {{#each getImage imageId}}
                     <img class="materialboxed" data-caption="picture" src="{{this.url}}">
                   {{/each}}
-                  <span class="card-title">{{name}}</span>
+                  <span class="card-title">
+                    <a href="/activity/{{_id}}">{{name}}</a>
+                  </span>
                 </div>
                 <div class="card-content">
                   {{>countdown}}
+                </div>
+                <div class="card-action right-align">
+                  {{#if currentUser}}
+                    {{#unless isJoin _id}}
+                      <a data-id="{{_id}}" href="" id="activityJoin" class="teal-text">
+                        <i class="material-icons">directions_run</i>Katıl</a>
+                    {{else}}
+                      <a>
+                        <i class="material-icons">verified_user</i>
+                      </a>
+                    {{/unless}}
+                  {{/if}}
                 </div>
               </div>
             {{/with}}
@@ -38,7 +52,10 @@
                   <li class="collection-item">
                     <strong>
                       <i class="material-icons left">person</i>Owner:
-                    </strong>{{getOwner owner}}</li>
+                    </strong>
+                    <a href="/profile/{{owner}}">
+                      {{getOwner owner}}</a>
+                  </li>
                   <li class="collection-item">
                     <strong>
                       <i class="material-icons left">group</i>Participants:
@@ -59,11 +76,11 @@
                   </strong>{{place}}</p>
                 <p>{{description}}</p>
               </div>
-              <div class="card-action">
+              <div class="card-action right-align">
                 {{#if currentUser}}
                   {{#unless isJoin _id}}
                     <a data-id="{{_id}}" href="" id="activityJoin" class="teal-text">
-                      <i class="material-icons">directions_run</i>Join</a>
+                      <i class="material-icons">directions_run</i>Katıl</a>
                   {{else}}
                     <a>
                       <i class="material-icons">verified_user</i>

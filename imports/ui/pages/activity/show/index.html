@@ -1,60 +1,86 @@
 <template name="activityShow">
-    <div class="row">
-        <div class="col s12 m10 l10 offset-m1 offset-l1 cec-activity-box">
-            <h5 class="white-text"><i class="material-icons left">list</i>{{dataName}}</h5>
-            {{#if equals dataCount 0}}
-            <div class="row">
-              <h2 class="center white-text">Etkinlik Listesi Bos</h2>
-            </div>
-            {{else}}
-            <div class="row">
-                {{#each data}}
-                    <div class="col s12 m4 l3">
-                        <div class="card">
-                            <div class="card-image">
-                                {{#each getImage imageId}}
-                                    <img class="materialboxed" data-caption="picture" src="{{this.url}}">
-                                {{/each}}
-                            </div>
-                            <div class="card-content">
-                                <span class="card-title activator grey-text text-darken-4"><a href="/activity/{{_id}}">{{name}}</a><i class="material-icons right">more_vert</i></span>
-                                <p><strong><i class="material-icons left">person</i>Owner: </strong>{{getOwner owner}}</p>
-                            </div>
-                            <div class="card-reveal">
-                                <span class="card-title grey-text text-darken-4">Info<i class="material-icons right">close</i></span>
-                                <p><strong>Date: </strong>{{formatSingleDate date}}</p>
-                                <p><strong>Time: </strong>{{formatTime date}}</p>
-                                <p><strong>Place: </strong>{{place}}</p>
-                                <p>{{description}}</p>
-                            </div>
-                            {{#if equals owner getUser}}
-                              <div class="card-action">
-                                {{#unless confirmation}}
-                                  <a href="/m/activity/edit/{{_id}}" class="">Duzenle</a>
-                                  <a href="" data-id={{_id}} class="red-text">Sil</a>
-                                {{else}}
-                                  <a href="">Onaylandi</a>
-                                {{/unless}}
-                              </div>
-                            {{/if}}
-                        </div>
-                    </div>
-                {{/each}}
-            </div>
-            <div class="row center">
-                <ul class="pagination">
-                    <li class="waves-effect"><a href=""><i class="material-icons">chevron_left</i></a></li>
-                    {{#each paginationCol dataCount}}
-                      {{#if pageActive this}}
-                        <li class="active"><a href={{this}}>{{this}}</a></li>
-                      {{else}}
-                        <li class="waves-effect"><a href={{this}}>{{this}}</a></li>
-                      {{/if}}
-                    {{/each}}
-                    <li class="waves-effect"><a href=""><i class="material-icons">chevron_right</i></a></li>
-                </ul>
-            </div>
-            {{/if}}
+  <div class="row">
+    <div class="col s12 m10 l10 offset-m1 offset-l1 cec-activity-box">
+      <h5 class="white-text">
+        <i class="material-icons left">list</i>{{dataName}}</h5>
+      {{#if equals dataCount 0}}
+        <div class="row">
+          <h2 class="center white-text">Etkinlik Listesi Bos</h2>
         </div>
+      {{else}}
+        <div class="row">
+          {{#each data}}
+            <div class="col s12 m4 l3">
+              <div class="card">
+                <div class="card-image">
+                  {{#each getImage imageId}}
+                    <img class="materialboxed cec-card-image" data-caption="picture" src="{{this.url}}">
+                  {{/each}}
+                </div>
+                <div class="card-content">
+                  <span class="card-title activator grey-text text-darken-4">
+                    <a href="/activity/{{_id}}">{{name}}</a>
+                    <i class="material-icons right">more_vert</i>
+                  </span>
+                  <p>
+                    <strong>
+                      <i class="material-icons left">person</i>Owner:
+                    </strong>{{getOwner owner}}</p>
+                </div>
+                <div class="card-reveal">
+                  <span class="card-title grey-text text-darken-4">Info<i class="material-icons right">close</i>
+                  </span>
+                  <p>
+                    <strong>Date:
+                    </strong>{{formatSingleDate date}}</p>
+                  <p>
+                    <strong>Time:
+                    </strong>{{formatTime date}}</p>
+                  <p>
+                    <strong>Place:
+                    </strong>{{place}}</p>
+                  <p>{{description}}</p>
+                </div>
+                {{#if equals owner getUser}}
+                  <div class="card-action">
+                    {{#unless confirmation}}
+                      <a href="/m/activity/edit/{{_id}}" class="">Duzenle</a>
+                      <a href="" data-id="{{_id}}" class="red-text">Sil</a>
+                    {{else}}
+                      <a href="">Onaylandi</a>
+                    {{/unless}}
+                  </div>
+                {{/if}}
+              </div>
+            </div>
+          {{/each}}
+        </div>
+        <div class="row center">
+          <ul class="pagination">
+            <li class="waves-effect">
+              <a href="">
+                <i class="material-icons">chevron_left</i>
+              </a>
+            </li>
+            {{#each paginationCol dataCount}}
+              {{#if pageActive this}}
+                <li class="active">
+                  <a href="{{this}}">{{this}}</a>
+                </li>
+              {{else}}
+                <li class="waves-effect">
+                  <a href="{{this}}">{{this}}</a>
+                </li>
+              {{/if}}
+            {{/each}}
+            <li class="waves-effect">
+              <a href="">
+                <i class="material-icons">chevron_right</i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      {{/if}}
     </div>
+  </div>
 </template>

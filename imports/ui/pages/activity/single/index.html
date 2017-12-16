@@ -39,8 +39,8 @@
                         {{else}}
                           <img src='/image/default_profile.png' alt="Contact Person">
                         {{/if}}
-                        {{name}}
-                        {{surname}}
+                        <a href="/profile/{{../owner}}">{{name}}
+                          {{surname}}</a>
                       </div>
                     {{/with}}
                   </li>
@@ -60,8 +60,8 @@
                       {{else}}
                         <img src='/image/default_profile.png' alt="Contact Person">
                       {{/if}}
-                      {{name}}
-                      {{surname}}
+                      <a href="/profile/{{..this}}">{{name}}
+                        {{surname}}</a>
                     </div>
                   {{/with}}
                 {{/each}}
