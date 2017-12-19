@@ -13,17 +13,21 @@ Template.register.events({
             startYear: event.target.startYear.value,
         };
         if (data.schoolNumber.length === 6 && data.schoolNumber > 0) {
-            if (data.password === data.passwordConfirm) {
-                Meteor.call('user.create', data, function(err, res) {
-                    if (!err) {
-                        Materialize.toast("Kayit islemi basarili. Lutfen mail adresine gelen mesaji onaylayin. Daha sonra giris yapabilirsiniz.", 3500, "green white-text");
-                        FlowRouter.go('/login');
-                    } else {
-                        Materialize.toast(err.reason, 2500, "red white-text");
-                    }
-                })
+            if (data.startYear > 1992 && data.startYear <= Number(moment().format("YYYY"))) {
+                if (data.password === data.passwordConfirm) {
+                    Meteor.call('user.create', data, function(err, res) {
+                        if (!err) {
+                            Materialize.toast(`Kayit islemi basarili. ${data.schoolNumber}@ogr.ktu.edu.tr mail adresine gelen mesaji onaylayin. Daha sonra giris yapabilirsiniz.`, 4000, "green white-text");
+                            FlowRouter.go('/login');
+                        } else {
+                            Materialize.toast(err.reason, 2500, "red white-text");
+                        }
+                    })
+                } else {
+                    Materialize.toast("Sifrenizi kontrol edin!!", 2500, "red white-text");
+                }
             } else {
-                Materialize.toast("Sifrenizi kontrol edin!!", 2500, "red white-text");
+                Materialize.toast('Okula giris yilinizi kontrol edin!', 2500, "red white-text");
             }
         } else {
             Materialize.toast('Okul numaranizi kontrol edin!', 2500, "red white-text");
