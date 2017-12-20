@@ -46,7 +46,9 @@ Meteor.publish('dashboard.pub', () => {
             }
         }),
         Images.find({}),
-        activitys.find({})
+        activitys.find({
+            confirmation: true
+        })
     ]
 });
 Meteor.publish('admin.dashboard.pub', () => {
