@@ -25,13 +25,25 @@ Template.dashboard.helpers({
             return activity;
         }
     },
-    getActivitys: () => {
+    getFutureActivity: () => {
         activity = activitys.find({
             $and: [{
                 confirmation: true
             }, {
                 date: {
                     $gte: new Date()
+                }
+            }]
+        });
+        return activity === null ? false : activity.fetch();
+    },
+    getLastActivity: () => {
+        activity = activitys.find({
+            $and: [{
+                confirmation: true
+            }, {
+                date: {
+                    $lt: new Date()
                 }
             }]
         });
