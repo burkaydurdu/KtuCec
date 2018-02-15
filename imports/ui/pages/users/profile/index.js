@@ -24,6 +24,11 @@ Template.userProfile.helpers({
             }
         }).count();
     },
+    alertCount: () => {
+        return alerts.find({
+            owner: FlowRouter.getParam('id')
+        }).count();
+    },
     myActivity: () => {
         activity = activitys.find({
             owner: FlowRouter.getParam('id'),
@@ -42,6 +47,12 @@ Template.userProfile.helpers({
             limit: 6
         });
         return activity.count() === 0 ? false : activity.fetch();
+    },
+    myAlert: () => {
+        alert = alerts.find({
+            owner: FlowRouter.getParam('id')
+        });
+        return alert == null ? false : alert.fetch();
     },
     allMyActivity: () => {
         activity = activitys.find({

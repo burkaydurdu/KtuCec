@@ -6,6 +6,14 @@ Template.registerHelper('arrayLength', (array) => {
     return array !== undefined ? array.length : 0;
 });
 
+Template.registerHelper('shortString', (userName) => {
+    var maxLength = 12;
+    if (userName.length > maxLength) {
+        return userName.substr(0, 12);
+    }
+    return userName;
+});
+
 Template.registerHelper('timeSubtract', (start, end) => {
     start = moment(start);
     end = moment(end);

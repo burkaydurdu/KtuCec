@@ -25,7 +25,7 @@ import '/imports/ui/pages/users/forgot.password/'
 import '/imports/ui/pages/aboutus/'
 import '/imports/ui/pages/notFound/'
 import '/imports/ui/pages/managers/'
-
+import '/imports/ui/pages/alert/'
 
 //lib
 import '/imports/ui/lib/countdown/'

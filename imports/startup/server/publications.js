@@ -48,7 +48,8 @@ Meteor.publish('dashboard.pub', () => {
         Images.find({}),
         activitys.find({
             confirmation: true
-        })
+        }),
+        alerts.find({})
     ]
 });
 Meteor.publish('admin.dashboard.pub', () => {
@@ -95,6 +96,9 @@ Meteor.publish('user.profile.pub', (id) => {
                 }
             }],
             confirmation: true
+        }),
+        alerts.find({
+            owner: id
         })
     ]
 });
@@ -109,7 +113,10 @@ Meteor.publish('user.activity.pub', () => {
 Meteor.publish('user.dashboard.pub', () => {
     return [
         activitys.find({}),
-        Images.find({})
+        Images.find({}),
+        alerts.find({
+            owner: Meteor.userId()
+        })
     ]
 });
 
@@ -142,6 +149,17 @@ Meteor.publish('managers.pub', () => {
             }
         }),
         Images.find({})
+    ]
+});
+
+Meteor.publish('alerts.pub', () => {
+    return [
+        alerts.find({}),
+        Meteor.users.find({}, {
+            fields: {
+                profile: 1
+            }
+        }),
     ]
 });
 

@@ -16,6 +16,11 @@ Template.dashboardUser.helpers({
             }
         }).count();
     },
+    alertCount: () => {
+        return alerts.find({
+            owner: Meteor.userId()
+        }).count();
+    },
     myActivity: () => {
         activity = activitys.find({
             owner: Meteor.userId()
@@ -33,6 +38,12 @@ Template.dashboardUser.helpers({
             limit: 6
         });
         return activity.count() === 0 ? false : activity.fetch();
+    },
+    myAlert: () => {
+        alert = alerts.find({
+            owner: Meteor.userId()
+        });
+        return alert == null ? false : alert.fetch();
     },
     getImage: (id) => {
         image = Images.find({

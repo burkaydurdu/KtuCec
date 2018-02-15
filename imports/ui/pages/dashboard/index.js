@@ -34,6 +34,8 @@ Template.dashboard.helpers({
                     $gte: new Date()
                 }
             }]
+        }, {
+            limit: 9
         });
         return activity === null ? false : activity.fetch();
     },
@@ -46,8 +48,16 @@ Template.dashboard.helpers({
                     $lt: new Date()
                 }
             }]
+        }, {
+            limit: 9
+
         });
         return activity === null ? false : activity.fetch();
+    },
+    isActivityLimit: () => {
+        activitys.find({
+            confirmation: true
+        }).count() > 18;
     },
     getImage: (id) => {
         image = Images.find({
@@ -87,6 +97,18 @@ Template.dashboard.helpers({
             ]
         }).count();
         return number !== 0;
+    },
+    getAlert: () => {
+        alert = alerts.find({}, {
+            sort: {
+                createdAt: 1
+            },
+            limit: 10
+        });
+        return alert == null ? false : alert.fetch();
+    },
+    isAlertLimit: () => {
+        return alerts.find({}).count() > 10;
     }
 });
 
@@ -96,6 +118,22 @@ Template.dashboard.events({
         Meteor.call('activity.join', id, (err) => {
             if (!err) {
                 Materialize.toast('Basariyla Katildin', 2500, 'green white-text');
+            } else {
+                Materialize.toast('Hata Olustu', 2500, 'red white-text');
+            }
+        });
+    },
+    'submit form#alertForm': (event) => {
+        event.preventDefault();
+        const content = event.target.alertMessage.value;
+        const data = {
+            createdAt: moment().toDate(),
+            content: content,
+            owner: Meteor.userId()
+        };
+        Meteor.call('alert.create', data, (err, res) => {
+            if (!err) {
+                Materialize.toast('Basariyla Olusturuldu', 2500, 'green white-text');
             } else {
                 Materialize.toast('Hata Olustu', 2500, 'red white-text');
             }

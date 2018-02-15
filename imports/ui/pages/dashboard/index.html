@@ -34,109 +34,152 @@
           </div>
         </div>
       </div>
-      <div class="row">
-        {{#each getFutureActivity}}
-          <div class="col s12 m4 l3">
-            <div class="card">
-              <div class="card-image">
-                {{#each getImage imageId}}
-                  <img class="materialboxed cec-card-image" data-caption="picture" src="{{this.url}}">
-                {{/each}}
-              </div>
-              <div class="card-content">
-                <span class="card-title activator grey-text text-darken-4">
-                  <a href="/activity/{{_id}}">{{name}}</a>
-                  <i class="material-icons right">more_vert</i>
-                </span>
-                <ul class="collection">
-                  <li class="collection-item">
-                    <strong>
-                      <i class="material-icons left">person</i>Owner:
-                    </strong>
-                    <a href="/profile/{{owner}}">
-                      {{getOwner owner}}</a>
-                  </li>
-                  <li class="collection-item">
-                    <strong>
-                      <i class="material-icons left">group</i>Participants:
-                    </strong>{{getArrayLength join}}</li>
-                </ul>
-              </div>
-              <div class="card-reveal">
-                <span class="card-title grey-text text-darken-4">Info<i class="material-icons right">close</i>
-                </span>
-                <p>
-                  <strong>Date:
-                  </strong>{{getDate date}}</p>
-                <p>
-                  <strong>Time:
-                  </strong>{{getTime date}}</p>
-                <p>
-                  <strong>Place:
-                  </strong>{{place}}</p>
-                <p>{{description}}</p>
-              </div>
-              <div class="card-action right-align">
-                {{#if currentUser}}
-                  {{#unless isJoin _id}}
-                    <a data-id="{{_id}}" href="" id="activityJoin" class="teal-text">
-                      <i class="material-icons">directions_run</i>Katıl</a>
-                  {{else}}
-                    <a>
-                      <i class="material-icons">verified_user</i>
-                    </a>
-                  {{/unless}}
-                {{/if}}
+      <div class="col s12 m8 l8">
+        <h5 class="grey-text">
+          <i class="material-icons left">local_activity</i>
+          Etkinlikler</h5>
+        <div class="row">
+          {{#each getFutureActivity}}
+            <div class="col s12 m6 l4">
+              <div class="card">
+                <div class="card-image">
+                  {{#each getImage imageId}}
+                    <img class="materialboxed cec-card-image" data-caption="picture" src="{{this.url}}">
+                  {{/each}}
+                </div>
+                <div class="card-content">
+                  <span class="card-title activator grey-text text-darken-4">
+                    <a href="/activity/{{_id}}">{{name}}</a>
+                    <i class="material-icons right">more_vert</i>
+                  </span>
+                  <ul class="collection">
+                    <li class="collection-item">
+                      <strong>
+                        <i class="material-icons left">person</i>Owner:
+                      </strong>
+                      <a href="/profile/{{owner}}">
+                        {{getOwner owner}}</a>
+                    </li>
+                    <li class="collection-item">
+                      <strong>
+                        <i class="material-icons left">group</i>Participants:
+                      </strong>{{getArrayLength join}}</li>
+                  </ul>
+                </div>
+                <div class="card-reveal">
+                  <span class="card-title grey-text text-darken-4">Info<i class="material-icons right">close</i>
+                  </span>
+                  <p>
+                    <strong>Date:
+                    </strong>{{getDate date}}</p>
+                  <p>
+                    <strong>Time:
+                    </strong>{{getTime date}}</p>
+                  <p>
+                    <strong>Place:
+                    </strong>{{place}}</p>
+                  <p>{{description}}</p>
+                </div>
+                <div class="card-action right-align">
+                  {{#if currentUser}}
+                    {{#unless isJoin _id}}
+                      <a data-id="{{_id}}" href="" id="activityJoin" class="teal-text">
+                        <i class="material-icons">directions_run</i>Katıl</a>
+                    {{else}}
+                      <a>
+                        <i class="material-icons">verified_user</i>
+                      </a>
+                    {{/unless}}
+                  {{/if}}
+                </div>
               </div>
             </div>
-          </div>
-        {{/each}}
+          {{/each}}
+        </div>
+        <div class="row">
+          {{#each getLastActivity}}
+            <div class="col s12 m6 l4">
+              <div class="card">
+                <div class="card-image">
+                  {{#each getImage imageId}}
+                    <img class="materialboxed cec-card-image" data-caption="picture" src="{{this.url}}">
+                  {{/each}}
+                </div>
+                <div class="card-content">
+                  <span class="card-title activator grey-text text-darken-4">
+                    <a href="/activity/{{_id}}">{{name}}</a>
+                    <i class="material-icons right">more_vert</i>
+                  </span>
+                  <ul class="collection">
+                    <li class="collection-item">
+                      <strong>
+                        <i class="material-icons left">person</i>Owner:
+                      </strong>
+                      <a href="/profile/{{owner}}">
+                        {{shortString (getOwner owner)}}</a>
+                    </li>
+                    <li class="collection-item">
+                      <strong>
+                        <i class="material-icons left">group</i>Participants:
+                      </strong>{{getArrayLength join}}</li>
+                  </ul>
+                </div>
+                <div class="card-reveal">
+                  <span class="card-title grey-text text-darken-4">Info<i class="material-icons right">close</i>
+                  </span>
+                  <p>
+                    <strong>Date:
+                    </strong>{{getDate date}}</p>
+                  <p>
+                    <strong>Time:
+                    </strong>{{getTime date}}</p>
+                  <p>
+                    <strong>Place:
+                    </strong>{{place}}</p>
+                  <p>{{description}}</p>
+                </div>
+              </div>
+            </div>
+          {{/each}}
+        </div>
+        <div class="row">
+          <a href="#" class="btn cec-btn-block lime black-text">Tümümü Görüntüle</a>
+        </div>
       </div>
-      <div class="row">
-        {{#each getLastActivity}}
-          <div class="col s12 m4 l3">
-            <div class="card">
-              <div class="card-image">
-                {{#each getImage imageId}}
-                  <img class="materialboxed cec-card-image" data-caption="picture" src="{{this.url}}">
-                {{/each}}
+      <div class="col s12 m4 l4">
+        <h5 class="grey-text">
+          <i class="material-icons left">add_alert</i>
+          Duyurular</h5>
+        {{#if currentUser}}
+          <div class="row">
+            <form id="alertForm">
+              <div class="input-field col s12 m12 l12">
+                <i class="material-icons prefix grey-text">message</i>
+                <textarea id="alertMessage" class="materialize-textarea grey-text"></textarea>
+                <label for="alertMessage">Duyuru Yaz</label>
               </div>
-              <div class="card-content">
-                <span class="card-title activator grey-text text-darken-4">
-                  <a href="/activity/{{_id}}">{{name}}</a>
-                  <i class="material-icons right">more_vert</i>
-                </span>
-                <ul class="collection">
-                  <li class="collection-item">
-                    <strong>
-                      <i class="material-icons left">person</i>Owner:
-                    </strong>
-                    <a href="/profile/{{owner}}">
-                      {{getOwner owner}}</a>
-                  </li>
-                  <li class="collection-item">
-                    <strong>
-                      <i class="material-icons left">group</i>Participants:
-                    </strong>{{getArrayLength join}}</li>
-                </ul>
-              </div>
-              <div class="card-reveal">
-                <span class="card-title grey-text text-darken-4">Info<i class="material-icons right">close</i>
-                </span>
-                <p>
-                  <strong>Date:
-                  </strong>{{getDate date}}</p>
-                <p>
-                  <strong>Time:
-                  </strong>{{getTime date}}</p>
-                <p>
-                  <strong>Place:
-                  </strong>{{place}}</p>
-                <p>{{description}}</p>
+              <button type="submit" class="btn cec-btn-block">Gönder</button>
+            </form>
+          </div>
+        {{/if}}
+        {{#each getAlert}}
+          <div class="row">
+            <div class="col s12 m12 l12">
+              <div class="card blue-grey darken-1">
+                <div class="card-content white-text">
+                  <span class="card-title grey-text text-accent-4">{{toUpperCase (getOwner owner)}}</span>
+                  <p>{{content}}</p>
+                  <small class="lime-text">{{formatDate createdAt}}</small>
+                </div>
               </div>
             </div>
           </div>
         {{/each}}
+        {{#if isAlertLimit}}
+          <div class="row">
+            <a href="/m/alerts/1" class="btn cec-btn-block lime black-text">Tümünü Görüntüle</a>
+          </div>
+        {{/if}}
       </div>
     </div>
   </div>
