@@ -1,0 +1,44 @@
+<template name="alerts">
+  <div class="row">
+    <div class="container">
+      <ul class="collapsible popout transparent" data-collapsible="accordion">
+        {{#each getAlert}}
+          <li>
+            <div class="collapsible-header transparent grey-text">
+              <i class="material-icons">filter_drama</i>
+              {{toUpperCase (getOwner owner)}}
+              <span class="badge">{{formatDate createdAt}}</span></div>
+            <div class="collapsible-body grey-text text-lighten-2">
+              <p>{{content}}</p>
+            </div>
+          </li>
+        {{/each}}
+      </ul>
+      <div class="row center">
+        <ul class="pagination">
+          <li class="waves-effect">
+            <a href="{{downPage}}">
+              <i class="material-icons">chevron_left</i>
+            </a>
+          </li>
+          {{#each paginationCol getAlertCount}}
+            {{#if pageActive this}}
+              <li class="active">
+                <a href="{{this}}">{{this}}</a>
+              </li>
+            {{else}}
+              <li class="waves-effect">
+                <a href="{{this}}">{{this}}</a>
+              </li>
+            {{/if}}
+          {{/each}}
+          <li class="waves-effect">
+            <a href="{{upPage getAlertCount 20}}">
+              <i class="material-icons">chevron_right</i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</template>

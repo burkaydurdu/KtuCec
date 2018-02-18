@@ -31,3 +31,15 @@ mutualRouter.route('/activity/edit/:id', {
         this.register('activity.edit.pub', Meteor.subscribe('activity.edit.pub', params.id));
     }
 });
+
+mutualRouter.route('/alerts/:page', {
+    name: 'alerts.page',
+    action: function() {
+        BlazeLayout.render('default', {
+            page: 'alerts'
+        });
+    },
+    subscriptions: function() {
+        this.register('alerts.pub', Meteor.subscribe('alerts.pub'));
+    }
+})
