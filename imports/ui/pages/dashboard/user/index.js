@@ -61,6 +61,16 @@ Template.dashboardUser.events({
     "click #allJoined": (event) => {
         Session.set('showActivitData', 'joined');
         FlowRouter.go("/user/activity/1");
+    },
+    'click #delAlert': (event) => {
+        const id = event.currentTarget.dataset.id;
+        Meteor.call('alert.remove', id, (err, res) => {
+            if (!err) {
+                Materialize.toast('Duyuru Silindi', 2500, 'green white-text');
+            } else {
+                Materialize.toast('Bir Sorun Olustu!', 2500, 'red white-text');
+            }
+        });
     }
 });
 

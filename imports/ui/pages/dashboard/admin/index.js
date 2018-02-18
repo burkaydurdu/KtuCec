@@ -64,7 +64,13 @@ Template.dashboardAdmin.helpers({
             completeActivity: completeActivity
         }
     },
-    'aboutUs': () => {
+    myAlert: () => {
+        alert = alerts.find({
+            owner: Meteor.userId()
+        });
+        return alert == null ? false : alert.fetch();
+    },
+    aboutUs: () => {
         setting = settings.findOne({
             type: 'aboutus'
         });
@@ -95,14 +101,25 @@ Template.dashboardAdmin.events({
                 Materialize.toast('Bir Sorun Olustu!', 2500, 'red white-text');
             }
         });
+    },
+    'click #delAlert': (event) => {
+        const id = event.currentTarget.dataset.id;
+        Meteor.call('alert.remove', id, (err, res) => {
+            if (!err) {
+                Materialize.toast('Duyuru Silindi', 2500, 'green white-text');
+            } else {
+                Materialize.toast('Bir Sorun Olustu!', 2500, 'red white-text');
+            }
+        });
     }
-})
+});
 
 Template.dashboardAdmin.onRendered(function() {
     this.autorun(() => {
         this.subscribe('admin.dashboard.pub', () => {
             Tracker.afterFlush(() => {
                 Materialize.updateTextFields();
+                this.$('ul.tabs').tabs();
             });
         })
     });

@@ -26,6 +26,7 @@ import '/imports/ui/pages/aboutus/'
 import '/imports/ui/pages/notFound/'
 import '/imports/ui/pages/managers/'
 import '/imports/ui/pages/alert/'
+import '/imports/ui/pages/footer/'
 
 //lib
 import '/imports/ui/lib/countdown/'

@@ -66,7 +66,10 @@ Meteor.publish('admin.dashboard.pub', () => {
                 date: 1
             }
         }),
-        settings.find({})
+        settings.find({}),
+        alerts.find({
+            owner: Meteor.userId()
+        })
     ]
 });
 

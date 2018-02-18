@@ -131,13 +131,18 @@ Template.dashboard.events({
             content: content,
             owner: Meteor.userId()
         };
-        Meteor.call('alert.create', data, (err, res) => {
-            if (!err) {
-                Materialize.toast('Basariyla Olusturuldu', 2500, 'green white-text');
-            } else {
-                Materialize.toast('Hata Olustu', 2500, 'red white-text');
-            }
-        });
+        if (content.length !== 0) {
+            Meteor.call('alert.create', data, (err, res) => {
+                if (!err) {
+                    Materialize.toast('Basariyla Olusturuldu', 2500, 'green white-text');
+                } else {
+                    Materialize.toast('Hata Olustu', 2500, 'red white-text');
+                }
+            });
+        } else {
+            Materialize.toast('İçerik girmediniz!', 2500, 'red white-text');
+
+        }
     }
 });
 
