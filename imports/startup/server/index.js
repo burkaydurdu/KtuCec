@@ -7,5 +7,5 @@ import './publications.js'
 import './emailServiceConfig'
 
 reCAPTCHA.config({
-    privatekey: '6LetTEcUAAAAAPJh6H3U8Pkb3kIgYZqr7P3qzE8M'
+    privatekey: '6LcfTUcUAAAAAEzgUSiPY6RIF0zxCCeaLonUuII5'
 });
