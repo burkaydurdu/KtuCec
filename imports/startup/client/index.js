@@ -39,9 +39,3 @@ import './routers/admin.js'
 import './routers/mutual.js'
 //Global
 import './utils.js'
-
-
-reCAPTCHA.config({
-    publickey: '6LcfTUcUAAAAAJgxmz1azrVYt7yF3fJZ_Hrqi71t',
-    hl: 'tr' // optional display language
-});

@@ -5,7 +5,3 @@ import '/imports/api/alert/methods'
 
 import './publications.js'
 import './emailServiceConfig'
-
-reCAPTCHA.config({
-    privatekey: '6LcfTUcUAAAAAEzgUSiPY6RIF0zxCCeaLonUuII5'
-});
