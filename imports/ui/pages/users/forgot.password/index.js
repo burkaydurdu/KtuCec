@@ -12,11 +12,13 @@ Template.forgotPassword.events({
             //         Materialize.toast("Gonderildi, email'linizi kontrol edin", 2500, 'green white-text');
             //     }
             // });
-            Accounts.forgotPassword(schoolNumber + "@ogr.ktu.edu.tr", (err) => {
-                if (!err) {
-                    return true;
+            Accounts.forgotPassword({
+                email: schoolNumber + "@ogr.ktu.edu.tr"
+            }, (err) => {
+                if (err) {
+                    Materialize.toast("Hata olustu tekrar deneyin", 2500, 'red white-text');
                 } else {
-                    return false;
+                    Materialize.toast("Gonderildi, email'linizi kontrol edin", 2500, 'green white-text');
                 }
             });
         } else {
