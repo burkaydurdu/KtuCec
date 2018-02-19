@@ -42,6 +42,6 @@ import './utils.js'
 
 
 reCAPTCHA.config({
-    publickey: '6LdkKTwUAAAAAGD5BXq2p3MJvYM5h4jYO1ehsBUq',
+    publickey: '6LetTEcUAAAAAKi2h2xtauSeBj1JM344Pz7eACn0',
     hl: 'tr' // optional display language
 });
