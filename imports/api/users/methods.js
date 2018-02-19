@@ -89,13 +89,7 @@ Meteor.methods({
     },
     'forgot.password': function(schoolNumber) {
         try {
-            Accounts.forgotPassword(schoolNumber + "@ogr.ktu.edu.tr", (err) => {
-                if (!err) {
-                    return true;
-                } else {
-                    return false;
-                }
-            });
+
         } catch (e) {
             throw new Meteor.Error(e.error, e.reason);
         }

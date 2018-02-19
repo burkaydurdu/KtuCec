@@ -5,11 +5,18 @@ Template.forgotPassword.events({
         event.preventDefault();
         var schoolNumber = event.target.schoolNumber.value;
         if (schoolNumber.length === 6 && schoolNumber > 0) {
-            Meteor.call('forgot.password', schoolNumber, function(error, result) {
-                if (error) {
-                    Materialize.toast("Hata olustu tekrar deneyin", 2500, 'red white-text');
+            // Meteor.call('forgot.password', schoolNumber, function(error, result) {
+            //     if (error) {
+            //         Materialize.toast("Hata olustu tekrar deneyin", 2500, 'red white-text');
+            //     } else {
+            //         Materialize.toast("Gonderildi, email'linizi kontrol edin", 2500, 'green white-text');
+            //     }
+            // });
+            Accounts.forgotPassword(schoolNumber + "@ogr.ktu.edu.tr", (err) => {
+                if (!err) {
+                    return true;
                 } else {
-                    Materialize.toast("Gonderildi, email'linizi kontrol edin", 2500, 'green white-text');
+                    return false;
                 }
             });
         } else {
