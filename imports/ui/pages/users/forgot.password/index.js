@@ -6,7 +6,6 @@ Template.forgotPassword.events({
         var schoolNumber = event.target.schoolNumber.value;
         if (schoolNumber.length === 6 && schoolNumber > 0) {
             Meteor.call('forgot.password', schoolNumber, function(error, result) {
-                grecaptcha.reset();
                 if (error) {
                     Materialize.toast("Hata olustu tekrar deneyin", 2500, 'red white-text');
 
