@@ -101,7 +101,7 @@ Template.dashboard.helpers({
     getAlert: () => {
         alert = alerts.find({}, {
             sort: {
-                createdAt: 1
+                createdAt: -1
             },
             limit: 10
         });

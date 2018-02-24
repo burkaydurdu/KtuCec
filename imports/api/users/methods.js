@@ -18,6 +18,15 @@ Meteor.methods({
             throw new Meteor.Error(e.error, e.reason);
         }
     },
+    'user.remove': function(id) {
+        try {
+            Meteor.users.remove({
+                _id: id
+            });
+        } catch (e) {
+            throw new Meteor.Error(e.error, e.reason);
+        }
+    },
     'user.append.role': function(data) {
         try {
             const userId = Meteor.users.findOne({

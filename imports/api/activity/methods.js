@@ -48,20 +48,32 @@ Meteor.methods({
             }).imageId;
 
             activitys.remove({
-                $and: [{
-                        _id: id
-                    },
-                    {
-                        owner: Meteor.userId()
-                    }
-                ]
-            }, (err) => {
-                if (!err) {
+                _id: id,
+                owner: Meteor.userId()
+            }, (error, result) => {
+                if (result == 1) {
                     Images.remove({
                         _id: imageId
                     });
-                } else {
-                    console.log("error oldu");
+                }
+            });
+        } catch (e) {
+            throw new Meteor.Error(e.error, e.reason);
+        }
+    },
+    'activity.remove.admin': (id) => {
+        try {
+            imageId = activitys.findOne({
+                _id: id
+            }).imageId;
+
+            activitys.remove({
+                _id: id,
+            }, (error, result) => {
+                if (result == 1) {
+                    Images.remove({
+                        _id: imageId
+                    });
                 }
             });
         } catch (e) {

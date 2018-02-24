@@ -77,10 +77,11 @@
                 </div>
                 <div class="card-action">
                   {{#unless confirmation}}
-                    <a data-id="{{_id}}" href="">Onayla</a>
+                    <a data-id="{{_id}}" href="" class="conf">Onayla</a>
                   {{else}}
                     <span class="green-text">Onaylandi</span>
                   {{/unless}}
+                  <a href="" data-id="{{_id}}" class="red-text right del">Sil</a>
                 </div>
               </div>
             </div>

@@ -57,7 +57,8 @@ Meteor.publish('admin.dashboard.pub', () => {
         Meteor.users.find({}, {
             fields: {
                 roles: 1,
-                createdAt: 1
+                createdAt: 1,
+                profile: 1
             }
         }),
         activitys.find({}, {
@@ -67,9 +68,7 @@ Meteor.publish('admin.dashboard.pub', () => {
             }
         }),
         settings.find({}),
-        alerts.find({
-            owner: Meteor.userId()
-        })
+        alerts.find({})
     ]
 });
 
@@ -127,6 +126,7 @@ Meteor.publish('users.list.pub', () => {
     return [
         Meteor.users.find({}, {
             fields: {
+                emails: 1,
                 profile: 1,
                 roles: 1,
                 createdAt: 1
