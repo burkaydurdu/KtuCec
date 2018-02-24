@@ -29,37 +29,39 @@
           {{#if isInRole 'admin'}}
             <li>
               <a href="/admin/users/list/1">
-                <i class="material-icons right">people</i>Users</a>
+                <i class="material-icons right">people</i>Kisiler</a>
             </li>
           {{/if}}
-          <li>
-            <a class="dropdown-button" href="" data-beloworigin="true" data-activates="activityDropdown">Activity<i class="material-icons right">arrow_drop_down</i>
-            </a>
-            <ul id='activityDropdown' class='dropdown-content'>
-              <li>
-                <a href="/m/activity/create">
-                  <i class="material-icons left">create</i>Etkinlik Olustur</a>
-              </li>
-              {{#if isInRole 'admin'}}
+          {{#if isInRole 'admin,manager'}}
+            <li>
+              <a class="dropdown-button" href="" data-beloworigin="true" data-activates="activityDropdown">Etkinlik<i class="material-icons right">arrow_drop_down</i>
+              </a>
+              <ul id='activityDropdown' class='dropdown-content'>
                 <li>
-                  <a href="/admin/activity/1">
-                    <i class="material-icons left">list</i>Etkinlikleri Goruntule</a>
+                  <a href="/m/activity/create">
+                    <i class="material-icons left">create</i>Etkinlik Olustur</a>
                 </li>
-              {{/if}}
-            </ul>
-          </li>
-          <script>
-            $('.dropdown-button').dropdown({constrainWidth: false});
-          </script>
+                {{#if isInRole 'admin'}}
+                  <li>
+                    <a href="/admin/activity/1">
+                      <i class="material-icons left">list</i>Etkinlikleri Goruntule</a>
+                  </li>
+                {{/if}}
+              </ul>
+            </li>
+            <script>
+              $('.dropdown-button').dropdown({constrainWidth: false});
+            </script>
+          {{/if}}
           {{#if isInRole 'admin'}}
             <li>
               <a href="/admin/dashboard">
-                <i class="material-icons right">dashboard</i>Ben</a>
+                <i class="material-icons right">face</i>Ben</a>
             </li>
           {{else}}
             <li>
               <a href="/user/dashboard">
-                <i class="material-icons right">dashboard</i>Ben</a>
+                <i class="material-icons right">face</i>Ben</a>
             </li>
           {{/if}}
           <li>

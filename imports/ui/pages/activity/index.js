@@ -89,11 +89,21 @@ Template.activity.helpers({
 });
 
 Template.activity.events({
-    'click .card-action a': (event) => {
+    'click .card-action a.conf': (event) => {
         const id = event.currentTarget.dataset.id;
         Meteor.call('activity.confirm', id, function(err, res) {
             if (!err) {
                 Materialize.toast('Etkinlik onaylandi', 2500, 'green white-text');
+            } else {
+                Materialize.toast('Hata olustu', 2500, 'red white-text');
+            }
+        });
+    },
+    'click .card-action a.del': (event) => {
+        const id = event.currentTarget.dataset.id;
+        Meteor.call('activity.remove.admin', id, function(err, res) {
+            if (!err) {
+                Materialize.toast('Etkinlik Silindi', 2500, 'green white-text');
             } else {
                 Materialize.toast('Hata olustu', 2500, 'red white-text');
             }

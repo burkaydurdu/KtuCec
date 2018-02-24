@@ -19,5 +19,14 @@ Meteor.methods({
         } catch (e) {
             throw new Meteor.Error(300, "cant remove document");
         }
+    },
+    'alert.remove.admin': (id) => {
+        try {
+            alerts.remove({
+                _id: id
+            });
+        } catch (e) {
+            throw new Meteor.Error(300, "cant remove document");
+        }
     }
 });

@@ -65,9 +65,7 @@ Template.dashboardAdmin.helpers({
         }
     },
     myAlert: () => {
-        alert = alerts.find({
-            owner: Meteor.userId()
-        });
+        alert = alerts.find({});
         return alert == null ? false : alert.fetch();
     },
     aboutUs: () => {
@@ -81,7 +79,16 @@ Template.dashboardAdmin.helpers({
             type: 'managername'
         });
         return setting != undefined ? setting.content.manager : false;
-    }
+    },
+    'iam': () => {
+        return Meteor.userId();
+    },
+    getOwner: (id) => {
+        user = Meteor.users.findOne({
+            _id: id
+        });
+        return user === undefined ? false : user.profile.name + " " + user.profile.surname;
+    },
 });
 
 Template.dashboardAdmin.events({
@@ -104,7 +111,7 @@ Template.dashboardAdmin.events({
     },
     'click #delAlert': (event) => {
         const id = event.currentTarget.dataset.id;
-        Meteor.call('alert.remove', id, (err, res) => {
+        Meteor.call('alert.remove.admin', id, (err, res) => {
             if (!err) {
                 Materialize.toast('Duyuru Silindi', 2500, 'green white-text');
             } else {

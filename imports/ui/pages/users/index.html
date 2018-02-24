@@ -10,13 +10,23 @@
               <th>Okul Numarasi</th>
               <th>kayit Tarihi</th>
               <th>Roller</th>
+              <th>Secenekler</th>
             </tr>
           </thead>
           <tbody>
             {{#each data}}
               <tr>
                 {{#with profile}}
-                  <td>{{name}}</td>
+                  <td>
+                    {{#each ../emails}}
+                      {{#unless this.verified}}
+                        <i class="material-icons left red-text">event_busy</i>
+                      {{else}}
+                        <i class="material-icons left green-text">event_available</i>
+                      {{/unless}}
+                    {{/each}}
+                    {{name}}
+                  </td>
                   <td>{{surname}}</td>
                   <td>{{schoolNumber}}</td>
                 {{/with}}
@@ -25,6 +35,14 @@
                   {{#each roles}}
                     [{{this}}]
                   {{/each}}
+                </td>
+                <td>
+                  <a href="/profile/{{_id}}">
+                    <i class="material-icons">face</i>
+                  </a>
+                  <a href="" data-id="{{_id}}" class="user-options">
+                    <i class="material-icons red-text">delete</i>
+                  </a>
                 </td>
               </tr>
             {{/each}}

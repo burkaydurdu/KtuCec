@@ -53,7 +53,7 @@ Template.users.events({
         if (data.schoolNumber != "" && data.role != "") {
             Meteor.call('user.remove.role', data, (err, res) => {
                 if (!err) {
-                    Materialize.toast('Basariyla silindi', 2500, 'green white-text');
+                    Materialize.toast('Basariyla Cikartildi', 2500, 'green white-text');
                 } else {
                     Materialize.toast('Sorun olustu!', 2500, 'red white-text');
                 }
@@ -61,6 +61,16 @@ Template.users.events({
         } else {
             Materialize.toast('Gerekli yerleri doldurun!', 2500, 'red white-text');
         }
+    },
+    'click table a.user-options': function(event) {
+        const id = event.currentTarget.dataset.id;
+        Meteor.call('user.remove', id, (err, res) => {
+            if (!err) {
+                Materialize.toast('Basariyla silindi', 2500, 'green white-text');
+            } else {
+                Materialize.toast('Sorun olustu!', 2500, 'red white-text');
+            }
+        });
     }
 });
 

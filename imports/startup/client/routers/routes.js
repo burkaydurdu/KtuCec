@@ -60,6 +60,18 @@ FlowRouter.route('/profile/:id', {
     }
 });
 
+FlowRouter.route('/alerts/:page', {
+    name: 'alerts.page',
+    action: function() {
+        BlazeLayout.render('default', {
+            page: 'alerts'
+        });
+    },
+    subscriptions: function() {
+        this.register('alerts.pub', Meteor.subscribe('alerts.pub'));
+    }
+});
+
 FlowRouter.notFound = {
     action: function() {
         BlazeLayout.render('default', {
