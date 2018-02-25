@@ -11,6 +11,13 @@ Template.userProfile.helpers({
             _id: FlowRouter.getParam('id')
         });
     },
+    userRoleTest: () => {
+        if (Roles.userIsInRole(FlowRouter.getParam('id'), ['admin', 'manager'])) {
+            return true;
+        } else {
+            return false;
+        }
+    },
     createdActivityCount: () => {
         return activitys.find({
             owner: FlowRouter.getParam('id'),
