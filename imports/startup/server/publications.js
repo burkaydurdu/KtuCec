@@ -85,7 +85,8 @@ Meteor.publish('admin.activity.pub', () => {
 });
 
 Meteor.publish('user.profile.pub', (id) => {
-    return [Meteor.users.find({
+    return [
+        Meteor.users.find({
             _id: id
         }),
         Images.find({}),

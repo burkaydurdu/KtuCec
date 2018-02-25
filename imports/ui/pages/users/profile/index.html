@@ -45,21 +45,29 @@
         <div class="col s12 m8 l8">
           <div class="col s12">
             <ul class="tabs transparent">
-              <li class="tab col s4">
-                <a class="blue-text" href="#createdActivity">Olusturdugu Etkinlikler
-                  <strong>{{createdActivityCount}}</strong>
-                </a>
-              </li>
-              <li class="tab col s4">
-                <a class="blue-text" href="#joinedActivity">Katildigi Etkinlikler
-                  <strong>{{joinedActivityCount}}</strong>
-                </a>
-              </li>
-              <li class="tab col s4">
-                <a class="blue-text" href="#alertWall">Duyurulari
-                  <strong>{{alertCount}}</strong>
-                </a>
-              </li>
+              {{#if userRoleTest}}
+                <li class="tab col s4">
+                  <a class="blue-text" href="#createdActivity">Etkinliklerim
+                    <strong>{{createdActivityCount}}</strong>
+                  </a>
+                </li>
+                <li class="tab col s4">
+                  <a class="blue-text" href="#joinedActivity">Katildigim Etkinlikler
+                    <strong>{{joinedActivityCount}}</strong>
+                  </a>
+                </li>
+                <li class="tab col s4">
+                  <a class="blue-text" href="#alertWall">Duyurularim
+                    <strong>{{alertCount}}</strong>
+                  </a>
+                </li>
+              {{else}}
+                <li class="tab col s6">
+                  <a class="blue-text" href="#joinedActivity">Katildigim Etkinlikler
+                    <strong>{{joinedActivityCount}}</strong>
+                  </a>
+                </li>
+              {{/if}}
             </ul>
           </div>
           <div id="createdActivity" class="col s12">
