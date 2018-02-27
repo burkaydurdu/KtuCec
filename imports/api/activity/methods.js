@@ -47,16 +47,18 @@ Meteor.methods({
                 _id: id
             }).imageId;
 
-            activitys.remove({
-                _id: id,
-                owner: Meteor.userId()
-            }, (error, result) => {
-                if (result == 1) {
-                    Images.remove({
-                        _id: imageId
-                    });
-                }
-            });
+            if (imageId != undefined) {
+                activitys.remove({
+                    _id: id,
+                    owner: Meteor.userId()
+                }, (error, result) => {
+                    if (result == 1) {
+                        Images.remove({
+                            _id: imageId
+                        });
+                    }
+                });
+            }
         } catch (e) {
             throw new Meteor.Error(e.error, e.reason);
         }
@@ -67,15 +69,17 @@ Meteor.methods({
                 _id: id
             }).imageId;
 
-            activitys.remove({
-                _id: id,
-            }, (error, result) => {
-                if (result == 1) {
-                    Images.remove({
-                        _id: imageId
-                    });
-                }
-            });
+            if (imageId != undefined) {
+                activitys.remove({
+                    _id: id,
+                }, (error, result) => {
+                    if (result == 1) {
+                        Images.remove({
+                            _id: imageId
+                        });
+                    }
+                });
+            }
         } catch (e) {
             throw new Meteor.Error(e.error, e.reason);
         }
