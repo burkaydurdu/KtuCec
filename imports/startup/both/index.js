@@ -6,7 +6,20 @@ import '/imports/api/alert/alert'
 Images = new FS.Collection("images", {
     stores: [new FS.Store.FileSystem("images", {
         path: "~/uploads"
-    })]
+    })],
+    filter: {
+        allow: {
+            contentTypes: ['image/*'],
+            extensions: ['png', 'jpg', 'jpeg']
+        },
+        onInvalid: function(message) {
+            if (Meteor.isClient) {
+                Materialize.toast('Lutfen Dogru bir secim yapin', 2500, 'red darken-2 white=text');
+            } else {
+
+            }
+        }
+    }
 });
 
 Images.allow({
