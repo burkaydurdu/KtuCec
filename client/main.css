@@ -67,6 +67,9 @@ img.logo {
 .cec-overflow-scrool {
   max-height: 100px;
 }
+.cec-header {
+  margin-left: 10px;
+}
 @media screen and (max-width:480px) {
     .box {
         margin-right: 0;

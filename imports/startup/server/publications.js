@@ -89,7 +89,7 @@ Meteor.publish('user.profile.pub', (id) => {
         Meteor.users.find({
             _id: id
         }),
-        Images.find({}),
+        Images.find(),
         activitys.find({
             $or: [{
                 owner: id
@@ -100,7 +100,7 @@ Meteor.publish('user.profile.pub', (id) => {
             }],
             confirmation: true
         }),
-        alerts.find({
+        alerts.find({}, {
             owner: id
         })
     ]
@@ -155,6 +155,23 @@ Meteor.publish('managers.pub', () => {
         Images.find({})
     ]
 });
+
+Meteor.publish('members.pub', () => {
+    return [
+        Meteor.users.find({
+            roles: {
+                $nin: ['manager', 'admin']
+            }
+        }, {
+            fields: {
+                profile: 1,
+                roles: 1
+            }
+        }),
+        Images.find({})
+    ]
+});
+
 
 Meteor.publish('alerts.pub', () => {
     return [

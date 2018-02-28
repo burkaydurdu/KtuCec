@@ -1,10 +1,10 @@
-import './index.html';
+import './index.html'
 
-Template.managers.helpers({
-    managersData: () => {
+Template.members.helpers({
+    membersData: () => {
         users = Meteor.users.find({
             roles: {
-                $in: ['manager']
+                $in: ['user']
             }
         });
         return users != undefined ? users : false;

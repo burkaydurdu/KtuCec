@@ -14,7 +14,7 @@ Images = new FS.Collection("images", {
         },
         onInvalid: function(message) {
             if (Meteor.isClient) {
-                Materialize.toast('Lutfen Dogru bir secim yapin', 2500, 'red darken-2 white=text');
+                Materialize.toast('Lütfen Doğru bir seçim yapın', 2500, 'red darken-2 white=text');
             } else {
 
             }
