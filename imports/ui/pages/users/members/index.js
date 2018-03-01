@@ -9,7 +9,7 @@ Template.members.helpers({
                 }
             }, {
                 roles: {
-                    $nin: ['user']
+                    $nin: ['manaager', 'admin']
                 }
 
             }]
