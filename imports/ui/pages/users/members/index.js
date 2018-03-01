@@ -2,10 +2,17 @@ import './index.html'
 
 Template.members.helpers({
     membersData: () => {
-        users = Meteor.users.find({
-            roles: {
-                $in: ['user']
-            }
+        users = Meteor.users.find({}, {
+            $and: [{
+                roles: {
+                    $in: ['user']
+                }
+            }, {
+                roles: {
+                    $nin: ['user']
+                }
+
+            }]
         });
         return users != undefined ? users : false;
     },

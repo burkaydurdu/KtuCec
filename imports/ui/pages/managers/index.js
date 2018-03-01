@@ -2,7 +2,7 @@ import './index.html';
 
 Template.managers.helpers({
     managersData: () => {
-        users = Meteor.users.find({
+        users = Meteor.users.find({}, {
             roles: {
                 $in: ['manager']
             }

@@ -117,7 +117,7 @@ Meteor.publish('user.dashboard.pub', () => {
     return [
         activitys.find({}),
         Images.find({}),
-        alerts.find({
+        alerts.find({}, {
             owner: Meteor.userId()
         })
     ]
