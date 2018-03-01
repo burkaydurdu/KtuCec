@@ -145,7 +145,8 @@ Meteor.publish('managers.pub', () => {
         Meteor.users.find({
             roles: {
                 $in: ['manager']
-            }
+            },
+            "emails.0.verified": true
         }, {
             fields: {
                 profile: 1,
@@ -161,7 +162,8 @@ Meteor.publish('members.pub', () => {
         Meteor.users.find({
             roles: {
                 $nin: ['manager', 'admin']
-            }
+            },
+            "emails.0.verified": true
         }, {
             fields: {
                 profile: 1,
