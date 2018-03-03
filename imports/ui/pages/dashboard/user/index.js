@@ -78,8 +78,8 @@ Template.dashboardUser.onRendered(function() {
     this.autorun(() => {
         this.subscribe('user.dashboard.pub', () => {
             Tracker.afterFlush(() => {
-                this.$('.materialboxed').materialbox();
-                this.$('ul.tabs').tabs();
+                // this.$('.materialboxed').materialbox();
+                // this.$('ul.tabs').tabs();
             });
         })
     });
