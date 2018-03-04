@@ -49,6 +49,9 @@ img.logo {
 .cec-margin-top{
     margin-top: 20px;
 }
+.cec-margin-right {
+  margin-right: 10px;
+}
 .cec-frame {
   border: 2px solid black
 }
