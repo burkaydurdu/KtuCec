@@ -10,7 +10,7 @@
       <ul class="right hide-on-med-and-down">
         <li>
           <a href="/aboutus">
-            <i class="material-icons right">texture</i>Hakkimizda</a>
+            <i class="material-icons right">texture</i>Hakkımızda</a>
         </li>
         <li>
           <a href="/managers">
@@ -23,17 +23,17 @@
         {{#unless currentUser}}
           <li>
             <a href="/login">
-              <i class="material-icons right">input</i>Giris Yap</a>
+              <i class="material-icons right">input</i>Giriş Yap</a>
           </li>
           <li>
             <a href="/register">
-              <i class="material-icons right">save</i>Kayit Ol</a>
+              <i class="material-icons right">save</i>Kayıt Ol</a>
           </li>
         {{else}}
           {{#if isInRole 'admin'}}
             <li>
               <a href="/admin/users/list/1">
-                <i class="material-icons right">people</i>Kisiler</a>
+                <i class="material-icons right">people</i>Kişiler</a>
             </li>
           {{/if}}
           {{#if isInRole 'admin,manager'}}
@@ -43,12 +43,12 @@
               <ul id='activityDropdown' class='dropdown-content'>
                 <li>
                   <a href="/m/activity/create">
-                    <i class="material-icons left">create</i>Etkinlik Olustur</a>
+                    <i class="material-icons left">create</i>Etkinlik Oluştur</a>
                 </li>
                 {{#if isInRole 'admin'}}
                   <li>
                     <a href="/admin/activity/1">
-                      <i class="material-icons left">list</i>Etkinlikleri Goruntule</a>
+                      <i class="material-icons left">list</i>Etkinlikleri Görüntüle</a>
                   </li>
                 {{/if}}
               </ul>
@@ -70,14 +70,14 @@
           {{/if}}
           <li>
             <a href="" id="logout">
-              <i class="material-icons right">exit_to_app</i>Cikis Yap</a>
+              <i class="material-icons right">exit_to_app</i>Cıkış Yap</a>
           </li>
         {{/unless}}
       </ul>
       <ul class="side-nav" id="mobile-demo">
         <li>
           <a href="/aboutus">
-            <i class="material-icons right">texture</i>Hakkimizda</a>
+            <i class="material-icons right">texture</i>Hakkımızda</a>
         </li>
         <li>
           <a href="/managers">
@@ -90,17 +90,17 @@
         {{#unless currentUser}}
           <li>
             <a href="/login">
-              <i class="material-icons right">input</i>Giris Yap</a>
+              <i class="material-icons right">input</i>Giriş Yap</a>
           </li>
           <li>
             <a href="/register">
-              <i class="material-icons right">save</i>Kayit Ol</a>
+              <i class="material-icons right">save</i>Kayıt Ol</a>
           </li>
         {{else}}
           {{#if isInRole 'admin'}}
             <li>
               <a href="/admin/users/list/1">
-                <i class="material-icons right">people</i>Users</a>
+                <i class="material-icons right">people</i>Kişiler</a>
             </li>
             <li>
               <a href="/admin/dashboard">
@@ -120,12 +120,12 @@
           </li>
           <li>
             <a href="/m/activity/create">
-              <i class="material-icons left">create</i>Etkinlik Olustur</a>
+              <i class="material-icons left">create</i>Etkinlik Oluştur</a>
           </li>
           {{#if isInRole 'admin'}}
             <li>
               <a href="/admin/activity/1">
-                <i class="material-icons left">list</i>Etkinlikleri Goruntule</a>
+                <i class="material-icons left">list</i>Etkinlikleri Görüntüle</a>
             </li>
           {{/if}}
           <li>
@@ -133,7 +133,7 @@
           </li>
           <li>
             <a href="" id="logout">
-              <i class="material-icons right">exit_to_app</i>Cikis Yap</a>
+              <i class="material-icons right">exit_to_app</i>Cıkış Yap</a>
           </li>
         {{/unless}}
         <script>

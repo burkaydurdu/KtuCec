@@ -52,18 +52,18 @@
                   </a>
                 </li>
                 <li class="tab col s4">
-                  <a class="blue-text" href="#joinedActivity">Katildigim Etkinlikler
+                  <a class="blue-text" href="#joinedActivity">Katıldığım Etkinlikler
                     <strong>{{joinedActivityCount}}</strong>
                   </a>
                 </li>
                 <li class="tab col s4">
-                  <a class="blue-text" href="#alertWall">Duyurularim
+                  <a class="blue-text" href="#alertWall">Duyurularım
                     <strong>{{alertCount}}</strong>
                   </a>
                 </li>
               {{else}}
                 <li class="tab col s6">
-                  <a class="blue-text" href="#joinedActivity">Katildigim Etkinlikler
+                  <a class="blue-text" href="#joinedActivity">Katıldığım Etkinlikler
                     <strong>{{joinedActivityCount}}</strong>
                   </a>
                 </li>
@@ -98,7 +98,7 @@
             </div>
             {{#unless equals createdActivityCount 0}}
               <div class="row right">
-                <a id="allCreated" class="blue-text" href="">Tumu</a>
+                <a id="allCreated" class="blue-text" href="">Tümü</a>
               </div>
             {{/unless}}
           </div>
@@ -112,7 +112,7 @@
                         <a href="/activity/{{_id}}">{{name}}</a>
                       </h5>
                       <p class="text-lighten-2 grey-text">
-                        <strong>Created:
+                        <strong>Oluşturulma:
                         </strong>{{formatDate createdAt}}</p>
                     </div>
                   </div>
@@ -121,7 +121,7 @@
             </div>
             {{#unless equals joinedActivityCount 0}}
               <div class="row right">
-                <a id="allJoined" class="blue-text" href="">Tumu</a>
+                <a id="allJoined" class="blue-text" href="">Tümü</a>
               </div>
             {{/unless}}
           </div>

@@ -16,11 +16,11 @@ Template.userSettingsProfile.events({
                         if (!err) {
                             Materialize.toast("Resim eklendi", 2500, "green darken-2 white-text");
                         } else {
-                            Materialize.toast("Resim eklemede bir hata olustu!", 2500, "red darken-2 white-text");
+                            Materialize.toast("Resim eklemede bir hata oluştu!", 2500, "red darken-2 white-text");
                         }
                     });
                 } else {
-                    Materialize.toast("Resim eklemede bir hata olustu!", 2500, "red darken-2 white-text");
+                    Materialize.toast("Resim eklemede bir hata oluştu!", 2500, "red darken-2 white-text");
                 }
             });
         });
@@ -35,9 +35,9 @@ Template.userSettingsProfile.events({
         };
         Meteor.call('profile.update', data, (err, res) => {
             if (!err) {
-                Materialize.toast('Profiliniz Guncellendi', 2500, 'green white-text');
+                Materialize.toast('Profiliniz Güncellendi', 2500, 'green white-text');
             } else {
-                Materialize.toast('Sorun Olustu', 2500, 'red white-text');
+                Materialize.toast('Sorun Oluştu', 2500, 'red white-text');
             }
         });
     }
