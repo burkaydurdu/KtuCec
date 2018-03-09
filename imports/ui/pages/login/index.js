@@ -12,7 +12,7 @@ Template.login.events({
                     Materialize.toast('Kullanıcı bulunamadı, bilgilerinizi kontrol edin!', 2500, 'red darken-2 white=text');
                 } else {
                     if (res.verified == false) {
-                        Materialize.toast("Lütfen, eposta'nıza gelen onaylama mesajını kontrol edin!", 2500, 'red darken-2 white=text');
+                        Materialize.toast("Lütfen, {okul numrası}@ogr.ktu.edu.tr eposta'nıza gelen onaylama mesajını kontrol edin!", 2500, 'red darken-2 white=text');
                     } else {
                         Meteor.loginWithPassword(email_username, password, function(err, res) {
                             if (!err) {

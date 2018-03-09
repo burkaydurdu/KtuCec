@@ -73,6 +73,12 @@ img.logo {
 .cec-header {
   margin-left: 10px;
 }
+.cec-memmen-foother {
+  height: 100px;
+}
+.cec-dashboard-foother {
+  height: 200px;
+}
 @media screen and (max-width:480px) {
     .box {
         margin-right: 0;
