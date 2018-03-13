@@ -79,6 +79,12 @@ img.logo {
 .cec-dashboard-foother {
   height: 200px;
 }
+.cec-center-block {
+  position: absolute;
+  left: 49%;
+  top: 49%;
+}
+
 @media screen and (max-width:480px) {
     .box {
         margin-right: 0;

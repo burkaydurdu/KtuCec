@@ -48,7 +48,7 @@ FlowRouter.route('/managers', {
     }
 });
 
-FlowRouter.route('/members', {
+FlowRouter.route('/members/:page', {
     name: 'members.page',
     action: function() {
         BlazeLayout.render('default', {

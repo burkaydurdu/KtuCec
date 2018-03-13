@@ -1,6 +1,9 @@
 import './index.html';
 
 Template.managers.helpers({
+    isReady: () => {
+        return FlowRouter.subsReady('managers.pub');
+    },
     managersData: () => {
         users = Meteor.users.find({
             roles: {

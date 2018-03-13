@@ -1,27 +1,45 @@
 <template name="managers">
-  <div class="row">
-    <h4 class="grey-text cec-header">Yöneticiler Listeleniyor</h4>
-    <div class="col s12 m10 l10 offset-m1 offset-l1">
-      {{#each managersData}}
-        <div class="col s6 m3 l2">
-          <div class="card transparent">
-            <div class="card-image">
-              {{#if profile.profilePictureId}}
-                {{#each getImage profile.profilePictureId}}
-                  <img class="cec-image-frame" src="{{this.url}}">
-                {{/each}}
-              {{else}}
-                <img class="cec-image-frame" src="/image/default_profile.png">
-              {{/if}}
-            </div>
-            <div class="card-content cec-memmen-foother">
-              <a href="/profile/{{_id}}" class="white-text">
-                {{profile.name}}
-                {{profile.surname}}</a>
-            </div>
+  {{#unless isReady}}
+    <div class="cec-center-block">
+      <div class="preloader-wrapper big active">
+        <div class="spinner-layer spinner-blue-only">
+          <div class="circle-clipper left">
+            <div class="circle"></div>
+          </div>
+          <div class="gap-patch">
+            <div class="circle"></div>
+          </div>
+          <div class="circle-clipper right">
+            <div class="circle"></div>
           </div>
         </div>
-      {{/each}}
+      </div>
     </div>
-  </div>
+  {{else}}
+    <div class="row">
+      <h4 class="grey-text cec-header">Yöneticiler Listeleniyor</h4>
+      <div class="col s12 m10 l10 offset-m1 offset-l1">
+        {{#each managersData}}
+          <div class="col s6 m3 l2">
+            <div class="card transparent">
+              <div class="card-image">
+                {{#if profile.profilePictureId}}
+                  {{#each getImage profile.profilePictureId}}
+                    <img class="cec-image-frame" src="{{this.url}}">
+                  {{/each}}
+                {{else}}
+                  <img class="cec-image-frame" src="/image/default_profile.png">
+                {{/if}}
+              </div>
+              <div class="card-content cec-memmen-foother">
+                <a href="/profile/{{_id}}" class="white-text">
+                  {{profile.name}}
+                  {{profile.surname}}</a>
+              </div>
+            </div>
+          </div>
+        {{/each}}
+      </div>
+    </div>
+  {{/unless}}
 </template>
