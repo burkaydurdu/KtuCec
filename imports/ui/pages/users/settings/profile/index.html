@@ -25,6 +25,17 @@
               <button type="submit" class="btn green right">Kaydet</button>
             </div>
           </form>
+          <form id="userSettingsProfileEmailForm">
+            <h5 class="white-text">Mail Ekle</h5>
+            <div class="input-field col s12 m12 l12">
+              <i class="material-icons prefix white-text">mail</i>
+              <label for="email" data-error="wrong" data-success="right">mail</label>
+              <input id="email" type="email" class="white-text validate" value="{{profile.second_mail}}" required="" aria-required="true">
+            </div>
+            <div class="row">
+              <button type="submit" class="btn blue darken-3 right">Kaydet</button>
+            </div>
+          </form>
         </div>
         <div class="col s12 m4 l4 center">
           <div class="row">

@@ -39,6 +39,11 @@
                   <i class="material-icons left blue-text">mail</i>{{address}}
                 </h5>
               {{/each}}
+              {{#if profile.second_mail}}
+                <h5 class="text-lighten-2 grey-text">
+                  <i class="material-icons left deep-orange-text text-lighten-1">mail</i>{{profile.second_mail}}
+                </h5>
+              {{/if}}
             </div>
           {{/with}}
         </div>

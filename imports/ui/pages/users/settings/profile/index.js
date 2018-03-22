@@ -40,6 +40,20 @@ Template.userSettingsProfile.events({
                 Materialize.toast('Sorun Oluştu', 2500, 'red white-text');
             }
         });
+    },
+    'submit form#userSettingsProfileEmailForm': (event) => {
+        event.preventDefault();
+
+        const mail = event.target.email.value;
+
+        Meteor.call('user.email.add', mail, (err, res) => {
+            if (!err) {
+                Materialize.toast('İkinci mail güncellendi', 2500, 'green white-text');
+            } else {
+                Materialize.toast('Sorun Oluştu', 2500, 'red white-text');
+            }
+        })
+
     }
 });
 Template.userSettingsProfile.onRendered(function() {
