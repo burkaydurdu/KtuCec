@@ -40,7 +40,7 @@ Template.activityCreate.events({
                     template.uploadImageId.set(fileObj._id);
                     Materialize.toast("Resim eklendi", 2500, "green darken-2 white-text");
                 } else {
-                    Materialize.toast("Resim eklemede bir hata olustu!", 2500, "red darken-2 white-text");
+                    Materialize.toast("Resim eklemede bir hata oluştu!", 2500, "red darken-2 white-text");
                 }
             });
         });
@@ -77,18 +77,18 @@ Template.activityCreate.events({
         if (imageId != " ") {
             Meteor.call('activity.create', activityObject, (err, res) => {
                 if (!err) {
-                    Materialize.toast("Etkinlik olusturuldu", 2500, "green darken-2 white-text");
+                    Materialize.toast("Etkinlik oluşturuldu", 2500, "green darken-2 white-text");
                     if (Roles.userIsInRole(Meteor.userId(), ['admin'])) {
                         FlowRouter.go('/admin/activity/1');
                     } else {
                         FlowRouter.go('/user/dashboard/');
                     }
                 } else {
-                    Materialize.toast("Etkinlik olusturulamadi!", 2500, "red darken-2 white-text");
+                    Materialize.toast("Etkinlik oluşturulamadı!", 2500, "red darken-2 white-text");
                 }
             });
         } else {
-            Materialize.toast("Etkinlik resmi yukleyin!", 2500, "red darken-2 white-text");
+            Materialize.toast("Etkinlik resmi yükleyin!", 2500, "red darken-2 white-text");
         }
     }
 });

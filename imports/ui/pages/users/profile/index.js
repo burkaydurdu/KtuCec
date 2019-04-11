@@ -103,8 +103,8 @@ Template.userProfile.onRendered(function() {
     this.autorun(() => {
         this.subscribe('user.profile.pub', () => {
             Tracker.afterFlush(() => {
-                this.$('.materialboxed').materialbox();
-                this.$('ul.tabs').tabs();
+                // this.$('.materialboxed').materialbox();
+                // this.$('ul.tabs').tabs();
             });
         })
     });

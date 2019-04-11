@@ -134,9 +134,9 @@ Template.dashboard.events({
         if (content.length !== 0) {
             Meteor.call('alert.create', data, (err, res) => {
                 if (!err) {
-                    Materialize.toast('Basariyla Olusturuldu', 2500, 'green white-text');
+                    Materialize.toast('Başarıyla Oluşturuldu', 2500, 'green white-text');
                 } else {
-                    Materialize.toast('Hata Olustu', 2500, 'red white-text');
+                    Materialize.toast('Hata Oluştu', 2500, 'red white-text');
                 }
             });
         } else {

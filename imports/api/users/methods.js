@@ -61,6 +61,19 @@ Meteor.methods({
             throw new Meteor.Error(100, 'Error');
         }
     },
+    'user.email.add': function(email) {
+        try {
+            Meteor.users.update(Meteor.userId(), {
+                $set: {
+                    'profile.second_mail': email,
+                }
+            }, {
+                multi: true
+            });
+        } catch (e) {
+            throw new Meteor.Error(e.error, e.reason);
+        }
+    },
     'profile.picture.add': function(pictureId) {
         try {
             imageId = Meteor.users.findOne({

@@ -47,7 +47,7 @@
                     <img class="materialboxed cec-card-image" data-caption="picture" src="{{this.url}}">
                   {{/each}}
                 </div>
-                <div class="card-content">
+                <div class="card-content cec-dashboard-foother">
                   <span class="card-title activator grey-text text-darken-4">
                     <a href="/activity/{{_id}}">{{name}}</a>
                     <i class="material-icons right">more_vert</i>
@@ -55,14 +55,14 @@
                   <ul class="collection">
                     <li class="collection-item">
                       <strong>
-                        <i class="material-icons left">person</i>Owner:
+                        <i class="material-icons left">person</i>Oluşturan:
                       </strong>
                       <a href="/profile/{{owner}}">
                         {{getOwner owner}}</a>
                     </li>
                     <li class="collection-item">
                       <strong>
-                        <i class="material-icons left">group</i>Participants:
+                        <i class="material-icons left">group</i>Katılımcı:
                       </strong>{{getArrayLength join}}</li>
                   </ul>
                 </div>
@@ -70,13 +70,13 @@
                   <span class="card-title grey-text text-darken-4">Info<i class="material-icons right">close</i>
                   </span>
                   <p>
-                    <strong>Date:
+                    <strong>Tarih:
                     </strong>{{getDate date}}</p>
                   <p>
-                    <strong>Time:
+                    <strong>Saat:
                     </strong>{{getTime date}}</p>
                   <p>
-                    <strong>Place:
+                    <strong>Yer:
                     </strong>{{place}}</p>
                   <p>{{description}}</p>
                 </div>
@@ -105,7 +105,7 @@
                     <img class="materialboxed cec-card-image" data-caption="picture" src="{{this.url}}">
                   {{/each}}
                 </div>
-                <div class="card-content">
+                <div class="card-content cec-dashboard-foother">
                   <span class="card-title activator grey-text text-darken-4">
                     <a href="/activity/{{_id}}">{{name}}</a>
                     <i class="material-icons right">more_vert</i>
@@ -113,14 +113,14 @@
                   <ul class="collection">
                     <li class="collection-item">
                       <strong>
-                        <i class="material-icons left">person</i>Owner:
+                        <i class="material-icons left">person</i>Oluşturan:
                       </strong>
                       <a href="/profile/{{owner}}">
                         {{shortString (getOwner owner)}}</a>
                     </li>
                     <li class="collection-item">
                       <strong>
-                        <i class="material-icons left">group</i>Participants:
+                        <i class="material-icons left">group</i>Katılımcı:
                       </strong>{{getArrayLength join}}</li>
                   </ul>
                 </div>
@@ -128,13 +128,13 @@
                   <span class="card-title grey-text text-darken-4">Info<i class="material-icons right">close</i>
                   </span>
                   <p>
-                    <strong>Date:
+                    <strong>Tarih:
                     </strong>{{getDate date}}</p>
                   <p>
-                    <strong>Time:
+                    <strong>Saat:
                     </strong>{{getTime date}}</p>
                   <p>
-                    <strong>Place:
+                    <strong>Yer:
                     </strong>{{place}}</p>
                   <p>{{description}}</p>
                 </div>

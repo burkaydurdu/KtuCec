@@ -10,15 +10,15 @@ Template.userSettingsAccount.events({
         if (newPassword == newPasswordCof) {
             Accounts.changePassword(oldPassword, newPassword, (err) => {
                 if (!err) {
-                    Materialize.toast('Sifreniz Degistirildi', 3500, 'green white-text');
+                    Materialize.toast('Şifreniz Değiştirildi', 3500, 'green white-text');
                 } else {
                     if (err.reason == "Incorrect password") {
-                        Materialize.toast('Sifreniz dogru degil', 3500, 'red white-text');
+                        Materialize.toast('Şifreniz doğru değil', 3500, 'red white-text');
                     }
                 }
             });
         } else {
-            Materialize.toast('Yeni sifrenizi kontrol edin!', 3500, 'red white-text');
+            Materialize.toast('Yeni şifrenizi kontrol edin!', 3500, 'red white-text');
         }
     }
 });

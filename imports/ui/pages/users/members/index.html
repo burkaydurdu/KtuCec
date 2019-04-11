@@ -1,4 +1,4 @@
-<template name="managers">
+<template name="members">
   {{#unless isReady}}
     <div class="cec-center-block">
       <div class="preloader-wrapper big active">
@@ -17,9 +17,9 @@
     </div>
   {{else}}
     <div class="row">
-      <h4 class="grey-text cec-header">Yöneticiler Listeleniyor</h4>
+      <h4 class="grey-text cec-header">Üyeler Listeleniyor</h4>
       <div class="col s12 m10 l10 offset-m1 offset-l1">
-        {{#each managersData}}
+        {{#each membersData}}
           <div class="col s6 m3 l2">
             <div class="card transparent">
               <div class="card-image">
@@ -40,6 +40,31 @@
           </div>
         {{/each}}
       </div>
+    </div>
+    <div class="row center">
+      <ul class="pagination">
+        <li class="waves-effect">
+          <a href="{{downPage}}">
+            <i class="material-icons">chevron_left</i>
+          </a>
+        </li>
+        {{#each paginationCol dataCount}}
+          {{#if pageActive this}}
+            <li class="active">
+              <a href="{{this}}">{{this}}</a>
+            </li>
+          {{else}}
+            <li class="waves-effect">
+              <a href="{{this}}">{{this}}</a>
+            </li>
+          {{/if}}
+        {{/each}}
+        <li class="waves-effect">
+          <a href="{{upPage dataCount 20}}">
+            <i class="material-icons">chevron_right</i>
+          </a>
+        </li>
+      </ul>
     </div>
   {{/unless}}
 </template>

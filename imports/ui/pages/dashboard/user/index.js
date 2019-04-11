@@ -68,7 +68,7 @@ Template.dashboardUser.events({
             if (!err) {
                 Materialize.toast('Duyuru Silindi', 2500, 'green white-text');
             } else {
-                Materialize.toast('Bir Sorun Olustu!', 2500, 'red white-text');
+                Materialize.toast('Bir Sorun Oluştu!', 2500, 'red white-text');
             }
         });
     }
@@ -78,8 +78,8 @@ Template.dashboardUser.onRendered(function() {
     this.autorun(() => {
         this.subscribe('user.dashboard.pub', () => {
             Tracker.afterFlush(() => {
-                this.$('.materialboxed').materialbox();
-                this.$('ul.tabs').tabs();
+                // this.$('.materialboxed').materialbox();
+                // this.$('ul.tabs').tabs();
             });
         })
     });

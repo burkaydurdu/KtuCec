@@ -5,7 +5,7 @@
         <i class="material-icons left">list</i>{{dataName}}</h5>
       {{#if equals dataCount 0}}
         <div class="row">
-          <h2 class="center white-text">Etkinlik Listesi Bos</h2>
+          <h2 class="center white-text">Etkinlik Listesi Boş</h2>
         </div>
       {{else}}
         <div class="row">
@@ -24,30 +24,30 @@
                   </span>
                   <p>
                     <strong>
-                      <i class="material-icons left">person</i>Owner:
+                      <i class="material-icons left">person</i>Oluşturan:
                     </strong>{{getOwner owner}}</p>
                 </div>
                 <div class="card-reveal">
                   <span class="card-title grey-text text-darken-4">Info<i class="material-icons right">close</i>
                   </span>
                   <p>
-                    <strong>Date:
+                    <strong>Tarih:
                     </strong>{{formatSingleDate date}}</p>
                   <p>
-                    <strong>Time:
+                    <strong>Saat:
                     </strong>{{formatTime date}}</p>
                   <p>
-                    <strong>Place:
+                    <strong>Yer:
                     </strong>{{place}}</p>
                   <p>{{description}}</p>
                 </div>
                 {{#if equals owner getUser}}
                   <div class="card-action">
                     {{#unless confirmation}}
-                      <a href="/m/activity/edit/{{_id}}" class="">Duzenle</a>
+                      <a href="/m/activity/edit/{{_id}}" class="">Düzenle</a>
                       <a href="" data-id="{{_id}}" class="red-text">Sil</a>
                     {{else}}
-                      <a href="">Onaylandi</a>
+                      <a href="">Onaylandı</a>
                     {{/unless}}
                   </div>
                 {{/if}}

@@ -27,9 +27,9 @@ Template.activityEdit.events({
                     };
                     Meteor.call('activity.image.update', data, (err, res) => {
                         if (!err) {
-                            Materialize.toast("Resim Guncellendi", 2500, "green darken-2 white-text");
+                            Materialize.toast("Resim Güncellendi", 2500, "green darken-2 white-text");
                         } else {
-                            Materialize.toast("Resim guncellemede bir hata olustu!", 2500, "red darken-2 white-text");
+                            Materialize.toast("Resim güncellemede bir hata oluştu!", 2500, "red darken-2 white-text");
                         }
                     })
                 }
@@ -55,9 +55,9 @@ Template.activityEdit.events({
         };
         Meteor.call('activity.content.update', activityObject, (err, res) => {
             if (!err) {
-                Materialize.toast("Etkinlik icerigi guncellendi", 2500, "green darken-2 white-text");
+                Materialize.toast("Etkinlik içeriği güncellendi", 2500, "green darken-2 white-text");
             } else {
-                Materialize.toast("Etkinlik icerigi guncellenemedi!", 2500, "red darken-2 white-text");
+                Materialize.toast("Etkinlik içeriği güncellenemedi!", 2500, "red darken-2 white-text");
             }
         });
     }

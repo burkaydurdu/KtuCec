@@ -49,6 +49,9 @@ img.logo {
 .cec-margin-top{
     margin-top: 20px;
 }
+.cec-margin-right {
+  margin-right: 10px;
+}
 .cec-frame {
   border: 2px solid black
 }
@@ -67,6 +70,21 @@ img.logo {
 .cec-overflow-scrool {
   max-height: 100px;
 }
+.cec-header {
+  margin-left: 10px;
+}
+.cec-memmen-foother {
+  height: 100px;
+}
+.cec-dashboard-foother {
+  height: 200px;
+}
+.cec-center-block {
+  position: absolute;
+  left: 49%;
+  top: 49%;
+}
+
 @media screen and (max-width:480px) {
     .box {
         margin-right: 0;

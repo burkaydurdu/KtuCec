@@ -48,6 +48,18 @@ FlowRouter.route('/managers', {
     }
 });
 
+FlowRouter.route('/members/:page', {
+    name: 'members.page',
+    action: function() {
+        BlazeLayout.render('default', {
+            page: 'members'
+        });
+    },
+    subscriptions: function() {
+        this.register('members.pub', Meteor.subscribe('members.pub'));
+    }
+});
+
 FlowRouter.route('/profile/:id', {
     name: 'person.page',
     action: function() {

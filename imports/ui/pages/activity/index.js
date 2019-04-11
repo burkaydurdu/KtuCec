@@ -8,13 +8,13 @@ Template.activity.helpers({
     dataName: () => {
         category = Template.instance().category.get();
         if (category == "confirm") {
-            return "Gelecek/Onaylanmis Etkinlikler";
+            return "Gelecek/Onaylanmış Etkinlikler";
         } else if (category == "notConfirm") {
-            return "Onaylanmamis Etkinlikler";
+            return "Onaylanmamış Etkinlikler";
         } else if (category == "last") {
-            return "Gecmis Etkinlikler";
+            return "Geçmiş Etkinlikler";
         } else {
-            return "Tumu"
+            return "Tümü"
         }
     },
     data: () => {
@@ -93,9 +93,9 @@ Template.activity.events({
         const id = event.currentTarget.dataset.id;
         Meteor.call('activity.confirm', id, function(err, res) {
             if (!err) {
-                Materialize.toast('Etkinlik onaylandi', 2500, 'green white-text');
+                Materialize.toast('Etkinlik onaylandı', 2500, 'green white-text');
             } else {
-                Materialize.toast('Hata olustu', 2500, 'red white-text');
+                Materialize.toast('Hata oluştu', 2500, 'red white-text');
             }
         });
     },
@@ -105,7 +105,7 @@ Template.activity.events({
             if (!err) {
                 Materialize.toast('Etkinlik Silindi', 2500, 'green white-text');
             } else {
-                Materialize.toast('Hata olustu', 2500, 'red white-text');
+                Materialize.toast('Hata oluştu', 2500, 'red white-text');
             }
         });
     },

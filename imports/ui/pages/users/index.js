@@ -34,9 +34,9 @@ Template.users.events({
         if (data.schoolNumber != "" && data.role != "") {
             Meteor.call('user.append.role', data, (err, res) => {
                 if (!err) {
-                    Materialize.toast('Basariyla atandi', 2500, 'green white-text');
+                    Materialize.toast('Başarıyla atandı', 2500, 'green white-text');
                 } else {
-                    Materialize.toast('Sorun olustu!', 2500, 'red white-text');
+                    Materialize.toast('Sorun oluştu!', 2500, 'red white-text');
                 }
             });
         } else {

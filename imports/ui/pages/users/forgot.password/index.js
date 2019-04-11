@@ -16,13 +16,13 @@ Template.forgotPassword.events({
                 email: schoolNumber + "@ogr.ktu.edu.tr"
             }, (err) => {
                 if (err) {
-                    Materialize.toast("Hata olustu tekrar deneyin", 2500, 'red white-text');
+                    Materialize.toast("Hata oluştu tekrar deneyin", 2500, 'red white-text');
                 } else {
-                    Materialize.toast("Gonderildi, email'linizi kontrol edin", 2500, 'green white-text');
+                    Materialize.toast("Gönderildi, email'inizi kontrol edin", 2500, 'green white-text');
                 }
             });
         } else {
-            Materialize.toast("Okul numaranizi kontrol edin!", 2500, 'red white-text');
+            Materialize.toast("Okul numaranızı kontrol edin!", 2500, 'red white-text');
         }
     }
 })

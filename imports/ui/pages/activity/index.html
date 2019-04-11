@@ -23,19 +23,19 @@
               <li>
                 <a data-id="notConfirm" href="">
                   <i class="material-icons">live_help</i>
-                  Onaylanmamis Etkinlikler</a>
+                  Onaylanmamış Etkinlikler</a>
               </li>
               <li>
                 <a data-id="last" href="">
                   <i class="material-icons">pan_tool</i>
-                  Gecmis Etkinlikler
+                  Geçmis Etkinlikler
                 </a>
               </li>
               <li class="divider"></li>
               <li>
                 <a href="">
                   <i class="material-icons">group_work</i>
-                  Tumu
+                  Tümü
                 </a>
               </li>
             </ul>
@@ -58,20 +58,20 @@
                     <i class="material-icons right">more_vert</i>
                   </span>
                   <p class="cec-overflow-text">
-                    <strong>Owner:
+                    <strong>Oluşturan:
                     </strong>{{getOwner owner}}</p>
                 </div>
                 <div class="card-reveal">
                   <span class="card-title grey-text text-darken-4">Info<i class="material-icons right">close</i>
                   </span>
                   <p>
-                    <strong>Date:
+                    <strong>Tarih:
                     </strong>{{formatSingleDate date}}</p>
                   <p>
-                    <strong>Time:
+                    <strong>Saat:
                     </strong>{{formatTime date}}</p>
                   <p>
-                    <strong>Place:
+                    <strong>Yer:
                     </strong>{{place}}</p>
                   <p>{{description}}</p>
                 </div>
@@ -79,7 +79,7 @@
                   {{#unless confirmation}}
                     <a data-id="{{_id}}" href="" class="conf">Onayla</a>
                   {{else}}
-                    <span class="green-text">Onaylandi</span>
+                    <span class="green-text">Onaylandı</span>
                   {{/unless}}
                   <a href="" data-id="{{_id}}" class="red-text right del">Sil</a>
                 </div>

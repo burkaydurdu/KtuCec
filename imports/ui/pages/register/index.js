@@ -17,20 +17,20 @@ Template.register.events({
                 if (data.password === data.passwordConfirm) {
                     Meteor.call('user.create', data, function(err, res) {
                         if (!err) {
-                            Materialize.toast(`Kayit islemi basarili. ${data.schoolNumber}@ogr.ktu.edu.tr mail adresine gelen mesaji onaylayin. Daha sonra giris yapabilirsiniz.`, 4000, "green white-text");
+                            Materialize.toast(`Kayıt işlemi başarılı. ${data.schoolNumber}@ogr.ktu.edu.tr mail adresine gelen mesaji onaylayın. Daha sonra giriş yapabilirsiniz.`, 4000, "green white-text");
                             FlowRouter.go('/login');
                         } else {
                             Materialize.toast(err.reason, 2500, "red white-text");
                         }
                     })
                 } else {
-                    Materialize.toast("Sifrenizi kontrol edin!!", 2500, "red white-text");
+                    Materialize.toast("Şifrenizi kontrol edin!!", 2500, "red white-text");
                 }
             } else {
-                Materialize.toast('Okula giris yilinizi kontrol edin!', 2500, "red white-text");
+                Materialize.toast('Okula giriş yılınızı kontrol edin!', 2500, "red white-text");
             }
         } else {
-            Materialize.toast('Okul numaranizi kontrol edin!', 2500, "red white-text");
+            Materialize.toast('Okul numaranızı kontrol edin!', 2500, "red white-text");
         }
     }
 });
